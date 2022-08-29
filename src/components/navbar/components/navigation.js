@@ -2,7 +2,11 @@ import React from "react";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_CATEGORIES = gql`
-query{categories{name}}`;
+query{
+  categories{
+    name
+  }
+}`;
 
 function Navigation()
 {
@@ -24,7 +28,6 @@ function Navigation()
         <button type="button" key={name}>{name.toUpperCase()}</button>
       ))}
     </div>
-
   );
 }
 export default Navigation;
