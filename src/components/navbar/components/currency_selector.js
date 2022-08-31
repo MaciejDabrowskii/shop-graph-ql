@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_CURRENCY = gql`
@@ -15,47 +18,77 @@ query{
 
 function CurrencySelector()
 {
+  const dropdown = useRef();
   const [currencies, setCurrencies] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const { data, error, loading } = useQuery(GET_CURRENCY, { fetchPolicy: "cache-and-network" });
+
+  const handleClickInside = () => setDropdownVisible(true);
+  const handleClickOutside = (e) =>
+  {
+    if (!dropdown.current.contains(e.target))
+    {
+      setDropdownVisible(false);
+    }
+  };
 
   useEffect(() =>
   {
     if (!loading)
     {
       setCurrencies(data.currencies);
-      console.log(currencies);
-      currencies.map((currency) =>
-      {
-        if (currency.label === "USD")setSelectedCurrency(currency.label);
-      });
     }
   }, [loading]);
+
+  useEffect(() =>
+  {
+    currencies.map((currency) =>
+    {
+      if (currency.label === "USD") setSelectedCurrency(currency.label);
+    });
+  }, [currencies]);
+
+  useEffect(() =>
+  {
+    setDropdownVisible(false);
+  }, [selectedCurrency]);
+
+  useEffect(() =>
+  {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  });
 
   if (error) return console.log(error);
   if (loading) return <h1>Loading...</h1>;
 
   return (
 
-    <div className="currency-selector-container">
+    <div className="currency-selector-container" ref={dropdown} onClick={handleClickInside}>
       <div className="currency-selector-symbol">
-        {currencies.map((currency) =>
-        {
-          if (currency.label === "USD") return <p>{currency.symbol}</p>;
-        })}
+        {selectedCurrency}
       </div>
-      <div>{selectedCurrency}</div>
       <svg className="currency-selector-arrow" width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 3.5L4 0.5L7 3.5" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
+      {dropdownVisible && (
+      <div className="currency-selector-dropdown">
+        <ul>
+          {currencies.map((currency) => (
+            <li
+              className="currency-selector-item"
+              onClick={() => setSelectedCurrency(currency.label)}
+              key={currency.label}
+            >
+              {`${currency.symbol} ${currency.label}`}
+            </li>
+          ))}
+        </ul>
+      </div>
+      )}
 
     </div>
   );
 }
-
-// {data.currencies.map((currency) =>
-// {
-//   if (currency.label === "USD") return <p>{currency.symbol}</p>;
-// })}
 export default CurrencySelector;
