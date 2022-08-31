@@ -1,10 +1,8 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
 
@@ -16,15 +14,24 @@ query{
     }
 }`;
 
-function CurrencySelector()
+function CurrencySelector({
+  selectedCurrency,
+  setSelectedCurrency,
+})
 {
   const dropdown = useRef();
+
   const [currencies, setCurrencies] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState("");
+
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const { data, error, loading } = useQuery(GET_CURRENCY, { fetchPolicy: "cache-and-network" });
+
+  const { data, error, loading } = useQuery(
+    GET_CURRENCY,
+    { fetchPolicy: "cache-and-network" },
+  );
 
   const handleClickInside = () => setDropdownVisible(true);
+
   const handleClickOutside = (e) =>
   {
     if (!dropdown.current.contains(e.target))
@@ -65,12 +72,21 @@ function CurrencySelector()
 
   return (
 
-    <div className="currency-selector-container" ref={dropdown} onClick={handleClickInside}>
+    <div
+      className="currency-selector-container"
+      ref={dropdown}
+      onClick={handleClickInside}
+    >
       <div className="currency-selector-symbol">
         {selectedCurrency}
       </div>
       <svg className="currency-selector-arrow" width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 3.5L4 0.5L7 3.5" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M1 3.5L4 0.5L7 3.5"
+          stroke="black"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
       {dropdownVisible && (
       <div className="currency-selector-dropdown">

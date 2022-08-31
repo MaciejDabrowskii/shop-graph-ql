@@ -1,14 +1,50 @@
-import React from "react";
-import Navigation from "./components/navigation";
-import CurrencySelector from "./components/currency_selector";
+/* eslint-disable react/prop-types */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
+import { useQuery, gql } from "@apollo/client";
 
-function Navbar()
+const GET_CATEGORIES = gql`
+query{
+  categories{
+    name
+  }
+}`;
+
+function NavbarCategories({
+  setSelectedCategory,
+  selectedCategory,
+})
 {
+  const { data, loading, error } = useQuery(GET_CATEGORIES);
+
+  useEffect(() =>
+  {
+    if (!loading)
+    {
+      setSelectedCategory(data.categories.map(({ name }) =>
+      {
+        if (name === "all") return name;
+      }));
+    }
+  }, [loading]);
+
+  if (loading) return <h1>Loading...</h1>;
+  if (error) console.log(error);
+
   return (
-    <div className="navbar">
-      <Navigation />
-      <CurrencySelector />
+    <div className="header_navigation">
+      {data.categories.map(({ name }) => (
+        <button
+          type="button"
+          key={name}
+          onClick={() => setSelectedCategory(name)}
+        >
+          {name.toUpperCase()}
+        </button>
+      ))}
     </div>
   );
 }
-export default Navbar;
+export default NavbarCategories;
