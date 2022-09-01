@@ -30,7 +30,7 @@ function CurrencySelector({
     { fetchPolicy: "cache-and-network" },
   );
 
-  const handleClickInside = () => setDropdownVisible(true);
+  const handleClickInside = () => setDropdownVisible((current) => !current);
 
   const handleClickOutside = (e) =>
   {
@@ -80,7 +80,7 @@ function CurrencySelector({
       <div className="currency-selector-symbol">
         {selectedCurrency}
       </div>
-      <svg className="currency-selector-arrow" width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="currency-selector-arrow" width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: dropdownVisible ? "NONE" : "rotate(180deg)" }}>
         <path
           d="M1 3.5L4 0.5L7 3.5"
           stroke="black"
@@ -101,6 +101,7 @@ function CurrencySelector({
             </li>
           ))}
         </ul>
+
       </div>
       )}
 

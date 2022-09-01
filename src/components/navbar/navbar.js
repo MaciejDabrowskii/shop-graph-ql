@@ -1,50 +1,42 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import React from "react";
+import NavbarCategories from
+  "./navbar-categories/navbar-categories";
+import CurrencySelector from
+  "./currency-selector/currency_selector";
+import ShopingCartIndicator from
+  "./shoping-cart-indicator/shoping-cart-indicator";
+import brandIcon from "../../assets/BrandIcon.svg";
 
-const GET_CATEGORIES = gql`
-query{
-  categories{
-    name
-  }
-}`;
-
-function NavbarCategories({
-  setSelectedCategory,
-  selectedCategory,
-})
-{
-  const { data, loading, error } = useQuery(GET_CATEGORIES);
-
-  useEffect(() =>
+function Navbar(
   {
-    if (!loading)
-    {
-      setSelectedCategory(data.categories.map(({ name }) =>
-      {
-        if (name === "all") return name;
-      }));
-    }
-  }, [loading]);
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) console.log(error);
-
+    selectedCategory,
+    setSelectedCategory,
+    selectedCurrency,
+    setSelectedCurrency,
+    shopinCartItems,
+    setShopinCartItems,
+  },
+)
+{
   return (
-    <div className="header_navigation">
-      {data.categories.map(({ name }) => (
-        <button
-          type="button"
-          key={name}
-          onClick={() => setSelectedCategory(name)}
-        >
-          {name.toUpperCase()}
-        </button>
-      ))}
+    <div className="navbar">
+      <NavbarCategories
+        setSelectedCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
+      />
+      <div className="brand-logo-container">
+        <img src={brandIcon} alt="brand icon" className="brand-logo" />
+      </div>
+      <CurrencySelector
+        selectedCurrency={selectedCurrency}
+        setSelectedCurrency={setSelectedCurrency}
+      />
+      <ShopingCartIndicator
+        shopinCartItems={shopinCartItems}
+        setShopinCartItems={setShopinCartItems}
+      />
     </div>
   );
 }
-export default NavbarCategories;
+export default Navbar;
