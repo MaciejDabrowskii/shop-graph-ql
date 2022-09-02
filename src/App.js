@@ -14,19 +14,18 @@ function App()
 
   return (
     <div className="App">
-      <div className="navbar">
-        <Navbar
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          selectedCurrency={selectedCurrency}
-          setSelectedCurrency={setSelectedCurrency}
-          shopinCartItems={shopinCartItems}
-          setShopinCartItems={setShopinCartItems}
-        />
-      </div>
-      {/* <CategoryPage
+      <Navbar
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedCurrency={selectedCurrency}
+        setSelectedCurrency={setSelectedCurrency}
+        shopinCartItems={shopinCartItems}
+        setShopinCartItems={setShopinCartItems}
+      />
+      <CategoryPage
         categoryName={selectedCategory}
-      /> */}
+        selectedCurrency={selectedCurrency}
+      />
       {/* <div>{selectedCategory}</div> */}
     </div>
   );

@@ -7,12 +7,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_CURRENCY = gql`
-query{
+  {
     currencies{
         label
         symbol
     }
-}`;
+  }`;
 
 function CurrencySelector({
   selectedCurrency,

@@ -6,11 +6,11 @@ import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_CATEGORIES = gql`
-query{
-  categories{
-    name
-  }
-}`;
+  {
+    categories{
+      name
+    }
+  }`;
 
 function NavbarCategories({
   setSelectedCategory,
@@ -23,11 +23,12 @@ function NavbarCategories({
   {
     if (!loading)
     {
-      setSelectedCategory(data.categories.map(({ name }) =>
+      data.categories.map(({ name }) =>
       {
-        if (name === "all") return name;
-      }));
+        if (name === "all") setSelectedCategory(name);
+      });
     }
+    console.log(selectedCategory);
   }, [loading]);
 
   if (loading) return <h1>Loading...</h1>;
