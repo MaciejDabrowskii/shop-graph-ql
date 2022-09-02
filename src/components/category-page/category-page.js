@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
+import RenderProducts from "./components/render-products";
 
 const GET_CATEGORY_PRODUCTS = gql`
 query category($name: String!){
@@ -11,6 +12,27 @@ query category($name: String!){
       id
       name
       inStock
+      gallery
+      description
+      category
+      attributes{
+          id
+          name
+          type
+          items{
+              displayValue
+              value
+              id
+          }
+      }
+      prices{
+          currency{
+              label
+              symbol
+          }
+          amount
+      }
+      brand
     }
   }
 }
@@ -39,21 +61,20 @@ function CategoryPage(
     if (!loading)
     {
       setProducts(data.category.products);
-      console.log(data);
+      console.log(products);
     }
   }, [loading]);
 
   if (loading) return <h1>Loading...</h1>;
 
-  if (data)
-  {
-    return (
-
-      <div>
-        <h2 className="categoryName-heading">{categoryName}</h2>
-      </div>
-
-    );
-  }
+  return (
+    <div>
+      <h2 className="categoryName-heading">{categoryName.toUpperCase()}</h2>
+      <RenderProducts
+        products={products}
+        selectedCurrency={selectedCurrency}
+      />
+    </div>
+  );
 }
 export default CategoryPage;
