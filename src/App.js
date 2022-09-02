@@ -3,8 +3,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
 import React, { useState } from "react";
-import Navbar from "./components/navbar/navbar";
-import CategoryPage from "./components/category-page/category-page";
+import Navbar from "./modules/navbar/navbar";
+import CategoryPage from "./modules/category-page/category-page";
 
 function App()
 {
@@ -25,6 +25,7 @@ function App()
       <CategoryPage
         categoryName={selectedCategory}
         selectedCurrency={selectedCurrency}
+        selectedCategory={selectedCategory}
       />
       {/* <div>{selectedCategory}</div> */}
     </div>

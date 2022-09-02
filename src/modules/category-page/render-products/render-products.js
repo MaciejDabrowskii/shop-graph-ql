@@ -19,15 +19,26 @@ function RenderProducts({ products, selectedCurrency })
             <p className="product-name">
               {product.name}
             </p>
-            <p>
-              {product.prices.map((price) =>
+            {product.prices.map((price) =>
+            {
+              if (price.currency.label === selectedCurrency)
               {
-                if (price.currency.label === selectedCurrency) return price.amount;
-              })}
-            </p>
-
+                return (
+                  <p>{`${price.currency.symbol} ${price.amount}`}</p>
+                );
+              }
+            })}
           </div>
-
+          {!product.inStock
+            && (
+            <div
+              className="product-outOfStock-overlay"
+            >
+              <p className="product-overlay-text">
+                OUT OF STOCK
+              </p>
+            </div>
+            )}
         </div>
       ))}
     </div>

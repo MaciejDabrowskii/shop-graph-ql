@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
-import RenderProducts from "./components/render-products";
+import { useQuery, gql, useLazyQuery } from "@apollo/client";
+import RenderProducts from "./render-products/render-products";
 
 const GET_CATEGORY_PRODUCTS = gql`
 query category($name: String!){
@@ -42,28 +42,33 @@ function CategoryPage(
   {
     categoryName,
     selectedCurrency,
+    selectedCategory,
   },
 )
 {
   const [products, setProducts] = useState([]);
 
-  const { loading, error, data } = useQuery(
+  const [getProducts, { loading, error, data }] = useLazyQuery(
     GET_CATEGORY_PRODUCTS,
-    {
-      variables: {
-        name: categoryName,
-      },
-    },
   );
 
   useEffect(() =>
   {
-    if (!loading)
+    getProducts({
+      variables: {
+        name: categoryName,
+      },
+    });
+  }, [selectedCategory]);
+
+  useEffect(() =>
+  {
+    if (data)
     {
+      console.log(data);
       setProducts(data.category.products);
-      console.log(products);
     }
-  }, [loading]);
+  }, [data]);
 
   if (loading) return <h1>Loading...</h1>;
 
