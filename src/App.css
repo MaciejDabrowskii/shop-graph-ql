@@ -1,7 +1,7 @@
-.product{
+.category-product{
     position: relative;
 }
-.product-outOfStock-overlay{
+.category-product-overlay{
     position: absolute;
     background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
 }
-.product-overlay-text{
+.category-product-overlay-text{
 font-size: 3rem;
 color: black;
 

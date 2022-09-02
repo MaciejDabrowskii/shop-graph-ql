@@ -9,11 +9,10 @@ function ShopingCartIndicator({
   setShopinCartItems,
 })
 {
-  const [itemsNumber, setItemsNumber] = useState(null);
+  const [itemsNumber, setItemsNumber] = useState(0);
 
   const cartItemsNumber = (items) =>
   {
-    if (items.length === 0) return setItemsNumber(items.length);
     if (items.length > 0)
     {
       return setItemsNumber(
@@ -31,10 +30,12 @@ function ShopingCartIndicator({
       <div className="shoping-cart-icon-container">
         <img src={cartIcon} alt="shoping cart icon" />
       </div>
+      {(itemsNumber > 0)
+      && (
       <div className="shoping-cart-indicator">
         {itemsNumber}
       </div>
-
+      )}
     </div>
   );
 }

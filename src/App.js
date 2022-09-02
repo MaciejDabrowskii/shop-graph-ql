@@ -27,7 +27,6 @@ function App()
         selectedCurrency={selectedCurrency}
         selectedCategory={selectedCategory}
       />
-      {/* <div>{selectedCategory}</div> */}
     </div>
   );
 }

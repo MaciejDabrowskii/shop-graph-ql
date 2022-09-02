@@ -1,22 +1,57 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable max-len */
-import React from "react";
+import React, { useState } from "react";
+import emptyCart from "../../../assets/EmptyCart.svg";
 
 function RenderProducts({ products, selectedCurrency })
 {
+  const [isHovering, setIsHovering] = useState(() =>
+  {
+    console.log(products);
+    const obj = {};
+    products.map((product) =>
+    {
+      obj[product.id] = false;
+    });
+    return obj;
+  });
+
+  const handleMouseOver = (id) =>
+  {
+    setIsHovering({ ...isHovering, [id]: true });
+  };
+
+  const handleMouseOut = (id) =>
+  {
+    setIsHovering({ ...isHovering, [id]: false });
+  };
+
   return (
-    <div className="products-container">
+    <div
+      className="category-products-container"
+    >
       {products.map((product) => (
-        <div className="product" key={product.id}>
+        <div
+          className="category-product"
+          key={product.id}
+          onMouseOver={() => handleMouseOver(product.id)}
+          onMouseOut={() => handleMouseOut(product.id)}
+        >
           <img
             src={product.gallery[0]}
-            className="product-image"
+            className="category-product-image"
             alt={`${product.name}`}
           />
-          <div className="product-info">
-            <p className="product-name">
+          {(isHovering[product.id] && product.inStock) && (
+            <div className="category-product-add-container">
+              <img src={emptyCart} alt="shoping cart icon" />
+            </div>
+          )}
+          <div className="category-product-info">
+            <p className="category-product-name">
               {product.name}
             </p>
             {product.prices.map((price) =>
@@ -32,9 +67,9 @@ function RenderProducts({ products, selectedCurrency })
           {!product.inStock
             && (
             <div
-              className="product-outOfStock-overlay"
+              className="category-product-overlay"
             >
-              <p className="product-overlay-text">
+              <p className="category-product-overlay-text">
                 OUT OF STOCK
               </p>
             </div>
