@@ -47,7 +47,11 @@ function RenderProducts({ products, selectedCurrency })
           />
           {(isHovering[product.id] && product.inStock) && (
             <div className="category-product-add-container">
-              <img src={emptyCart} alt="shoping cart icon" />
+              <img
+                src={emptyCart}
+                alt="shopping cart icon"
+                className="category-product-add-icon"
+              />
             </div>
           )}
           <div className="category-product-info">
