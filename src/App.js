@@ -28,6 +28,7 @@ function App()
         selectedCategory={selectedCategory}
       />
     </div>
+
   );
 }
 

@@ -4,13 +4,19 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable max-len */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart.svg";
 
-function RenderProducts({ products, selectedCurrency })
+function RenderProducts(
+  {
+    products,
+    selectedCurrency,
+    categoryName,
+  },
+)
 {
   const [isHovering, setIsHovering] = useState(() =>
   {
-    console.log(products);
     const obj = {};
     products.map((product) =>
     {
@@ -33,19 +39,24 @@ function RenderProducts({ products, selectedCurrency })
     <div
       className="category-products-container"
     >
+      <h2 className="categoryName-heading">{categoryName.toUpperCase()}</h2>
       {products.map((product) => (
-        <div
-          className="category-product"
+        <Link
+          to={`/${product.id}`}
           key={product.id}
-          onMouseOver={() => handleMouseOver(product.id)}
-          onMouseOut={() => handleMouseOut(product.id)}
         >
-          <img
-            src={product.gallery[0]}
-            className="category-product-image"
-            alt={`${product.name}`}
-          />
-          {(isHovering[product.id] && product.inStock) && (
+          <div
+            className="category-product"
+            key={product.id}
+            onMouseOver={() => handleMouseOver(product.id)}
+            onMouseOut={() => handleMouseOut(product.id)}
+          >
+            <img
+              src={product.gallery[0]}
+              className="category-product-image"
+              alt={`${product.name}`}
+            />
+            {(isHovering[product.id] && product.inStock) && (
             <div className="category-product-add-container">
               <img
                 src={emptyCart}
@@ -53,22 +64,22 @@ function RenderProducts({ products, selectedCurrency })
                 className="category-product-add-icon"
               />
             </div>
-          )}
-          <div className="category-product-info">
-            <p className="category-product-name">
-              {product.name}
-            </p>
-            {product.prices.map((price) =>
-            {
-              if (price.currency.label === selectedCurrency)
+            )}
+            <div className="category-product-info">
+              <p className="category-product-name">
+                {product.name}
+              </p>
+              {product.prices.map((price) =>
               {
-                return (
-                  <p>{`${price.currency.symbol} ${price.amount}`}</p>
-                );
-              }
-            })}
-          </div>
-          {!product.inStock
+                if (price.currency.label === selectedCurrency)
+                {
+                  return (
+                    <p>{`${price.currency.symbol} ${price.amount}`}</p>
+                  );
+                }
+              })}
+            </div>
+            {!product.inStock
             && (
             <div
               className="category-product-overlay"
@@ -78,7 +89,9 @@ function RenderProducts({ products, selectedCurrency })
               </p>
             </div>
             )}
-        </div>
+          </div>
+        </Link>
+
       ))}
     </div>
   );
