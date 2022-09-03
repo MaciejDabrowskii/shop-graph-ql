@@ -3,6 +3,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./modules/navbar/navbar";
 import CategoryPage from "./modules/category-page/category-page";
 
@@ -14,19 +15,21 @@ function App()
 
   return (
     <div className="App">
-      <Navbar
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        selectedCurrency={selectedCurrency}
-        setSelectedCurrency={setSelectedCurrency}
-        shopinCartItems={shopinCartItems}
-        setShopinCartItems={setShopinCartItems}
-      />
-      <CategoryPage
-        categoryName={selectedCategory}
-        selectedCurrency={selectedCurrency}
-        selectedCategory={selectedCategory}
-      />
+      <BrowserRouter>
+        <Navbar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedCurrency={selectedCurrency}
+          setSelectedCurrency={setSelectedCurrency}
+          shopinCartItems={shopinCartItems}
+          setShopinCartItems={setShopinCartItems}
+        />
+        <CategoryPage
+          categoryName={selectedCategory}
+          selectedCurrency={selectedCurrency}
+          selectedCategory={selectedCategory}
+        />
+      </BrowserRouter>
     </div>
 
   );

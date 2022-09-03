@@ -75,19 +75,18 @@ function CategoryPage(
 
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={(
-              <RenderProducts
-                products={products}
-                selectedCurrency={selectedCurrency}
-                categoryName={categoryName}
-              />
+      <Routes>
+        <Route
+          path="/"
+          element={(
+            <RenderProducts
+              products={products}
+              selectedCurrency={selectedCurrency}
+              categoryName={categoryName}
+            />
             )}
-          />
-          {
+        />
+        {
             products.map((product) => (
               <Route
                 path={`/${product.id}`}
@@ -101,8 +100,7 @@ function CategoryPage(
               />
             ))
           }
-        </Routes>
-      </BrowserRouter>
+      </Routes>
     </div>
   );
 }
