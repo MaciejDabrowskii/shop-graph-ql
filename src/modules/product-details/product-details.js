@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import { useQuery, gql, useLazyQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
+import RenderImages from "./render-images/render-images";
+import RenderInfo from "./render-info/render-info";
 
 const GET_PRODUCT = gql`
 query product($id: String!){
@@ -58,9 +60,16 @@ function ProductDetails(
   if (loading) return <h1>Loading...</h1>;
   if (data)
   {
+    console.log(data);
     return (
       <div className="product-details-container">
         <h1>{data.product.name}</h1>
+        {/* <RenderImages
+          product={data.product}
+        /> */}
+        <RenderInfo
+          product={data.product}
+        />
       </div>
     );
   }

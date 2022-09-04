@@ -39,17 +39,17 @@ function RenderProducts(
     <div
       className="category-products-container"
     >
-      <h2 className="categoryName-heading">{categoryName.toUpperCase()}</h2>
+      <h2 className="category-heading">{categoryName.toUpperCase()}</h2>
       {products.map((product) => (
         <Link
           to={`/${product.id}`}
           key={product.id}
         >
           <div
-            className="category-product"
-            key={product.id}
             onMouseOver={() => handleMouseOver(product.id)}
             onMouseOut={() => handleMouseOut(product.id)}
+            className="category-product"
+            key={product.id}
           >
             <img
               src={product.gallery[0]}
@@ -74,7 +74,12 @@ function RenderProducts(
                 if (price.currency.label === selectedCurrency)
                 {
                   return (
-                    <p>{`${price.currency.symbol} ${price.amount}`}</p>
+                    <p
+                      key={price.currency.label}
+                    >
+                      {`${price.currency.symbol} ${price.amount}`}
+
+                    </p>
                   );
                 }
               })}

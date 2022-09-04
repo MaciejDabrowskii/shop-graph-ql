@@ -31,7 +31,6 @@ function NavbarCategories({
         if (name === "all") setSelectedCategory(name);
       });
     }
-    console.log(selectedCategory);
   }, [loading]);
 
   if (loading) return <h1>Loading...</h1>;

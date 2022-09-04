@@ -67,7 +67,6 @@ function CategoryPage(
     if (data)
     {
       setProducts(data.category.products);
-      console.log(data);
     }
   }, [data]);
 
