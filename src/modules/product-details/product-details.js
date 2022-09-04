@@ -64,11 +64,12 @@ function ProductDetails(
     return (
       <div className="product-details-container">
         <h1>{data.product.name}</h1>
-        {/* <RenderImages
+        <RenderImages
           product={data.product}
-        /> */}
+        />
         <RenderInfo
           product={data.product}
+          selectedCurrency={selectedCurrency}
         />
       </div>
     );

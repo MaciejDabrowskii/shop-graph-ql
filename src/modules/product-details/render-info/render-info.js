@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import RenderAttributes from "./components/render-atributes";
+import RenderPrice from "./components/render-price";
+import RenderDescription from "./components/render-description";
 
 function RenderInfo(
   {
     product,
+    selectedCurrency,
   },
 )
 {
@@ -16,6 +19,13 @@ function RenderInfo(
       </div>
       <RenderAttributes
         attributes={product.attributes}
+      />
+      <RenderPrice
+        prices={product.prices}
+        selectedCurrency={selectedCurrency}
+      />
+      <RenderDescription
+        description={product.description}
       />
     </div>
   );

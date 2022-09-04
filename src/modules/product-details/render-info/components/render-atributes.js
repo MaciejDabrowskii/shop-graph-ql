@@ -20,10 +20,10 @@ function RenderAttributes(
                 return (
                   <div
                     className="product-details-info-attribute-container"
-                    key={attribute}
+                    key={attribute.name}
                   >
                     <h3 className="product-details-info-attribute-name">
-                      {attribute.name.toUpperCase()}
+                      {`${attribute.name.toUpperCase()}:`}
                     </h3>
                     <div
                       className="
@@ -33,8 +33,8 @@ function RenderAttributes(
                       {
                         attribute.items.map((item) => (
                           <div
-                            lassName="product-details-info-attribute-value"
-                            key={item}
+                            className="product-details-info-attribute-value"
+                            key={item.value}
                             style={{ backgroundColor: item.value }}
                           >
                             {item.displayValue}
@@ -48,10 +48,10 @@ function RenderAttributes(
               return (
                 <div
                   className="product-details-info-attribute-container"
-                  key={attribute}
+                  key={attribute.name}
                 >
                   <h3 className="product-details-info-attribute-name">
-                    {attribute.name.toUpperCase()}
+                    {`${attribute.name.toUpperCase()}:`}
                   </h3>
                   <div
                     className="
@@ -61,8 +61,8 @@ function RenderAttributes(
                     {
                         attribute.items.map((item) => (
                           <div
-                            lassName="product-details-info-attribute-value"
-                            key={item}
+                            className="product-details-info-attribute-value"
+                            key={item.value}
                           >
                             {item.displayValue}
                           </div>
