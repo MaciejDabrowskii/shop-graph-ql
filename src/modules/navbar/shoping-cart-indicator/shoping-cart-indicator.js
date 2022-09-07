@@ -18,7 +18,7 @@ function ShopingCartIndicator({ shopinCartItems, setShopinCartItems })
     }
   };
 
-  useEffect(() => cartItemsNumber(shopinCartItems), [itemsNumber]);
+  useEffect(() => cartItemsNumber(shopinCartItems), [shopinCartItems]);
 
   return (
     <div className="shoping-cart-indicator-container">

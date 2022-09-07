@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RenderAttributes from "./components/render-attributes/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
@@ -16,9 +18,6 @@ function RenderInfo(
   },
 )
 {
-//   shopinCartItems={shopinCartItems}
-  // setShopinCartItems={setShopinCartItems}
-  // console.log(product);
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
     const obj = {};
@@ -29,7 +28,9 @@ function RenderInfo(
     return obj;
   });
 
-  const generateCartiD = (productData, atributes) => productData.id + Object.values(atributes)
+  const [showWarning, setShowWarning] = useState(false);
+
+  const generateCartiD = product.id + Object.values(selectedAttributes)
     .join("")
     .replace(/\s/g, "");
 
@@ -37,6 +38,35 @@ function RenderInfo(
     .every(
       (attribute) => attribute !== "",
     );
+
+  function warning()
+  {
+    setShowWarning(true);
+    setTimeout(() => setShowWarning(false), 3000);
+  }
+
+  function addToCart()
+  {
+    if (checkAttributes)
+    {
+      if (shopinCartItems.some((item) => item.cartId === generateCartiD))
+      {
+        setShopinCartItems(shopinCartItems.map((item) => (
+          item.cartId === generateCartiD ? { ...item, quantinity: item.quantinity + 1 } : item
+        )));
+      }
+      else
+      {
+        setShopinCartItems([...shopinCartItems,
+          {
+            ...product,
+            cartId: generateCartiD,
+            quantinity: 1,
+          }]);
+      }
+    }
+    else warning();
+  }
 
   return (
     <div className="product-details-info-container">
@@ -49,6 +79,19 @@ function RenderInfo(
         selectedAttributes={selectedAttributes}
         setSelectedAttributes={setSelectedAttributes}
       />
+      <div className="product-details-info-button-container">
+        <button
+          type="button"
+          className="product-details-info-button"
+          onClick={() => addToCart()}
+        >
+          ADD TO CART
+
+        </button>
+        {showWarning && (
+        <span className="product-details-info-warning">please select attributes</span>
+        )}
+      </div>
       <RenderPrice
         prices={product.prices}
         selectedCurrency={selectedCurrency}
