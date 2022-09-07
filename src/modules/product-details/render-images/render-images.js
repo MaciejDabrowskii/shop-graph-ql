@@ -3,11 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-function RenderImages(
-  {
-    product,
-  },
-)
+function RenderImages({ product })
 {
   const [selectedImage, setSelectedImage] = useState(product.gallery[0]);
 
@@ -30,7 +26,6 @@ function RenderImages(
           src={selectedImage}
           alt={`${product.name} big`}
         />
-
       </div>
     </div>
   );

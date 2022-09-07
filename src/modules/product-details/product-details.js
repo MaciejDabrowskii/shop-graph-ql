@@ -6,47 +6,47 @@ import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 
 const GET_PRODUCT = gql`
-query product($id: String!){
-  product(id: $id){
+  query product($id: String!) {
+    product(id: $id) {
       id
       name
       inStock
       gallery
       description
       category
-      attributes{
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
           id
-          name
-          type
-          items{
-              displayValue
-              value
-              id
-          }
+        }
       }
-      prices{
-          currency{
-              label
-              symbol
-          }
-          amount
+      prices {
+        currency {
+          label
+          symbol
+        }
+        amount
       }
       brand
-      
+    }
   }
-}`;
+`;
 
 function ProductDetails(
   {
     productId,
     selectedCurrency,
+    shopinCartItems,
+    setShopinCartItems,
   },
 )
 {
   const [product, setProduct] = useState({});
-  const [getProducts, { loading, error, data }] = useLazyQuery(
-    GET_PRODUCT,
-  );
+  const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
 
   useEffect(() =>
   {
@@ -70,6 +70,8 @@ function ProductDetails(
         <RenderInfo
           product={data.product}
           selectedCurrency={selectedCurrency}
+          shopinCartItems={shopinCartItems}
+          setShopinCartItems={setShopinCartItems}
         />
       </div>
     );

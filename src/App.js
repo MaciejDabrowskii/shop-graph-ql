@@ -28,10 +28,11 @@ function App()
           categoryName={selectedCategory}
           selectedCurrency={selectedCurrency}
           selectedCategory={selectedCategory}
+          shopinCartItems={shopinCartItems}
+          setShopinCartItems={setShopinCartItems}
         />
       </BrowserRouter>
     </div>
-
   );
 }
 

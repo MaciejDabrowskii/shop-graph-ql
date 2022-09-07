@@ -8,16 +8,14 @@ import { useQuery, gql } from "@apollo/client";
 
 const GET_CURRENCY = gql`
   {
-    currencies{
-        label
-        symbol
+    currencies {
+      label
+      symbol
     }
-  }`;
+  }
+`;
 
-function CurrencySelector({
-  selectedCurrency,
-  setSelectedCurrency,
-})
+function CurrencySelector({ selectedCurrency, setSelectedCurrency })
 {
   const dropdown = useRef();
 
@@ -25,10 +23,9 @@ function CurrencySelector({
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const { data, error, loading } = useQuery(
-    GET_CURRENCY,
-    { fetchPolicy: "cache-and-network" },
-  );
+  const { data, error, loading } = useQuery(GET_CURRENCY, {
+    fetchPolicy: "cache-and-network",
+  });
 
   const handleClickInside = () => setDropdownVisible((current) => !current);
 
@@ -71,16 +68,21 @@ function CurrencySelector({
   if (loading) return <h1>Loading...</h1>;
 
   return (
-
     <div
       className="currency-selector-container"
       ref={dropdown}
       onClick={handleClickInside}
     >
-      <div className="currency-selector-symbol">
-        {selectedCurrency}
-      </div>
-      <svg className="currency-selector-arrow" width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: dropdownVisible ? "NONE" : "rotate(180deg)" }}>
+      <div className="currency-selector-symbol">{selectedCurrency}</div>
+      <svg
+        className="currency-selector-arrow"
+        width="8"
+        height="4"
+        viewBox="0 0 8 4"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ transform: dropdownVisible ? "NONE" : "rotate(180deg)" }}
+      >
         <path
           d="M1 3.5L4 0.5L7 3.5"
           stroke="black"
@@ -89,22 +91,20 @@ function CurrencySelector({
         />
       </svg>
       {dropdownVisible && (
-      <div className="currency-selector-dropdown">
-        <ul>
-          {currencies.map((currency) => (
-            <li
-              className="currency-selector-item"
-              onClick={() => setSelectedCurrency(currency.label)}
-              key={currency.label}
-            >
-              {`${currency.symbol} ${currency.label}`}
-            </li>
-          ))}
-        </ul>
-
-      </div>
+        <div className="currency-selector-dropdown">
+          <ul>
+            {currencies.map((currency) => (
+              <li
+                className="currency-selector-item"
+                onClick={() => setSelectedCurrency(currency.label)}
+                key={currency.label}
+              >
+                {`${currency.symbol} ${currency.label}`}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-
     </div>
   );
 }

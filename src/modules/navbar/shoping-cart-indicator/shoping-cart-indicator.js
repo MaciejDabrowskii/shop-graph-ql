@@ -4,10 +4,7 @@
 import React, { useEffect, useState } from "react";
 import cartIcon from "../../../assets/EmptyCart.svg";
 
-function ShopingCartIndicator({
-  shopinCartItems,
-  setShopinCartItems,
-})
+function ShopingCartIndicator({ shopinCartItems, setShopinCartItems })
 {
   const [itemsNumber, setItemsNumber] = useState(0);
 
@@ -24,17 +21,12 @@ function ShopingCartIndicator({
   useEffect(() => cartItemsNumber(shopinCartItems), [itemsNumber]);
 
   return (
-    <div
-      className="shoping-cart-indicator-container"
-    >
+    <div className="shoping-cart-indicator-container">
       <div className="shoping-cart-icon-container">
         <img src={cartIcon} alt="shoping cart icon" />
       </div>
-      {(itemsNumber > 0)
-      && (
-      <div className="shoping-cart-indicator">
-        {itemsNumber}
-      </div>
+      {itemsNumber > 0 && (
+        <div className="shoping-cart-indicator">{itemsNumber}</div>
       )}
     </div>
   );

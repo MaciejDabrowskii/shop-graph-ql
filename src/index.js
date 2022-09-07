@@ -3,7 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import {
-  ApolloClient, InMemoryCache, ApolloProvider, gql,
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
 } from "@apollo/client";
 import App from "./App";
 

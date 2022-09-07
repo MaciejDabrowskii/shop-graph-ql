@@ -2,11 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function RenderDescription(
-  {
-    description,
-  },
-)
+function RenderDescription({ description })
 {
   return (
     <div className="product-details-info-description-container">

@@ -10,15 +10,13 @@ import { Link } from "react-router-dom";
 
 const GET_CATEGORIES = gql`
   {
-    categories{
+    categories {
       name
     }
-  }`;
+  }
+`;
 
-function NavbarCategories({
-  setSelectedCategory,
-  selectedCategory,
-})
+function NavbarCategories({ setSelectedCategory, selectedCategory })
 {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
@@ -39,14 +37,8 @@ function NavbarCategories({
   return (
     <div className="header_navigation">
       {data.categories.map(({ name }) => (
-        <Link
-          to="/"
-          key={name}
-        >
-          <div
-            type="button"
-            onClick={() => setSelectedCategory(name)}
-          >
+        <Link to="/" key={name}>
+          <div type="button" onClick={() => setSelectedCategory(name)}>
             {name.toUpperCase()}
           </div>
         </Link>

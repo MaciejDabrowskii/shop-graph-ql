@@ -3,7 +3,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import RenderAttributes from "./components/render-atributes";
+import RenderAttributes from "./components/render-attributes/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
 
@@ -11,10 +11,14 @@ function RenderInfo(
   {
     product,
     selectedCurrency,
+    shopinCartItems,
+    setShopinCartItems,
   },
 )
 {
-  console.log(product);
+//   shopinCartItems={shopinCartItems}
+  // setShopinCartItems={setShopinCartItems}
+  // console.log(product);
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
     const obj = {};
@@ -26,10 +30,13 @@ function RenderInfo(
   });
 
   const generateCartiD = (productData, atributes) => productData.id + Object.values(atributes)
-    .join("");
+    .join("")
+    .replace(/\s/g, "");
 
   const checkAttributes = Object.values(selectedAttributes)
-    .every((attribute) => attribute !== "");
+    .every(
+      (attribute) => attribute !== "",
+    );
 
   return (
     <div className="product-details-info-container">
@@ -46,9 +53,7 @@ function RenderInfo(
         prices={product.prices}
         selectedCurrency={selectedCurrency}
       />
-      <RenderDescription
-        description={product.description}
-      />
+      <RenderDescription description={product.description} />
     </div>
   );
 }
