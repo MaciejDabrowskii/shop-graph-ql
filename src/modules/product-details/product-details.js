@@ -60,13 +60,13 @@ function ProductDetails(
   if (loading) return <h1>Loading...</h1>;
   if (data)
   {
-    console.log(data);
+    // console.log(data);
     return (
       <div className="product-details-container">
         <h1>{data.product.name}</h1>
-        <RenderImages
+        {/* <RenderImages
           product={data.product}
-        />
+        /> */}
         <RenderInfo
           product={data.product}
           selectedCurrency={selectedCurrency}

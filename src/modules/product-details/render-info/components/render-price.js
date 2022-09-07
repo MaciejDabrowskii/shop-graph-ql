@@ -20,6 +20,7 @@ function RenderPrice(
         {
           return (
             <p
+              key={price.amount}
               className="product-details-info-price"
             >
               {price.currency.symbol + price.amount}

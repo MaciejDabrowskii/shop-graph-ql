@@ -1,15 +1,21 @@
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { } from "react";
 
 function RenderAttributes(
   {
     attributes,
+    selectedAttributes,
+    setSelectedAttributes,
   },
 )
 {
-  console.log(attributes);
+  const updateAttributes = (e, attribute) => setSelectedAttributes(
+    { ...selectedAttributes, [attribute.name]: e.target.value },
+  );
+  console.log(selectedAttributes);
   return (
     <div className="product-details-info-attributes-container">
       {
@@ -25,24 +31,36 @@ function RenderAttributes(
                     <h3 className="product-details-info-attribute-name">
                       {`${attribute.name.toUpperCase()}:`}
                     </h3>
-                    <div
-                      className="
-                      product-details-info-attribute-values-container
-                      "
-                    >
+                    <div className="product-details-info-attribute-values-container">
                       {
                         attribute.items.map((item) => (
                           <div
-                            className="product-details-info-attribute-value"
+                            className="product-details-info-attribute-wrapper"
                             key={item.value}
-                            style={{ backgroundColor: item.value }}
+                            style={
+                              selectedAttributes[attribute.name] === item.id
+                                ? { border: "4px solid rgb(94, 206, 123)", padding: "4px" } : {}
+                            }
                           >
-                            {item.displayValue}
+                            <label
+                              className="product-details-info-attribute-color"
+                              style={{ backgroundColor: item.value }}
+                              htmlFor={item.id}
+                            >
+                              <input
+                                type="radio"
+                                value={item.id}
+                                name="color"
+                                id={item.id}
+                                onChange={(e) => updateAttributes(e, attribute)}
+                              />
+                            </label>
                           </div>
                         ))
                       }
                     </div>
                   </div>
+
                 );
               }
               return (
@@ -60,12 +78,30 @@ function RenderAttributes(
                   >
                     {
                         attribute.items.map((item) => (
-                          <div
+                          <label
                             className="product-details-info-attribute-value"
-                            key={item.value}
+                            style={selectedAttributes[attribute.name] === item.id ? {
+                              backgroundColor: "black",
+                              color: "white",
+                            } : {}}
+                            htmlFor={item.id}
+                            key={item.id}
                           >
+                            <input
+                              type="radio"
+                              value={item.id}
+                              name={attribute.name}
+                              onChange={(e) => updateAttributes(e, attribute)}
+                              id={item.id}
+                            />
                             {item.displayValue}
-                          </div>
+                          </label>
+                          // <div
+                          //   className="product-details-info-attribute-value"
+                          //   key={item.value}
+                          // >
+                          //   {item.displayValue}
+                          // </div>
                         ))
                     }
                   </div>
