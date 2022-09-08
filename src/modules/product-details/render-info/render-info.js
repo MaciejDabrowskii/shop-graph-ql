@@ -86,10 +86,14 @@ function RenderInfo(
           onClick={() => addToCart()}
         >
           ADD TO CART
-
         </button>
         {showWarning && (
-        <span className="product-details-info-warning">please select attributes</span>
+        <span
+          className="product-details-info-warning"
+        >
+          {`Please select: ${Object.keys(selectedAttributes)
+            .map((attribute) => (selectedAttributes[attribute] === "" ? attribute : ""))}`}
+        </span>
         )}
       </div>
       <RenderPrice

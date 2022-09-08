@@ -13,10 +13,14 @@ function RenderAttributes(
   },
 )
 {
-  const updateAttributes = (e, attribute) => setSelectedAttributes(
-    { ...selectedAttributes, [attribute.name]: e.target.value },
-  );
-  console.log(selectedAttributes);
+  const updateAttributes = (e, attribute) =>
+  {
+    setSelectedAttributes(
+      { ...selectedAttributes, [attribute.name]: e.target.value },
+    );
+    console.log(e.target.value);
+  };
+  console.log(selectedAttributes, attributes);
   return (
     <div className="product-details-info-attributes-container">
       {
@@ -89,15 +93,15 @@ function RenderAttributes(
                             backgroundColor: "black",
                             color: "white",
                           } : {}}
-                          htmlFor={item.id}
-                          key={item.id}
+                          htmlFor={item.name}
+                          key={item.id + item.name}
                         >
                           <input
                             type="radio"
                             value={item.id}
-                            name={attribute.name}
+                            name={attribute.id}
                             onChange={(e) => updateAttributes(e, attribute)}
-                            id={item.id}
+                            id={item.name}
                           />
                           {item.displayValue}
                         </label>
