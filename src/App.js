@@ -11,7 +11,8 @@ function App()
 {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState("");
-  const [shopinCartItems, setShopinCartItems] = useState([]);
+  const [shoppingCartItems, setShoppingCartItems] = useState([]);
+  const [overlayVisible, setOverlayVisible] = useState(false);
 
   return (
     <div className="App">
@@ -21,15 +22,17 @@ function App()
           setSelectedCategory={setSelectedCategory}
           selectedCurrency={selectedCurrency}
           setSelectedCurrency={setSelectedCurrency}
-          shopinCartItems={shopinCartItems}
-          setShopinCartItems={setShopinCartItems}
+          shoppingCartItems={shoppingCartItems}
+          setShoppingCartItems={setShoppingCartItems}
+          setOverlayVisible={setOverlayVisible}
         />
         <CategoryPage
           categoryName={selectedCategory}
           selectedCurrency={selectedCurrency}
           selectedCategory={selectedCategory}
-          shopinCartItems={shopinCartItems}
-          setShopinCartItems={setShopinCartItems}
+          shoppingCartItems={shoppingCartItems}
+          setShoppingCartItems={setShoppingCartItems}
+          overlayVisible={overlayVisible}
         />
       </BrowserRouter>
     </div>

@@ -2,8 +2,8 @@
 import React from "react";
 import NavbarCategories from "./navbar-categories/navbar-categories";
 import CurrencySelector from "./currency-selector/currency_selector";
-import ShopingCartIndicator from
-  "./shoping-cart-indicator/shoping-cart-indicator";
+import ShoppingCartIndicator
+  from "./shopping-cart-indicator/shopping-cart-indicator";
 import brandIcon from "../../assets/BrandIcon.svg";
 
 function Navbar({
@@ -11,8 +11,9 @@ function Navbar({
   setSelectedCategory,
   selectedCurrency,
   setSelectedCurrency,
-  shopinCartItems,
-  setShopinCartItems,
+  shoppingCartItems,
+  setShoppingCartItems,
+  setOverlayVisible,
 })
 {
   return (
@@ -28,9 +29,10 @@ function Navbar({
         selectedCurrency={selectedCurrency}
         setSelectedCurrency={setSelectedCurrency}
       />
-      <ShopingCartIndicator
-        shopinCartItems={shopinCartItems}
-        setShopinCartItems={setShopinCartItems}
+      <ShoppingCartIndicator
+        shoppingCartItems={shoppingCartItems}
+        setShoppingCartItems={setShoppingCartItems}
+        setOverlayVisible={setOverlayVisible}
       />
     </div>
   );

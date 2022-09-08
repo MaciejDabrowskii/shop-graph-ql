@@ -40,8 +40,8 @@ function ProductDetails(
   {
     productId,
     selectedCurrency,
-    shopinCartItems,
-    setShopinCartItems,
+    shoppingCartItems,
+    setShoppingCartItems,
   },
 )
 {
@@ -70,8 +70,8 @@ function ProductDetails(
         <RenderInfo
           product={data.product}
           selectedCurrency={selectedCurrency}
-          shopinCartItems={shopinCartItems}
-          setShopinCartItems={setShopinCartItems}
+          shoppingCartItems={shoppingCartItems}
+          setShoppingCartItems={setShoppingCartItems}
         />
       </div>
     );

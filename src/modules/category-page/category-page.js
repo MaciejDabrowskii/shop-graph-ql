@@ -45,8 +45,9 @@ function CategoryPage(
     categoryName,
     selectedCurrency,
     selectedCategory,
-    shopinCartItems,
-    setShopinCartItems,
+    shoppingCartItems,
+    setShoppingCartItems,
+    overlayVisible,
   },
 )
 {
@@ -75,7 +76,7 @@ function CategoryPage(
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="category-container">
       <Routes>
         <Route
           path="/"
@@ -95,13 +96,14 @@ function CategoryPage(
               <ProductDetails
                 productId={product.id}
                 selectedCurrency={selectedCurrency}
-                shopinCartItems={shopinCartItems}
-                setShopinCartItems={setShopinCartItems}
+                shoppingCartItems={shoppingCartItems}
+                setShoppingCartItems={setShoppingCartItems}
               />
             )}
           />
         ))}
       </Routes>
+      {overlayVisible && (<div className="category-overlay" />)}
     </div>
   );
 }

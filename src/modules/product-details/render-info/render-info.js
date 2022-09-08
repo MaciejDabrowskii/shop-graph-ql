@@ -13,8 +13,8 @@ function RenderInfo(
   {
     product,
     selectedCurrency,
-    shopinCartItems,
-    setShopinCartItems,
+    shoppingCartItems,
+    setShoppingCartItems,
   },
 )
 {
@@ -49,15 +49,15 @@ function RenderInfo(
   {
     if (checkAttributes)
     {
-      if (shopinCartItems.some((item) => item.cartId === generateCartiD))
+      if (shoppingCartItems.some((item) => item.cartId === generateCartiD))
       {
-        setShopinCartItems(shopinCartItems.map((item) => (
+        setShoppingCartItems(shoppingCartItems.map((item) => (
           item.cartId === generateCartiD ? { ...item, quantinity: item.quantinity + 1 } : item
         )));
       }
       else
       {
-        setShopinCartItems([...shopinCartItems,
+        setShoppingCartItems([...shoppingCartItems,
           {
             ...product,
             cartId: generateCartiD,

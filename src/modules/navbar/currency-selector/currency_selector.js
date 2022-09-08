@@ -15,7 +15,12 @@ const GET_CURRENCY = gql`
   }
 `;
 
-function CurrencySelector({ selectedCurrency, setSelectedCurrency })
+function CurrencySelector(
+  {
+    selectedCurrency,
+    setSelectedCurrency,
+  },
+)
 {
   const dropdown = useRef();
 
