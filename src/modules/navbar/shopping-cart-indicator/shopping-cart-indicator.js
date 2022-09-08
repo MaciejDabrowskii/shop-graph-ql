@@ -39,6 +39,7 @@ function ShoppingCartIndicator(
     if (cartIndicator.current.contains(e.target))
     {
       setCartOverlayVisible((current) => !current);
+      setOverlayVisible((current) => !current);
     }
   };
 
@@ -47,6 +48,7 @@ function ShoppingCartIndicator(
     if (!cartCpntainerDiv.current.contains(e.target))
     {
       setCartOverlayVisible(false);
+      setOverlayVisible(false);
     }
   };
 
@@ -76,8 +78,10 @@ function ShoppingCartIndicator(
         )}
       </div>
       {cartOverlayVisible && (
-        <h3>VISIBLE!!!</h3>
-        // <ShoppingCartOverlay />
+        <ShoppingCartOverlay
+          itemsQuantity={itemsQuantity}
+          shoppingCartItems={shoppingCartItems}
+        />
       )}
     </div>
   );

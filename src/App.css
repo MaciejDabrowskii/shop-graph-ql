@@ -7,7 +7,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 2;
   top: 0;
   left: 0;
   display: flex;
@@ -55,4 +55,18 @@ label {
   align-items: center;
   display: flex;
   gap: 15px;
+}
+
+.category-container{
+  position: relative;
+}
+
+.category-overlay{
+  position: absolute;
+  background-color: rgba(57, 55, 72, 0.22);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  top: 0;
+  left: 0;
 }
