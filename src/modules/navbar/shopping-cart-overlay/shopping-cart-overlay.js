@@ -16,7 +16,6 @@ function ShoppingCartOverlay(
   },
 )
 {
-  console.log("ShoppingCartOverlay", shoppingCartItems);
   return (
     <div className="shoppingCart-overlay-container">
       <CartOverlayHeading
@@ -38,7 +37,6 @@ function ShoppingCartOverlay(
             product={item}
             shoppingCartItems={shoppingCartItems}
             setShoppingCartItems={setShoppingCartItems}
-            itemsQuantity={itemsQuantity}
           />
         </div>
       ))}

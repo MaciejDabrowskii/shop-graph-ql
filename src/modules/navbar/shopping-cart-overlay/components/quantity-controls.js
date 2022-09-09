@@ -11,7 +11,6 @@ function QuantityControls(
     product,
     shoppingCartItems,
     setShoppingCartItems,
-    itemsQuantity,
   },
 )
 {
@@ -21,19 +20,19 @@ function QuantityControls(
         type="button"
         onClick={() => setShoppingCartItems(() => shoppingCartItems.map(
           (item) => (item.cartId === product.cartId
-            ? increaseQuantity(product) : item),
+            ? increaseQuantity(item) : item),
         ))}
       >
         +
       </button>
-      {itemsQuantity}
+      {product.quantity}
       <button
         type="button"
         onClick={
             product.quantity > 1
               ? () => setShoppingCartItems(() => shoppingCartItems.map(
                 (item) => (item.cartId === product.cartId
-                  ? decreaseQuantity(product) : item),
+                  ? decreaseQuantity(item) : item),
               ))
               : () => setShoppingCartItems(() => shoppingCartItems.filter(
                 (item) => item.cartId !== product.cartId,
