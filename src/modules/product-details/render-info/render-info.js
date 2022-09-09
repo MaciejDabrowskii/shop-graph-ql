@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import RenderAttributes from "./components/render-attributes/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
+import RenderName from "./components/render-name";
 
 function RenderInfo(
   {
@@ -52,7 +53,7 @@ function RenderInfo(
       if (shoppingCartItems.some((item) => item.cartId === generateCartiD))
       {
         setShoppingCartItems(shoppingCartItems.map((item) => (
-          item.cartId === generateCartiD ? { ...item, quantinity: item.quantinity + 1 } : item
+          item.cartId === generateCartiD ? { ...item, quantity: item.quantity + 1 } : item
         )));
       }
       else
@@ -61,41 +62,53 @@ function RenderInfo(
           {
             ...product,
             cartId: generateCartiD,
-            quantinity: 1,
+            quantity: 1,
           }]);
       }
     }
     else warning();
   }
-
+  console.log(product);
   return (
     <div className="product-details-info-container">
-      <div className="product-details-info-name-container">
-        <h3 className="product-details-info-name-brand">{product.brand}</h3>
-        <p className="product-details-info-name">{product.name}</p>
-      </div>
+      <RenderName
+        product={product}
+      />
       <RenderAttributes
         attributes={product.attributes}
         selectedAttributes={selectedAttributes}
         setSelectedAttributes={setSelectedAttributes}
       />
-      <div className="product-details-info-button-container">
-        <button
-          type="button"
-          className="product-details-info-button"
-          onClick={() => addToCart()}
+      {product.inStock ? (
+        <div className="product-details-info-button-container">
+          <button
+            type="button"
+            className="product-details-info-button"
+            onClick={() => addToCart()}
+          >
+            ADD TO CART
+          </button>
+          {showWarning && (
+          <span
+            className="product-details-info-warning"
+          >
+            {`Please select: ${Object.keys(selectedAttributes)
+              .map((attribute) => (selectedAttributes[attribute] === "" ? attribute : ""))}`}
+          </span>
+          )}
+        </div>
+      ) : (
+        <div
+          className="product-details-info-outOfStock-container"
         >
-          ADD TO CART
-        </button>
-        {showWarning && (
-        <span
-          className="product-details-info-warning"
-        >
-          {`Please select: ${Object.keys(selectedAttributes)
-            .map((attribute) => (selectedAttributes[attribute] === "" ? attribute : ""))}`}
-        </span>
-        )}
-      </div>
+          <h3
+            className="product-details-info-outOfStock"
+          >
+            OUT OF STOCK
+          </h3>
+        </div>
+      )}
+      <h3 className="product-details-info-price-heading">PRICE:</h3>
       <RenderPrice
         prices={product.prices}
         selectedCurrency={selectedCurrency}

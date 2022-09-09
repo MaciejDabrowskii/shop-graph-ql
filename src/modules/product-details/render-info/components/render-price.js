@@ -3,11 +3,15 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function RenderPrice({ prices, selectedCurrency })
+function RenderPrice(
+  {
+    prices,
+    selectedCurrency,
+  },
+)
 {
   return (
     <div className="product-details-info-price-container">
-      <h3 className="product-details-info-price-heading">PRICE:</h3>
       {prices.map((price) =>
       {
         if (price.currency.label === selectedCurrency)

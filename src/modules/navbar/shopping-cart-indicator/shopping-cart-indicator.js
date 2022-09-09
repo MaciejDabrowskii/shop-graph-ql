@@ -12,9 +12,12 @@ function ShoppingCartIndicator(
   {
     shoppingCartItems,
     setOverlayVisible,
+    selectedCurrency,
+    setShoppingCartItems,
   },
 )
 {
+  console.log("shoppingCartItems", shoppingCartItems);
   const cartCpntainerDiv = useRef();
   const cartIndicator = useRef();
   const [itemsQuantity, setItemsQuantity] = useState(0);
@@ -29,7 +32,7 @@ function ShoppingCartIndicator(
     if (items.length > 0)
     {
       return setItemsQuantity(
-        items.reduce((sum, item) => sum + item.quantinity, 0),
+        items.reduce((sum, item) => sum + item.quantity, 0),
       );
     }
   };
@@ -81,6 +84,8 @@ function ShoppingCartIndicator(
         <ShoppingCartOverlay
           itemsQuantity={itemsQuantity}
           shoppingCartItems={shoppingCartItems}
+          selectedCurrency={selectedCurrency}
+          setShoppingCartItems={setShoppingCartItems}
         />
       )}
     </div>

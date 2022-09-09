@@ -3,7 +3,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 import React, { } from "react";
-// import RenderColors from "./components/render-colors";
 
 function RenderAttributes(
   {
@@ -18,7 +17,6 @@ function RenderAttributes(
     setSelectedAttributes(
       { ...selectedAttributes, [attribute.name]: e.target.value },
     );
-    console.log(e.target.value);
   };
   console.log(selectedAttributes, attributes);
   return (
@@ -28,11 +26,6 @@ function RenderAttributes(
           {
             if (attribute.name === "Color")
             {
-              // <RenderColors
-              //   attribute={attribute}
-              //   updateAttributes={updateAttributes}
-              //   selectedAttributes={selectedAttributes}
-              // />;
               return (
                 <div
                   className="product-details-info-attribute-container"

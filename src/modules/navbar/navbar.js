@@ -33,6 +33,7 @@ function Navbar({
         shoppingCartItems={shoppingCartItems}
         setShoppingCartItems={setShoppingCartItems}
         setOverlayVisible={setOverlayVisible}
+        selectedCurrency={selectedCurrency}
       />
     </div>
   );
