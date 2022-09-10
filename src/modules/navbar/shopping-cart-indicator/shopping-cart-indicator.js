@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useRef } from "react";
 import cartIcon from "../../../assets/EmptyCart.svg";
 import ShoppingCartOverlay
   from "../shopping-cart-overlay/shopping-cart-overlay";
+import { calculateCartItemsQuantity }
+  from "../../shopping-cart-functions/shopping-cart-functions";
 
 function ShoppingCartIndicator({
   shoppingCartItems,
@@ -15,22 +15,11 @@ function ShoppingCartIndicator({
   setShoppingCartItems,
 })
 {
-  console.log("shoppingCartItems", shoppingCartItems);
   const cartCpntainerDiv = useRef();
   const cartIndicator = useRef();
   const [itemsQuantity, setItemsQuantity] = useState(0);
 
   const [cartOverlayVisible, setCartOverlayVisible] = useState(false);
-
-  const calculateCartItemsQuantity = (items) =>
-  {
-    if (items.length > 0)
-    {
-      return setItemsQuantity(
-        items.reduce((sum, item) => sum + item.quantity, 0),
-      );
-    }
-  };
 
   const handleClickInside = (e) =>
   {
@@ -50,10 +39,11 @@ function ShoppingCartIndicator({
     }
   };
 
-  useEffect(
-    () => calculateCartItemsQuantity(shoppingCartItems),
-    [shoppingCartItems],
-  );
+  useEffect(() =>
+  {
+    setItemsQuantity(() => calculateCartItemsQuantity(shoppingCartItems));
+  }, [shoppingCartItems]);
+
   useEffect(() =>
   {
     document.addEventListener("mousedown", handleClickOutside);

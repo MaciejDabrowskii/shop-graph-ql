@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import NavbarCategories from "./navbar-categories/navbar-categories";
 import CurrencySelector from "./currency-selector/currency_selector";

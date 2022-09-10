@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
@@ -16,7 +14,7 @@ const GET_CATEGORIES = gql`
   }
 `;
 
-function NavbarCategories({ setSelectedCategory, selectedCategory })
+function NavbarCategories({ setSelectedCategory })
 {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
@@ -38,9 +36,9 @@ function NavbarCategories({ setSelectedCategory, selectedCategory })
     <div className="header_navigation">
       {data.categories.map(({ name }) => (
         <Link to="/" key={name}>
-          <div type="button" onClick={() => setSelectedCategory(name)}>
+          <button type="button" onClick={() => setSelectedCategory(name)}>
             {name.toUpperCase()}
-          </div>
+          </button>
         </Link>
       ))}
     </div>

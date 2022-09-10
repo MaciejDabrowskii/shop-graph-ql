@@ -1,6 +1,5 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-/* eslint-disable react/prop-types */
 import React from "react";
 
 function RenderPrice({ prices, selectedCurrency })

@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import { useQuery, gql, useLazyQuery } from "@apollo/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { gql, useLazyQuery } from "@apollo/client";
+import { Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
+import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query category($name: String!) {
@@ -72,6 +71,7 @@ function MainContent({
   }, [data]);
 
   if (loading) return <h1>Loading...</h1>;
+  if (error) return console.log(error);
 
   return (
     <div className="main-content-container">
@@ -102,7 +102,13 @@ function MainContent({
         ))}
         <Route
           path="/your-bag"
-          element={(<div>koszyk</div>)}
+          element={(
+            <ShoppingCartDetails
+              shoppingCartItems={shoppingCartItems}
+              selectedCurrency={selectedCurrency}
+              setShoppingCartItems={setShoppingCartItems}
+            />
+          )}
         />
       </Routes>
       {overlayVisible && <div className="category-overlay" />}

@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import { useQuery, gql, useLazyQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
+import { gql, useLazyQuery } from "@apollo/client";
+import React, { useEffect } from "react";
 import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 
@@ -43,7 +41,6 @@ function ProductDetails({
   setShoppingCartItems,
 })
 {
-  const [product, setProduct] = useState({});
   const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
 
   useEffect(() =>
@@ -56,14 +53,16 @@ function ProductDetails({
   }, [productId]);
 
   if (loading) return <h1>Loading...</h1>;
+  if (error) return console.log(error);
+
   if (data)
   {
     return (
       <div className="product-details-container">
         <h1>{data.product.name}</h1>
-        {/* <RenderImages
+        <RenderImages
           product={data.product}
-        /> */}
+        />
         <RenderInfo
           product={data.product}
           selectedCurrency={selectedCurrency}

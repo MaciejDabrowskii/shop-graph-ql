@@ -1,12 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 
-function SelectedValues(
-  {
-    attributes,
-    selectedAttributes,
-  },
-)
+function SelectedValues({ attributes, selectedAttributes })
 {
   return (
     <div className="product-details-info-attributes-container">

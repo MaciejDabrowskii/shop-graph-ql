@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./modules/navbar/navbar";
 import MainContent from "./modules/main-content/main-content";
 

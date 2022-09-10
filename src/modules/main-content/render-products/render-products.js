@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-/* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-/* eslint-disable max-len */
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart.svg";

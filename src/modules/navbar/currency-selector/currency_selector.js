@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
 
@@ -47,7 +46,6 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
 
   useEffect(() =>
   {
-    console.log("CurrencySelector", currencies);
     currencies.map((currency) =>
     {
       if (currency.label === "USD")

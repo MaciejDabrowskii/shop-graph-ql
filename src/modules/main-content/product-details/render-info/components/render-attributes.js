@@ -1,109 +1,108 @@
-/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-/* eslint-disable react/prop-types */
-import React, { } from "react";
+import React from "react";
 
-function RenderAttributes(
-  {
-    attributes,
-    selectedAttributes,
-    setSelectedAttributes,
-  },
-)
+function RenderAttributes({
+  attributes,
+  selectedAttributes,
+  setSelectedAttributes,
+})
 {
   const updateAttributes = (e, attribute) =>
   {
-    setSelectedAttributes(
-      { ...selectedAttributes, [attribute.name]: e.target.value },
-    );
+    setSelectedAttributes({
+      ...selectedAttributes,
+      [attribute.name]: e.target.value,
+    });
   };
   return (
     <div className="product-details-info-attributes-container">
+      {attributes.map((attribute) =>
       {
-          attributes.map((attribute) =>
-          {
-            if (attribute.name === "Color")
-            {
-              return (
-                <div
-                  className="product-details-info-attribute-container"
-                  key={attribute.name}
-                >
-                  <h3 className="product-details-info-attribute-name">
-                    {`${attribute.name.toUpperCase()}:`}
-                  </h3>
-                  <div className="product-details-info-attribute-values-container">
-                    {
-                      attribute.items.map((item) => (
-                        <div
-                          className="product-details-info-attribute-wrapper"
-                          key={item.value}
-                          style={
-                            selectedAttributes[attribute.name] === item.id
-                              ? { border: "4px solid rgb(94, 206, 123)", padding: "4px" } : {}
-                          }
-                        >
-                          <label
-                            className="product-details-info-attribute-color"
-                            style={{ backgroundColor: item.value }}
-                            htmlFor={item.id}
-                          >
-                            <input
-                              type="radio"
-                              value={item.id}
-                              name="color"
-                              id={item.id}
-                              onChange={(e) => updateAttributes(e, attribute)}
-                            />
-                          </label>
-                        </div>
-                      ))
+        if (attribute.name === "Color")
+        {
+          return (
+            <div
+              className="product-details-info-attribute-container"
+              key={attribute.name}
+            >
+              <h3 className="product-details-info-attribute-name">
+                {`${attribute.name.toUpperCase()}:`}
+              </h3>
+              <div className="product-details-info-attribute-values-container">
+                {attribute.items.map((item) => (
+                  <div
+                    className="product-details-info-attribute-wrapper"
+                    key={item.value}
+                    style={
+                      selectedAttributes[attribute.name] === item.id
+                        ? {
+                          border: "4px solid rgb(94, 206, 123)",
+                          padding: "4px",
+                        }
+                        : {}
                     }
+                  >
+                    <label
+                      className="product-details-info-attribute-color"
+                      style={{ backgroundColor: item.value }}
+                      htmlFor={item.id}
+                    >
+                      <input
+                        type="radio"
+                        value={item.id}
+                        name="color"
+                        id={item.id}
+                        onChange={(e) => updateAttributes(e, attribute)}
+                      />
+                    </label>
                   </div>
-                </div>
-              );
-            }
-            return (
-              <div
-                className="product-details-info-attribute-container"
-                key={attribute.name}
-              >
-                <h3 className="product-details-info-attribute-name">
-                  {`${attribute.name.toUpperCase()}:`}
-                </h3>
-                <div
-                  className="
+                ))}
+              </div>
+            </div>
+          );
+        }
+        return (
+          <div
+            className="product-details-info-attribute-container"
+            key={attribute.name}
+          >
+            <h3 className="product-details-info-attribute-name">
+              {`${attribute.name.toUpperCase()}:`}
+            </h3>
+            <div
+              className="
                     product-details-info-attribute-values-container
                     "
-                >
-                  {
-                      attribute.items.map((item) => (
-                        <label
-                          className="product-details-info-attribute-value"
-                          style={selectedAttributes[attribute.name] === item.id ? {
-                            backgroundColor: "black",
-                            color: "white",
-                          } : {}}
-                          htmlFor={item.name}
-                          key={item.id + item.name}
-                        >
-                          <input
-                            type="radio"
-                            value={item.id}
-                            name={attribute.id}
-                            onChange={(e) => updateAttributes(e, attribute)}
-                            id={item.name}
-                          />
-                          {item.displayValue}
-                        </label>
-                      ))
+            >
+              {attribute.items.map((item) => (
+                <label
+                  className="product-details-info-attribute-value"
+                  style={
+                    selectedAttributes[attribute.name] === item.id
+                      ? {
+                        backgroundColor: "black",
+                        color: "white",
+                      }
+                      : {}
                   }
-                </div>
-              </div>
-            );
-          })
-        }
+                  htmlFor={item.name}
+                  key={item.id + item.name}
+                >
+                  <input
+                    type="radio"
+                    value={item.id}
+                    name={attribute.id}
+                    onChange={(e) => updateAttributes(e, attribute)}
+                    id={item.name}
+                  />
+                  {item.displayValue}
+                </label>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

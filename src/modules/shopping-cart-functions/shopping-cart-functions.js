@@ -30,4 +30,20 @@ function calculateSum(shoppingCartItems, selectedCurrency)
   );
 }
 
-export { increaseQuantity, decreaseQuantity, calculateSum };
+function calculateCartItemsQuantity(shoppingCartItems)
+{
+  return shoppingCartItems.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+// Tax value can be stored in a variable and then passed here but for this assignment, I decided to hardcode it
+function calculateTax(sum, items, currency)
+{
+  return Math.round(sum(items, currency) * 0.21 * 100) / 100;
+}
+export {
+  increaseQuantity,
+  decreaseQuantity,
+  calculateSum,
+  calculateCartItemsQuantity,
+  calculateTax,
+};

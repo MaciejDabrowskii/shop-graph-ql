@@ -1,10 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
 /* eslint-disable array-callback-return */
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
@@ -71,7 +68,6 @@ function RenderInfo({
     }
     else warning();
   }
-  console.log("RenderInfo", product);
   return (
     <div className="product-details-info-container">
       <RenderName product={product} />
@@ -93,7 +89,8 @@ function RenderInfo({
             <span className="product-details-info-warning">
               {`Please select: ${Object.keys(selectedAttributes)
                 .map(
-                  (attribute) => (selectedAttributes[attribute] === "" ? attribute : ""),
+                  (attribute) => (selectedAttributes[attribute] === ""
+                    ? attribute : ""),
                 )}`}
             </span>
           )}

@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import CartOverlayHeading from "./components/cart-overlay-heading";
 import RenderName
   from "../../main-content/product-details/render-info/components/render-name";
-import RenderPrice from
-  "../../main-content/product-details/render-info/components/render-price";
+import RenderPrice
+  from "../../main-content/product-details/render-info/components/render-price";
 import QuantityControls from "./components/quantity-controls";
 import RenderImage from "./components/cart-overlay-image";
 import { calculateSum }
@@ -35,7 +34,7 @@ function ShoppingCartOverlay({
               selectedAttributes={item.selectedAttributes}
             />
           </div>
-          <div className="shoppingCart-overlay-item-foto-wrapper">
+          <div className="shoppingCart-overlay-item-image-wrapper">
             <QuantityControls
               product={item}
               shoppingCartItems={shoppingCartItems}
@@ -52,9 +51,7 @@ function ShoppingCartOverlay({
            ${calculateSum(shoppingCartItems, selectedCurrency)}`}
         </p>
       </div>
-      <NavButtons
-        setShoppingCartItems={setShoppingCartItems}
-      />
+      <NavButtons setShoppingCartItems={setShoppingCartItems} />
     </div>
   );
 }

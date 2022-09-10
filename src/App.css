@@ -1,4 +1,8 @@
-.main-content-container{
+.main-content-container {
+  position: relative;
+}
+
+.category-product {
   position: relative;
 }
 
@@ -29,6 +33,7 @@ input[type="radio"] {
 label {
   cursor: pointer;
 }
+
 .product-details-info-attribute-value {
   min-width: 1px;
   min-height: 1px;
@@ -69,4 +74,8 @@ label {
   z-index: 3;
   top: 0;
   left: 0;
+}
+
+.bolder {
+  font-weight: bolder;
 }
