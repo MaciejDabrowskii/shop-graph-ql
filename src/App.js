@@ -5,7 +5,7 @@ import "./App.css";
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./modules/navbar/navbar";
-import CategoryPage from "./modules/category-page/category-page";
+import MainContent from "./modules/main-content/main-content";
 
 function App()
 {
@@ -26,7 +26,7 @@ function App()
           setShoppingCartItems={setShoppingCartItems}
           setOverlayVisible={setOverlayVisible}
         />
-        <CategoryPage
+        <MainContent
           categoryName={selectedCategory}
           selectedCurrency={selectedCurrency}
           selectedCategory={selectedCategory}

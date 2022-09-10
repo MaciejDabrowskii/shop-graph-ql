@@ -1,4 +1,4 @@
-.category-product {
+.main-content-container{
   position: relative;
 }
 
@@ -57,11 +57,11 @@ label {
   gap: 15px;
 }
 
-.category-container{
+.category-container {
   position: relative;
 }
 
-.category-overlay{
+.category-overlay {
   position: absolute;
   background-color: rgba(57, 55, 72, 0.22);
   width: 100%;

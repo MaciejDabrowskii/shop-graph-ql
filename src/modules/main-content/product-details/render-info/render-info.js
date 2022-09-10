@@ -5,19 +5,17 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import RenderAttributes from "./components/render-attributes/render-attributes";
+import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
 import RenderName from "./components/render-name";
 
-function RenderInfo(
-  {
-    product,
-    selectedCurrency,
-    shoppingCartItems,
-    setShoppingCartItems,
-  },
-)
+function RenderInfo({
+  product,
+  selectedCurrency,
+  shoppingCartItems,
+  setShoppingCartItems,
+})
 {
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
@@ -52,28 +50,31 @@ function RenderInfo(
     {
       if (shoppingCartItems.some((item) => item.cartId === generateCartiD))
       {
-        setShoppingCartItems(shoppingCartItems.map((item) => (
-          item.cartId === generateCartiD ? { ...item, quantity: item.quantity + 1 } : item
-        )));
+        setShoppingCartItems(
+          shoppingCartItems.map((item) => (item.cartId === generateCartiD
+            ? { ...item, quantity: item.quantity + 1 }
+            : item)),
+        );
       }
       else
       {
-        setShoppingCartItems([...shoppingCartItems,
+        setShoppingCartItems([
+          ...shoppingCartItems,
           {
             ...product,
             cartId: generateCartiD,
             quantity: 1,
-          }]);
+            selectedAttributes,
+          },
+        ]);
       }
     }
     else warning();
   }
-  console.log(product);
+  console.log("RenderInfo", product);
   return (
     <div className="product-details-info-container">
-      <RenderName
-        product={product}
-      />
+      <RenderName product={product} />
       <RenderAttributes
         attributes={product.attributes}
         selectedAttributes={selectedAttributes}
@@ -89,23 +90,17 @@ function RenderInfo(
             ADD TO CART
           </button>
           {showWarning && (
-          <span
-            className="product-details-info-warning"
-          >
-            {`Please select: ${Object.keys(selectedAttributes)
-              .map((attribute) => (selectedAttributes[attribute] === "" ? attribute : ""))}`}
-          </span>
+            <span className="product-details-info-warning">
+              {`Please select: ${Object.keys(selectedAttributes)
+                .map(
+                  (attribute) => (selectedAttributes[attribute] === "" ? attribute : ""),
+                )}`}
+            </span>
           )}
         </div>
       ) : (
-        <div
-          className="product-details-info-outOfStock-container"
-        >
-          <h3
-            className="product-details-info-outOfStock"
-          >
-            OUT OF STOCK
-          </h3>
+        <div className="product-details-info-outOfStock-container">
+          <h3 className="product-details-info-outOfStock">OUT OF STOCK</h3>
         </div>
       )}
       <h3 className="product-details-info-price-heading">PRICE:</h3>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery, gql, useLazyQuery } from "@apollo/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
-import ProductDetails from "../product-details/product-details";
+import ProductDetails from "./product-details/product-details";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query category($name: String!) {
@@ -40,16 +40,14 @@ const GET_CATEGORY_PRODUCTS = gql`
   }
 `;
 
-function CategoryPage(
-  {
-    categoryName,
-    selectedCurrency,
-    selectedCategory,
-    shoppingCartItems,
-    setShoppingCartItems,
-    overlayVisible,
-  },
-)
+function MainContent({
+  categoryName,
+  selectedCurrency,
+  selectedCategory,
+  shoppingCartItems,
+  setShoppingCartItems,
+  overlayVisible,
+})
 {
   const [products, setProducts] = useState([]);
   const [getProducts, { loading, error, data }] = useLazyQuery(
@@ -76,7 +74,7 @@ function CategoryPage(
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div className="category-container">
+    <div className="main-content-container">
       <Routes>
         <Route
           path="/"
@@ -102,9 +100,13 @@ function CategoryPage(
             )}
           />
         ))}
+        <Route
+          path="/your-bag"
+          element={(<div>koszyk</div>)}
+        />
       </Routes>
-      {overlayVisible && (<div className="category-overlay" />)}
+      {overlayVisible && <div className="category-overlay" />}
     </div>
   );
 }
-export default CategoryPage;
+export default MainContent;

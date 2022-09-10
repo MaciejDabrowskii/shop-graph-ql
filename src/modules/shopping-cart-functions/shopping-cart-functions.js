@@ -12,18 +12,22 @@ function decreaseQuantity(product)
 
 function calculateSum(shoppingCartItems, selectedCurrency)
 {
-  return Math.round(shoppingCartItems.reduce((sum, item) =>
-  {
-    let selectedPrice = 0;
-    item.prices.map((price) =>
-    {
-      if (price.currency.label === selectedCurrency.label)
+  return (
+    Math.round(
+      shoppingCartItems.reduce((sum, item) =>
       {
-        selectedPrice = price.amount;
-      }
-    });
-    return item.quantity * selectedPrice + sum;
-  }, 0) * 100) / 100;
+        let selectedPrice = 0;
+        item.prices.map((price) =>
+        {
+          if (price.currency.label === selectedCurrency.label)
+          {
+            selectedPrice = price.amount;
+          }
+        });
+        return item.quantity * selectedPrice + sum;
+      }, 0) * 100,
+    ) / 100
+  );
 }
 
 export { increaseQuantity, decreaseQuantity, calculateSum };

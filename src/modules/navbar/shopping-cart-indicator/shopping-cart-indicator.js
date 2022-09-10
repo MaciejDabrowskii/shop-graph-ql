@@ -8,24 +8,19 @@ import cartIcon from "../../../assets/EmptyCart.svg";
 import ShoppingCartOverlay
   from "../shopping-cart-overlay/shopping-cart-overlay";
 
-function ShoppingCartIndicator(
-  {
-    shoppingCartItems,
-    setOverlayVisible,
-    selectedCurrency,
-    setShoppingCartItems,
-  },
-)
+function ShoppingCartIndicator({
+  shoppingCartItems,
+  setOverlayVisible,
+  selectedCurrency,
+  setShoppingCartItems,
+})
 {
   console.log("shoppingCartItems", shoppingCartItems);
   const cartCpntainerDiv = useRef();
   const cartIndicator = useRef();
   const [itemsQuantity, setItemsQuantity] = useState(0);
 
-  const [
-    cartOverlayVisible,
-    setCartOverlayVisible,
-  ] = useState(false);
+  const [cartOverlayVisible, setCartOverlayVisible] = useState(false);
 
   const calculateCartItemsQuantity = (items) =>
   {
@@ -66,10 +61,7 @@ function ShoppingCartIndicator(
   });
 
   return (
-    <div
-      className="shopping-cart-indicator-container"
-      ref={cartCpntainerDiv}
-    >
+    <div className="shopping-cart-indicator-container" ref={cartCpntainerDiv}>
       <div
         className="shopping-cart-icon-container"
         ref={cartIndicator}
@@ -77,7 +69,7 @@ function ShoppingCartIndicator(
       >
         <img src={cartIcon} alt="shopping cart icon" />
         {itemsQuantity > 0 && (
-        <div className="shopping-cart-indicator">{itemsQuantity}</div>
+          <div className="shopping-cart-indicator">{itemsQuantity}</div>
         )}
       </div>
       {cartOverlayVisible && (

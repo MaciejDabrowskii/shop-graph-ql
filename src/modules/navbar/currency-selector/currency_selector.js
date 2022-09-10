@@ -15,12 +15,7 @@ const GET_CURRENCY = gql`
   }
 `;
 
-function CurrencySelector(
-  {
-    selectedCurrency,
-    setSelectedCurrency,
-  },
-)
+function CurrencySelector({ selectedCurrency, setSelectedCurrency })
 {
   const dropdown = useRef();
 
@@ -57,9 +52,7 @@ function CurrencySelector(
     {
       if (currency.label === "USD")
       {
-        setSelectedCurrency(
-          { symbol: currency.symbol, label: currency.label },
-        );
+        setSelectedCurrency({ symbol: currency.symbol, label: currency.label });
       }
     });
   }, [currencies]);
@@ -107,9 +100,10 @@ function CurrencySelector(
             {currencies.map((currency) => (
               <li
                 className="currency-selector-item"
-                onClick={() => setSelectedCurrency(
-                  { symbol: currency.symbol, label: currency.label },
-                )}
+                onClick={() => setSelectedCurrency({
+                  symbol: currency.symbol,
+                  label: currency.label,
+                })}
                 key={currency.label}
               >
                 {`${currency.symbol} ${currency.label}`}

@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function RenderName(
-  {
-    product,
-  },
-)
+function RenderName({ product })
 {
   return (
     <div className="product-details-info-name-container">

@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function RenderImage(
-  {
-    product,
-  },
-)
+function RenderImage({ product })
 {
   return (
     <div className="shoppingCart-overlay-image-container">
@@ -15,7 +11,6 @@ function RenderImage(
         className="shoppingCart-overlay-image"
       />
     </div>
-
   );
 }
 export default RenderImage;

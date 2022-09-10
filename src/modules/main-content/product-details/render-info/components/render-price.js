@@ -3,12 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function RenderPrice(
-  {
-    prices,
-    selectedCurrency,
-  },
-)
+function RenderPrice({ prices, selectedCurrency })
 {
   return (
     <div className="product-details-info-price-container">

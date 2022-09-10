@@ -36,14 +36,12 @@ const GET_PRODUCT = gql`
   }
 `;
 
-function ProductDetails(
-  {
-    productId,
-    selectedCurrency,
-    shoppingCartItems,
-    setShoppingCartItems,
-  },
-)
+function ProductDetails({
+  productId,
+  selectedCurrency,
+  shoppingCartItems,
+  setShoppingCartItems,
+})
 {
   const [product, setProduct] = useState({});
   const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
@@ -60,7 +58,6 @@ function ProductDetails(
   if (loading) return <h1>Loading...</h1>;
   if (data)
   {
-    // console.log(data);
     return (
       <div className="product-details-container">
         <h1>{data.product.name}</h1>

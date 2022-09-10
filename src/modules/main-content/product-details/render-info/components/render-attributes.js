@@ -18,7 +18,6 @@ function RenderAttributes(
       { ...selectedAttributes, [attribute.name]: e.target.value },
     );
   };
-  console.log(selectedAttributes, attributes);
   return (
     <div className="product-details-info-attributes-container">
       {
