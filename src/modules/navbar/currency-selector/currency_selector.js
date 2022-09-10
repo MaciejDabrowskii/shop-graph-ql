@@ -54,7 +54,12 @@ function CurrencySelector(
   {
     currencies.map((currency) =>
     {
-      if (currency.label === "USD") setSelectedCurrency(currency.label);
+      if (currency.label === "USD")
+      {
+        setSelectedCurrency(
+          { sybol: currency.symbol, label: currency.label },
+        );
+      }
     });
   }, [currencies]);
 
@@ -78,7 +83,7 @@ function CurrencySelector(
       ref={dropdown}
       onClick={handleClickInside}
     >
-      <div className="currency-selector-symbol">{selectedCurrency}</div>
+      <div className="currency-selector-label">{selectedCurrency.label}</div>
       <svg
         className="currency-selector-arrow"
         width="8"
@@ -101,7 +106,9 @@ function CurrencySelector(
             {currencies.map((currency) => (
               <li
                 className="currency-selector-item"
-                onClick={() => setSelectedCurrency(currency.label)}
+                onClick={() => setSelectedCurrency(
+                  { sybol: currency.symbol, label: currency.label },
+                )}
                 key={currency.label}
               >
                 {`${currency.symbol} ${currency.label}`}

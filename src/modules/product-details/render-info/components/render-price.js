@@ -14,7 +14,7 @@ function RenderPrice(
     <div className="product-details-info-price-container">
       {prices.map((price) =>
       {
-        if (price.currency.label === selectedCurrency)
+        if (price.currency.label === selectedCurrency.label)
         {
           return (
             <p key={price.amount} className="product-details-info-price">

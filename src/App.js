@@ -10,7 +10,7 @@ import CategoryPage from "./modules/category-page/category-page";
 function App()
 {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState({});
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
   const [overlayVisible, setOverlayVisible] = useState(false);
 

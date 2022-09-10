@@ -17,7 +17,7 @@ function calculateSum(shoppingCartItems, selectedCurrency)
     let selectedPrice = 0;
     item.prices.map((price) =>
     {
-      if (price.currency.label === selectedCurrency)
+      if (price.currency.label === selectedCurrency.label)
       {
         selectedPrice = price.amount;
       }

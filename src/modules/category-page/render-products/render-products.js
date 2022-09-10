@@ -58,7 +58,7 @@ function RenderProducts({ products, selectedCurrency, categoryName })
               <p className="category-product-name">{product.name}</p>
               {product.prices.map((price) =>
               {
-                if (price.currency.label === selectedCurrency)
+                if (price.currency.label === selectedCurrency.label)
                 {
                   return (
                     <p key={price.currency.label}>
