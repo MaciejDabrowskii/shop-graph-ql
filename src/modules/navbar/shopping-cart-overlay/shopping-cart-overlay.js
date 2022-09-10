@@ -6,6 +6,9 @@ import RenderName
 import RenderPrice
   from "../../product-details/render-info/components/render-price";
 import QuantityControls from "./components/quantity-controls";
+import RenderImage from "./components/cart-overlay-image";
+import { calculateSum }
+  from "../../shopping-cart-functions/shopping-cart-functions";
 
 function ShoppingCartOverlay(
   {
@@ -38,8 +41,20 @@ function ShoppingCartOverlay(
             shoppingCartItems={shoppingCartItems}
             setShoppingCartItems={setShoppingCartItems}
           />
+          <RenderImage
+            product={item}
+          />
         </div>
       ))}
+      <div className="shoppingCart-overlay-sum-container">
+        <p>Total</p>
+        <p
+          className="shoppingCart-overlay-sum"
+        >
+          {calculateSum(shoppingCartItems, selectedCurrency)}
+
+        </p>
+      </div>
     </div>
   );
 }

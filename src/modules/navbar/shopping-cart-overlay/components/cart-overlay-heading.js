@@ -7,7 +7,6 @@ function CartOverlayHeading(
   },
 )
 {
-  // console.log("ShoppingCartOverlay", shoppingCartItems);
   return (
     <div className="shoppingCart-overlay-heading">
       <p
