@@ -51,8 +51,10 @@ function ShoppingCartOverlay(
         <p
           className="shoppingCart-overlay-sum"
         >
-          {calculateSum(shoppingCartItems, selectedCurrency)}
 
+          {
+          `${selectedCurrency.symbol} ${calculateSum(shoppingCartItems, selectedCurrency)}`
+}
         </p>
       </div>
     </div>

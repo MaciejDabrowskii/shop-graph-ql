@@ -52,12 +52,13 @@ function CurrencySelector(
 
   useEffect(() =>
   {
+    console.log("CurrencySelector", currencies);
     currencies.map((currency) =>
     {
       if (currency.label === "USD")
       {
         setSelectedCurrency(
-          { sybol: currency.symbol, label: currency.label },
+          { symbol: currency.symbol, label: currency.label },
         );
       }
     });
@@ -107,7 +108,7 @@ function CurrencySelector(
               <li
                 className="currency-selector-item"
                 onClick={() => setSelectedCurrency(
-                  { sybol: currency.symbol, label: currency.label },
+                  { symbol: currency.symbol, label: currency.label },
                 )}
                 key={currency.label}
               >
