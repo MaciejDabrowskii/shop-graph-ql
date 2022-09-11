@@ -1,0 +1,86 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 6.5rem
+}
+
+/* NavbarCategories */
+.navbar-categories-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.navbar-category {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 1rem .5rem;
+    border: none;
+}
+
+.navbar-category.active {
+    border-bottom: 3px solid var(--green);
+    color: var(--green);
+    font-weight: 600;
+}
+
+/* logo */
+.navbar-brand-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* controls */
+.navbar-controls-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CurrencySelector */
+.currency-selector-container {
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Roboto Mono', monospace;
+gap: .3rem;
+position: relative;
+}
+
+.currency-selector-symbol {
+    Font-style: Medium;
+    Font-size: 18px;
+    Line-height: 29px;
+    Line-height: 160%
+}
+
+.currency-selector-dropdown {
+    position: absolute;
+    width: 3.5rem;
+    top: 2rem;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    z-index: 8;
+}
+
+.currency-selector-dropdown > ul{
+    list-style: none;
+}
+
+.currency-selector-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.currency-selector-item:hover > * {
+    color: var(--green);
+    cursor: pointer;
+}
+

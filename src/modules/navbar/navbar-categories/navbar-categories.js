@@ -14,7 +14,7 @@ const GET_CATEGORIES = gql`
   }
 `;
 
-function NavbarCategories({ setSelectedCategory })
+function NavbarCategories({ setSelectedCategory, selectedCategory })
 {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
@@ -33,10 +33,18 @@ function NavbarCategories({ setSelectedCategory })
   if (error) console.log(error);
 
   return (
-    <div className="header_navigation">
+    <div className="navbar-categories-container">
       {data.categories.map(({ name }) => (
-        <Link to="/" key={name}>
-          <button type="button" onClick={() => setSelectedCategory(name)}>
+        <Link
+          to="/"
+          key={name}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedCategory(name)}
+            className={`navbar-category${
+              selectedCategory === name ? " active" : ""}`}
+          >
             {name.toUpperCase()}
           </button>
         </Link>

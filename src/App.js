@@ -16,6 +16,7 @@ function App()
   return (
     <div className="App">
       <BrowserRouter>
+        <link rel="stylesheet" href="https://use.typekit.net/fwk2oee.css" />
         <Navbar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}

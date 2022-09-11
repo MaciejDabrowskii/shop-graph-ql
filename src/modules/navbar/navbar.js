@@ -4,6 +4,7 @@ import CurrencySelector from "./currency-selector/currency_selector";
 import ShoppingCartIndicator
   from "./shopping-cart-indicator/shopping-cart-indicator";
 import brandIcon from "../../assets/BrandIcon.svg";
+import "./navbar.css";
 
 function Navbar({
   selectedCategory,
@@ -21,19 +22,21 @@ function Navbar({
         setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
       />
-      <div className="brand-logo-container">
+      <div className="navbar-brand-logo-container">
         <img src={brandIcon} alt="brand icon" className="brand-logo" />
       </div>
-      <CurrencySelector
-        selectedCurrency={selectedCurrency}
-        setSelectedCurrency={setSelectedCurrency}
-      />
-      <ShoppingCartIndicator
-        shoppingCartItems={shoppingCartItems}
-        setShoppingCartItems={setShoppingCartItems}
-        setOverlayVisible={setOverlayVisible}
-        selectedCurrency={selectedCurrency}
-      />
+      <div className="navbar-controls-container">
+        <CurrencySelector
+          selectedCurrency={selectedCurrency}
+          setSelectedCurrency={setSelectedCurrency}
+        />
+        <ShoppingCartIndicator
+          shoppingCartItems={shoppingCartItems}
+          setShoppingCartItems={setShoppingCartItems}
+          setOverlayVisible={setOverlayVisible}
+          selectedCurrency={selectedCurrency}
+        />
+      </div>
     </div>
   );
 }

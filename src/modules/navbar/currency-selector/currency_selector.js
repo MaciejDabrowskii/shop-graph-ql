@@ -75,7 +75,7 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
       ref={dropdown}
       onClick={handleClickInside}
     >
-      <div className="currency-selector-label">{selectedCurrency.label}</div>
+      <div className="currency-selector-symbol">{selectedCurrency.symbol}</div>
       <svg
         className="currency-selector-arrow"
         width="8"
@@ -104,7 +104,8 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
                 })}
                 key={currency.label}
               >
-                {`${currency.symbol} ${currency.label}`}
+                <span>{currency.symbol}</span>
+                <span>{currency.label}</span>
               </li>
             ))}
           </ul>

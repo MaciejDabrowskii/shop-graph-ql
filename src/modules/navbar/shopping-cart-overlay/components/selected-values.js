@@ -55,6 +55,7 @@ function SelectedValues({ attributes, selectedAttributes })
             >
               {attribute.items.map((item) => (
                 <div
+                  key={item.id}
                   className="product-details-info-attribute-value"
                   style={
                     selectedAttributes[attribute.name] === item.id
