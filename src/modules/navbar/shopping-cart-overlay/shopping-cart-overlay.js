@@ -21,29 +21,34 @@ function ShoppingCartOverlay({
   return (
     <div className="shoppingCart-overlay-container">
       <CartOverlayHeading itemsQuantity={itemsQuantity} />
-      {shoppingCartItems.map((item) => (
-        <div key={item.cartId} className="shoppingCart-overlay-item-container">
-          <div className="shoppingCart-overlay-item-data-wrapper">
-            <RenderName product={item} />
-            <RenderPrice
-              prices={item.prices}
-              selectedCurrency={selectedCurrency}
-            />
-            <SelectedValues
-              attributes={item.attributes}
-              selectedAttributes={item.selectedAttributes}
-            />
+      <div className="shoppingCart-overlay-items-container">
+        {shoppingCartItems.map((item) => (
+          <div
+            key={item.cartId}
+            className="shoppingCart-overlay-item-container"
+          >
+            <div className="shoppingCart-overlay-item-data-wrapper">
+              <RenderName product={item} />
+              <RenderPrice
+                prices={item.prices}
+                selectedCurrency={selectedCurrency}
+              />
+              <SelectedValues
+                attributes={item.attributes}
+                selectedAttributes={item.selectedAttributes}
+              />
+            </div>
+            <div className="shoppingCart-overlay-item-image-wrapper">
+              <QuantityControls
+                product={item}
+                shoppingCartItems={shoppingCartItems}
+                setShoppingCartItems={setShoppingCartItems}
+              />
+              <RenderImage product={item} />
+            </div>
           </div>
-          <div className="shoppingCart-overlay-item-image-wrapper">
-            <QuantityControls
-              product={item}
-              shoppingCartItems={shoppingCartItems}
-              setShoppingCartItems={setShoppingCartItems}
-            />
-            <RenderImage product={item} />
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <div className="shoppingCart-overlay-sum-container">
         <p>Total</p>
         <p className="shoppingCart-overlay-sum">

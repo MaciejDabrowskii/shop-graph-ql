@@ -4,10 +4,10 @@ function CartOverlayHeading({ itemsQuantity })
 {
   return (
     <div className="shoppingCart-overlay-heading">
-      <p>
+      <p className="shoppingCart-overlay-heading-bolder">
         My Bag,
         {" "}
-        <span className="bolder">
+        <span>
           {`${itemsQuantity} ${itemsQuantity === 1 ? "item" : "items"}`}
         </span>
       </p>
