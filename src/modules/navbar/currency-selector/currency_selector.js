@@ -94,9 +94,10 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
       </svg>
       {dropdownVisible && (
         <div className="currency-selector-dropdown">
-          <ul>
+
             {currencies.map((currency) => (
-              <li
+              <button
+                type="button"
                 className="currency-selector-item"
                 onClick={() => setSelectedCurrency({
                   symbol: currency.symbol,
@@ -104,11 +105,10 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
                 })}
                 key={currency.label}
               >
-                <span>{currency.symbol}</span>
-                <span>{currency.label}</span>
-              </li>
+                <p>{currency.symbol}</p>
+                <p>{currency.label}</p>
+              </button>
             ))}
-          </ul>
         </div>
       )}
     </div>

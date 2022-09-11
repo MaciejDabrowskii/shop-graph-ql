@@ -40,16 +40,22 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    font-weight: 500;
 }
 
 /* CurrencySelector */
 .currency-selector-container {
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'Roboto Mono', monospace;
-gap: .3rem;
-position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Mono', monospace;
+    
+    gap: .3rem;
+    position: relative;
+}
+
+.currency-selector-container:hover {
+    cursor: pointer;
 }
 
 .currency-selector-symbol {
@@ -61,7 +67,7 @@ position: relative;
 
 .currency-selector-dropdown {
     position: absolute;
-    width: 3.5rem;
+    min-width: 4rem;
     top: 2rem;
     left: 0; 
     right: 0; 
@@ -70,13 +76,18 @@ position: relative;
     z-index: 8;
 }
 
-.currency-selector-dropdown > ul{
-    list-style: none;
-}
-
 .currency-selector-item {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    border: none;
+    font-family: 'Roboto Mono', monospace;
+    Font-style: Medium;
+    Font-size: 18px;
+    Line-height: 29px;
+    Line-height: 160%;
+    font-weight: 500;
+    margin: .5rem 1.5rem .5rem 0;
 }
 
 .currency-selector-item:hover > * {
