@@ -1,11 +1,8 @@
 .category-products {
-    padding: 10rem 12.5rem;
-}
+    font-family: 'Raleway', sans-serif;}
 
 .category-heading {
-    font-family: 'Raleway', sans-serif;
     margin-bottom: 12.5rem;
-    font-weight: 400;
     font-size: 5.2rem;
 }
 
@@ -37,14 +34,13 @@
 }
 
 .category-product-image {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: 41.25rem;
     margin-bottom: 3rem;
 }
 
 .category-product-info-container {
-    font-family: 'Raleway', sans-serif;
     font-size: 2.2rem;
     line-height: 3.5rem;
 }
@@ -86,8 +82,6 @@
 }
 
 .category-product-outOfStock-overlay {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
     font-size: 3rem;
     line-height: 4.75rem;
 }

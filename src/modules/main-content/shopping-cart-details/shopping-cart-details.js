@@ -8,6 +8,7 @@ import QuantityControls
   from "../../navbar/shopping-cart-overlay/components/quantity-controls";
 import ImageSelector from "./image-selector/image-selector";
 import Details from "./details.js/details";
+import "./shopping-cart-details.css";
 
 function ShoppingCartDetails({
   shoppingCartItems,

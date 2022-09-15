@@ -50,15 +50,9 @@ function SelectedValues({ attributes, selectedAttributes })
               {attribute.items.map((item) => (
                 <div
                   key={item.id}
-                  className="product-details-info-attribute-value"
-                  style={
-                    selectedAttributes[attribute.name] === item.id
-                      ? {
-                        backgroundColor: "rgba(29, 31, 34, 1)",
-                        color: "white",
-                      }
-                      : {}
-                  }
+                  className={selectedAttributes[attribute.name] === item.id
+                    ? "product-details-info-attribute-value active"
+                    : "product-details-info-attribute-value"}
                 >
                   {item.displayValue}
                 </div>

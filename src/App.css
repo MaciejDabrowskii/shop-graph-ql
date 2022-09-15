@@ -27,6 +27,7 @@ font-style: normal; */
 
 .main-content-container {
   position: relative;
+  padding: 10rem 12.5rem;
 }
 
 input[type="radio"] {

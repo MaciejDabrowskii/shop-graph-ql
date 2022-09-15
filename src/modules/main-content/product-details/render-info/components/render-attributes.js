@@ -26,26 +26,26 @@ function RenderAttributes({
               className="product-details-info-attribute-container"
               key={attribute.name}
             >
-              <h3 className="product-details-info-attribute-name">
+              <p className="product-details-info-attribute-name">
                 {`${attribute.name.toUpperCase()}:`}
-              </h3>
+              </p>
               <div className="product-details-info-attribute-values-container">
                 {attribute.items.map((item) => (
                   <div
-                    className="product-details-info-attribute-wrapper"
+                    className={selectedAttributes[attribute.name] === item.id
+                      ? "product-details-info-attribute-wrapper active"
+                      : "product-details-info-attribute-wrapper"}
                     key={item.value}
-                    style={
-                      selectedAttributes[attribute.name] === item.id
-                        ? {
-                          border: "4px solid rgb(94, 206, 123)",
-                          padding: "4px",
-                        }
-                        : {}
-                    }
                   >
                     <label
                       className="product-details-info-attribute-color"
-                      style={{ backgroundColor: item.value }}
+                      style={
+                        {
+                          backgroundColor: item.value,
+                          border: item.id === "White"
+                            ? "1px solid rgba(0, 0, 0, 0.400)" : "",
+                        }
+                      }
                       htmlFor={item.id}
                     >
                       <input
@@ -67,25 +67,17 @@ function RenderAttributes({
             className="product-details-info-attribute-container"
             key={attribute.name}
           >
-            <h3 className="product-details-info-attribute-name">
+            <p className="product-details-info-attribute-name">
               {`${attribute.name.toUpperCase()}:`}
-            </h3>
+            </p>
             <div
-              className="
-                    product-details-info-attribute-values-container
-                    "
+              className="product-details-info-attribute-values-container"
             >
               {attribute.items.map((item) => (
                 <label
-                  className="product-details-info-attribute-value"
-                  style={
-                    selectedAttributes[attribute.name] === item.id
-                      ? {
-                        backgroundColor: "black",
-                        color: "white",
-                      }
-                      : {}
-                  }
+                  className={selectedAttributes[attribute.name] === item.id
+                    ? "product-details-info-attribute-value active"
+                    : "product-details-info-attribute-value"}
                   htmlFor={item.name}
                   key={item.id + item.name}
                 >

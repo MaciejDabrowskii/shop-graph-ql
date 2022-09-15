@@ -76,6 +76,11 @@ function RenderInfo({
         selectedAttributes={selectedAttributes}
         setSelectedAttributes={setSelectedAttributes}
       />
+      <h3 className="product-details-info-price-heading">PRICE:</h3>
+      <RenderPrice
+        prices={product.prices}
+        selectedCurrency={selectedCurrency}
+      />
       {product.inStock ? (
         <div className="product-details-info-button-container">
           <button
@@ -87,24 +92,19 @@ function RenderInfo({
           </button>
           {showWarning && (
             <span className="product-details-info-warning">
-              {`Please select: ${Object.keys(selectedAttributes)
+              {`*Please select: ${Object.keys(selectedAttributes)
                 .map(
                   (attribute) => (selectedAttributes[attribute] === ""
-                    ? attribute : ""),
+                    ? ` ${attribute}` : ""),
                 )}`}
             </span>
           )}
         </div>
       ) : (
         <div className="product-details-info-outOfStock-container">
-          <h3 className="product-details-info-outOfStock">OUT OF STOCK</h3>
+          OUT OF STOCK
         </div>
       )}
-      <h3 className="product-details-info-price-heading">PRICE:</h3>
-      <RenderPrice
-        prices={product.prices}
-        selectedCurrency={selectedCurrency}
-      />
       <RenderDescription description={product.description} />
     </div>
   );

@@ -30,7 +30,7 @@ function RenderProducts({ products, selectedCurrency, categoryName })
 
   return (
     <div className="category-products">
-      <h2 className="category-heading">{categoryName.toUpperCase()}</h2>
+      <p className="category-heading">{categoryName.toUpperCase()}</p>
       <div className="category-products-container">
         {products.map((product) => (
           <div

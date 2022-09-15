@@ -24,7 +24,7 @@ function Details({ shoppingCartItems, selectedCurrency })
           {calculateCartItemsQuantity(shoppingCartItems)}
         </span>
       </p>
-      <p>
+      <p className="total">
         Total:
         {" "}
         <span className="bolder">

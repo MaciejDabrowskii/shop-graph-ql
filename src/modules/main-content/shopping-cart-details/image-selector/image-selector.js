@@ -20,6 +20,7 @@ function ImageSelector({ product })
   return (
     <div className="shoppingCartDetails-item-image-container">
       <img src={product.gallery[selectedImage]} alt={product.name} />
+      {product.gallery.length > 1 && (
       <div className="shoppingCartDetails-item-image-controls-container">
         <button
           className="shoppingCartDetails-item-image-control-btn"
@@ -36,6 +37,8 @@ function ImageSelector({ product })
           {">"}
         </button>
       </div>
+      )}
+
     </div>
   );
 }
