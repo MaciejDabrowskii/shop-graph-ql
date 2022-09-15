@@ -49,6 +49,7 @@ function ShoppingCartDetails({
       <button
         onClick={() => setShoppingCartItems([])}
         type="button"
+        className="shoppingCartDetails-order-btn"
       >
         ORDER
 

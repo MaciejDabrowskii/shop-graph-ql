@@ -199,3 +199,21 @@
     font-size: 2rem;
     line-height: 3.25rem;
 }
+
+.shoppingCartDetails-order-btn {
+    width: 35rem;
+    padding: 1.75rem 0;
+    font-weight: 600;
+    font-size: 1.75rem;
+    background-color: var(--green);
+    border: 1px solid rgba(255, 255, 255, 0);
+    color: white;
+    cursor: pointer;
+    margin-top: 2.25rem;
+}
+
+.shoppingCartDetails-order-btn:hover {
+    background-color: white;
+    border: 1px solid var(--green);
+    color: var(--green);
+}
