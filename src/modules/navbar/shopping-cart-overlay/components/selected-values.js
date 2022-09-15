@@ -13,22 +13,16 @@ function SelectedValues({ attributes, selectedAttributes })
               className="product-details-info-attribute-container"
               key={attribute.name}
             >
-              <h3 className="product-details-info-attribute-name">
+              <p className="product-details-info-attribute-name">
                 {`${attribute.name.toUpperCase()}:`}
-              </h3>
+              </p>
               <div className="product-details-info-attribute-values-container">
                 {attribute.items.map((item) => (
                   <div
-                    className="product-details-info-attribute-wrapper"
-                    key={item.value}
-                    style={
+                    className={`product-details-info-attribute-wrapper${
                       selectedAttributes[attribute.name] === item.id
-                        ? {
-                          border: "4px solid rgb(94, 206, 123)",
-                          padding: "4px",
-                        }
-                        : {}
-                    }
+                        ? " selected" : ""}`}
+                    key={item.value}
                   >
                     <div
                       style={{ backgroundColor: item.value }}
@@ -45,9 +39,9 @@ function SelectedValues({ attributes, selectedAttributes })
             className="product-details-info-attribute-container"
             key={attribute.name}
           >
-            <h3 className="product-details-info-attribute-name">
+            <p className="product-details-info-attribute-name">
               {`${attribute.name.toUpperCase()}:`}
-            </h3>
+            </p>
             <div
               className="
                   product-details-info-attribute-values-container
@@ -60,7 +54,7 @@ function SelectedValues({ attributes, selectedAttributes })
                   style={
                     selectedAttributes[attribute.name] === item.id
                       ? {
-                        backgroundColor: "black",
+                        backgroundColor: "rgba(29, 31, 34, 1)",
                         color: "white",
                       }
                       : {}

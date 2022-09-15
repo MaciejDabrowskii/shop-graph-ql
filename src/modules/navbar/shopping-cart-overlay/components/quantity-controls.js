@@ -22,11 +22,13 @@ function QuantityControls({
           ),
         )}
       >
-        +
+        {"\u002B"}
+
       </button>
-      {product.quantity}
+      <p>{product.quantity}</p>
       <button
         type="button"
+        className="shoppingCart-overlay-quantityControl-minus"
         onClick={
           product.quantity > 1
             ? () => setShoppingCartItems(() => shoppingCartItems.map(
@@ -39,8 +41,10 @@ function QuantityControls({
             ))
         }
       >
-        -
+        {"\u2212"}
+
       </button>
+
     </div>
   );
 }

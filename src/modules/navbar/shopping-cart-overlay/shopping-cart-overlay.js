@@ -28,15 +28,18 @@ function ShoppingCartOverlay({
             className="shoppingCart-overlay-item-container"
           >
             <div className="shoppingCart-overlay-item-data-wrapper">
+
               <RenderName product={item} />
               <RenderPrice
                 prices={item.prices}
                 selectedCurrency={selectedCurrency}
               />
+
               <SelectedValues
                 attributes={item.attributes}
                 selectedAttributes={item.selectedAttributes}
               />
+
             </div>
             <div className="shoppingCart-overlay-item-image-wrapper">
               <QuantityControls
@@ -50,7 +53,7 @@ function ShoppingCartOverlay({
         ))}
       </div>
       <div className="shoppingCart-overlay-sum-container">
-        <p>Total</p>
+        <p className="shoppingCart-overlay-total">Total</p>
         <p className="shoppingCart-overlay-sum">
           {`${selectedCurrency.symbol}
            ${calculateSum(shoppingCartItems, selectedCurrency)}`}

@@ -6,9 +6,18 @@ function NavButtons({ setShoppingCartItems })
   return (
     <div className="shoppingCart-overlay-navButtons-container">
       <Link to="/your-bag">
-        <button type="button">VIEW BAG</button>
+        <button
+          type="button"
+          className="shoppingCart-overlay-navButtons-viewBag"
+        >
+          VIEW BAG
+        </button>
       </Link>
-      <button type="button" onClick={() => setShoppingCartItems([])}>
+      <button
+        type="button"
+        className="shoppingCart-overlay-navButtons-checkOut"
+        onClick={() => setShoppingCartItems([])}
+      >
         CHECK OUT
       </button>
     </div>
