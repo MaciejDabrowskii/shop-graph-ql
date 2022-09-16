@@ -21,6 +21,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+    height: 100%;
 }
 
 .category-product:hover {
@@ -84,4 +85,26 @@
 .category-product-outOfStock-overlay {
     font-size: 3rem;
     line-height: 4.75rem;
+}
+
+.category-product-details-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-product-details-button {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+.category-product-details-button:hover {
+    color: var(--green);
+}
+
+.product-details-info-name-brand{
+    
 }
