@@ -12,6 +12,8 @@ function RenderInfo({
   selectedCurrency,
   shoppingCartItems,
   setShoppingCartItems,
+  showDetails,
+  providedClass,
 })
 {
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
@@ -69,29 +71,29 @@ function RenderInfo({
     else warning();
   }
   return (
-    <div className="product-details-info-container">
+    <div className={`${providedClass}-container`}>
       <RenderName product={product} />
       <RenderAttributes
         attributes={product.attributes}
         selectedAttributes={selectedAttributes}
         setSelectedAttributes={setSelectedAttributes}
       />
-      <h3 className="product-details-info-price-heading">PRICE:</h3>
+      <h3 className={`${providedClass}-price-heading`}>PRICE:</h3>
       <RenderPrice
         prices={product.prices}
         selectedCurrency={selectedCurrency}
       />
       {product.inStock ? (
-        <div className="product-details-info-button-container">
+        <div className={`${providedClass}-button-container`}>
           <button
             type="button"
-            className="product-details-info-button"
+            className={`${providedClass}-button`}
             onClick={() => addToCart()}
           >
             ADD TO CART
           </button>
           {showWarning && (
-            <span className="product-details-info-warning">
+            <span className={`${providedClass}-warning`}>
               {`*Please select: ${Object.keys(selectedAttributes)
                 .map(
                   (attribute) => (selectedAttributes[attribute] === ""
@@ -101,11 +103,12 @@ function RenderInfo({
           )}
         </div>
       ) : (
-        <div className="product-details-info-outOfStock-container">
+        <div className={`${providedClass}-outOfStock-container`}>
           OUT OF STOCK
         </div>
       )}
-      <RenderDescription description={product.description} />
+      {showDetails && (<RenderDescription description={product.description} />)}
+
     </div>
   );
 }

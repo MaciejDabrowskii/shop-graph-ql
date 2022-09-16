@@ -111,6 +111,7 @@
 
 .shoppingCartDetails-item-image-wrapper {
     display: flex;
+    gap: 3rem;
 }
 
 .shoppingCartDetails-item-image-wrapper >

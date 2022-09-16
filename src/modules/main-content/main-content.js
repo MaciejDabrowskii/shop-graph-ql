@@ -83,6 +83,8 @@ function MainContent({
               products={products}
               selectedCurrency={selectedCurrency}
               categoryName={categoryName}
+              shoppingCartItems={shoppingCartItems}
+              setShoppingCartItems={setShoppingCartItems}
             />
           )}
         />

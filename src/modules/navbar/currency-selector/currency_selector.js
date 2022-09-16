@@ -41,7 +41,6 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
     if (!loading)
     {
       setCurrencies(data.currencies);
-      console.log(currencies);
     }
   }, [loading]);
 
