@@ -22,10 +22,13 @@ function NavbarCategories({ setSelectedCategory, selectedCategory })
   {
     if (!loading)
     {
-      data.categories.map(({ name }) =>
+      if (selectedCategory === "")
       {
-        if (name === "all") setSelectedCategory(name);
-      });
+        data.categories.map(({ name }) =>
+        {
+          if (name === "all") setSelectedCategory(name);
+        });
+      }
     }
   }, [loading]);
 

@@ -141,6 +141,7 @@
 .shoppingCart-overlay-quantityControl-container > p{
     font-size: 3rem;
     font-weight: 500;
+    text-align: center;
 }
 
 .shoppingCartDetails-item-image-container {

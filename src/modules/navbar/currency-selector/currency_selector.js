@@ -41,18 +41,24 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
     if (!loading)
     {
       setCurrencies(data.currencies);
+      console.log(currencies);
     }
   }, [loading]);
 
   useEffect(() =>
   {
-    currencies.map((currency) =>
+    if (!("label" in selectedCurrency))
     {
-      if (currency.label === "USD")
+      currencies.map((currency) =>
       {
-        setSelectedCurrency({ symbol: currency.symbol, label: currency.label });
-      }
-    });
+        if (currency.label === "USD")
+        {
+          setSelectedCurrency(
+            { symbol: currency.symbol, label: currency.label },
+          );
+        }
+      });
+    }
   }, [currencies]);
 
   useEffect(() =>
