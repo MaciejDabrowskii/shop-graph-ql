@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import React, { Component } from "react";
+import { Query } from "@apollo/client/react/components";
 import { gql, useLazyQuery } from "@apollo/client";
 import { Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
@@ -39,82 +41,161 @@ const GET_CATEGORY_PRODUCTS = gql`
   }
 `;
 
-function MainContent({
-  categoryName,
-  selectedCurrency,
-  selectedCategory,
-  shoppingCartItems,
-  setShoppingCartItems,
-  overlayVisible,
-})
+class MainContent extends Component
 {
-  const [products, setProducts] = useState([]);
-  const [getProducts, { loading, error, data }] = useLazyQuery(
-    GET_CATEGORY_PRODUCTS,
-  );
-
-  useEffect(() =>
+  constructor(props)
   {
-    getProducts({
-      variables: {
-        name: categoryName,
-      },
-    });
-  }, [selectedCategory]);
+    super(props);
+  }
 
-  useEffect(() =>
+  render()
   {
-    if (data)
-    {
-      setProducts(data.category.products);
-    }
-  }, [data]);
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return console.log(error);
-
-  return (
-    <div className="main-content-container">
-      <Routes>
-        <Route
-          path="/"
-          element={(
-            <RenderProducts
-              products={products}
-              selectedCurrency={selectedCurrency}
-              categoryName={categoryName}
-              shoppingCartItems={shoppingCartItems}
-              setShoppingCartItems={setShoppingCartItems}
-            />
-          )}
-        />
-        {products.map((product) => (
-          <Route
-            path={`/${product.id}`}
-            key={product.id}
-            element={(
-              <ProductDetails
-                productId={product.id}
-                selectedCurrency={selectedCurrency}
-                shoppingCartItems={shoppingCartItems}
-                setShoppingCartItems={setShoppingCartItems}
-              />
-            )}
-          />
-        ))}
-        <Route
-          path="/your-bag"
-          element={(
-            <ShoppingCartDetails
-              shoppingCartItems={shoppingCartItems}
-              selectedCurrency={selectedCurrency}
-              setShoppingCartItems={setShoppingCartItems}
-            />
-          )}
-        />
-      </Routes>
-      {overlayVisible && <div className="category-overlay" />}
-    </div>
-  );
+    const {
+      selectedCurrency,
+      selectedCategory,
+      shoppingCartItems,
+      addItem,
+      overlayVisible,
+      incrementQuantity,
+      decrementQuantity,
+      removeItem,
+    } = this.props;
+    return (
+      <Query
+        query={GET_CATEGORY_PRODUCTS}
+        variables={{ name: selectedCategory }}
+        onCompleted={(data) => console.log(data)}
+      >
+        {({ data, loading }) =>
+        {
+          if (!loading)
+          {
+            const { category: { products, name } } = data;
+            return (
+              <div className="main-content-container">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={(
+                      <RenderProducts
+                        products={products}
+                        selectedCurrency={selectedCurrency}
+                        categoryName={name}
+                        shoppingCartItems={shoppingCartItems}
+                      />
+                    )}
+                  />
+                  {/* {products.map((product) => (
+                    <Route
+                      path={`/${product.id}`}
+                      key={product.id}
+                      element={(
+                        <ProductDetails
+                          productId={product.id}
+                          selectedCurrency={selectedCurrency}
+                          shoppingCartItems={shoppingCartItems}
+                          setShoppingCartItems={setShoppingCartItems}
+                        />
+                      )}
+                    />
+                  ))}
+                  <Route
+                    path="/your-bag"
+                    element={(
+                      <ShoppingCartDetails
+                        shoppingCartItems={shoppingCartItems}
+                        selectedCurrency={selectedCurrency}
+                        setShoppingCartItems={setShoppingCartItems}
+                      />
+                    )}
+                  /> */}
+                </Routes>
+                {overlayVisible && <div className="category-overlay" />}
+              </div>
+            );
+          }
+        }}
+      </Query>
+    );
+  }
 }
 export default MainContent;
+
+// function MainContent({
+//   categoryName,
+//   selectedCurrency,
+//   selectedCategory,
+//   shoppingCartItems,
+//   setShoppingCartItems,
+//   overlayVisible,
+// })
+// {
+//   const [products, setProducts] = useState([]);
+//   const [getProducts, { loading, error, data }] = useLazyQuery(
+//     GET_CATEGORY_PRODUCTS,
+//   );
+
+//   useEffect(() =>
+//   {
+//     getProducts({
+//       variables: {
+//         name: categoryName,
+//       },
+//     });
+//   }, [selectedCategory]);
+
+//   useEffect(() =>
+//   {
+//     if (data)
+//     {
+//       setProducts(data.category.products);
+//     }
+//   }, [data]);
+
+//   if (loading) return <h1>Loading...</h1>;
+//   if (error) return console.log(error);
+
+//   return (
+//     <div className="main-content-container">
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={(
+//             <RenderProducts
+//               products={products}
+//               selectedCurrency={selectedCurrency}
+//               categoryName={categoryName}
+//               shoppingCartItems={shoppingCartItems}
+//               setShoppingCartItems={setShoppingCartItems}
+//             />
+//           )}
+//         />
+//         {products.map((product) => (
+//           <Route
+//             path={`/${product.id}`}
+//             key={product.id}
+//             element={(
+//               <ProductDetails
+//                 productId={product.id}
+//                 selectedCurrency={selectedCurrency}
+//                 shoppingCartItems={shoppingCartItems}
+//                 setShoppingCartItems={setShoppingCartItems}
+//               />
+//             )}
+//           />
+//         ))}
+//         <Route
+//           path="/your-bag"
+//           element={(
+//             <ShoppingCartDetails
+//               shoppingCartItems={shoppingCartItems}
+//               selectedCurrency={selectedCurrency}
+//               setShoppingCartItems={setShoppingCartItems}
+//             />
+//           )}
+//         />
+//       </Routes>
+//       {overlayVisible && <div className="category-overlay" />}
+//     </div>
+//   );
+// }

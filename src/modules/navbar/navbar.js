@@ -24,6 +24,10 @@ class Navbar extends Component
       shoppingCartItems,
       setShoppingCartItems,
       setOverlayVisible,
+      overlayVisible,
+      incrementQuantity,
+      decrementQuantity,
+      removeItem,
     } = this.props;
 
     return (
@@ -45,6 +49,10 @@ class Navbar extends Component
             setShoppingCartItems={setShoppingCartItems}
             setOverlayVisible={setOverlayVisible}
             selectedCurrency={selectedCurrency}
+            overlayVisible={overlayVisible}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+            removeItem={removeItem}
           />
         </div>
       </div>

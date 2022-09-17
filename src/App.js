@@ -20,7 +20,7 @@ class App extends Component
   {
     super(props);
     this.state = {
-      selectedCategory: "aaaaaa",
+      selectedCategory: "",
       selectedCurrency: {
         symbol: "",
         label: "",
@@ -30,15 +30,57 @@ class App extends Component
     };
   }
 
-  setSelectedCategory = (category) => this.setState({ selectedCategory: category });
+  // I have decided to go with the constat approach of using prevState in all state setters
+  // insted:
+  // setSelectedCategory = (category) => this.setState({ selectedCategory: category });
+  // setSelectedCurrency = (currency) => this.setState({ selectedCurrency: currency });
 
-  setSelectedCurrency = (currency) => this.setState({ selectedCurrency: currency });
-
-  setOverlayVisible = () => this.setState((prevState) => ({ overlayVisible: !prevState.overlayVisible }));
-
-  setShoppingCartItems = (item) => this.setState((prevState) => ({
-    shoppingCartItems: [...prevState, item],
+  setSelectedCategory = (category) => this.setState((prevState) => ({
+    ...prevState,
+    selectedCategory: category,
   }));
+
+  setSelectedCurrency = (currency) => this.setState((prevState) => ({
+    ...prevState,
+    selectedCurrency: currency,
+  }));
+
+  setOverlayVisible = () => this.setState((prevState) => ({
+    ...prevState,
+    overlayVisible: !prevState.overlayVisible,
+  }));
+
+  addItem = (item) => this.setState((prevState) => ({
+    ...prevState,
+    shoppingCartItems: [...prevState.shoppingCartItems, item],
+  }));
+
+  incrementQuantity = (passedItem) => this.setState((prevState) => ({
+    ...prevState,
+    shoppingCartItems: prevState.shoppingCartItems.map((item) => (
+      item.cartId === passedItem.cartId
+        ? item.quantity + 1 : item)),
+  }));
+
+  decrementQuantity = (passedItem) =>
+  {
+    const { cartId } = passedItem;
+    this.setState((prevState) => ({
+      ...prevState,
+      shoppingCartItems: prevState.shoppingCartItems.map((item) => (
+        item.cartId === cartId ? { ...item, quantity: item.quantity - 1 } : item
+      )),
+    }));
+  };
+
+  removeItem = (passedItem) =>
+  {
+    const { cartId } = passedItem;
+    this.setState((prevState) => ({
+      ...prevState,
+      shoppingCartItems: prevState.shoppingCartItems.filter((item) => item.cartId !== cartId),
+    }));
+  };
 
   render()
   {
@@ -61,15 +103,21 @@ class App extends Component
             shoppingCartItems={shoppingCartItems}
             setShoppingCartItems={this.setShoppingCartItems}
             setOverlayVisible={this.setOverlayVisible}
+            overlayVisible={overlayVisible}
+            incrementQuantity={this.incrementQuantity}
+            decrementQuantity={this.decrementQuantity}
+            removeItem={this.removeItem}
           />
-          {/* <MainContent
-            categoryName={selectedCategory}
+          <MainContent
             selectedCurrency={selectedCurrency}
             selectedCategory={selectedCategory}
             shoppingCartItems={shoppingCartItems}
-            setShoppingCartItems={setShoppingCartItems}
+            addItem={this.addItem}
             overlayVisible={overlayVisible}
-          /> */}
+            incrementQuantity={this.incrementQuantity}
+            decrementQuantity={this.decrementQuantity}
+            removeItem={this.removeItem}
+          />
         </BrowserRouter>
       </div>
     );

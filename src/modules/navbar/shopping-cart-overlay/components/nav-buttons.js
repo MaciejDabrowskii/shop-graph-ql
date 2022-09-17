@@ -1,26 +1,54 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-function NavButtons({ setShoppingCartItems })
+class NavButtons extends Component
 {
-  return (
-    <div className="shoppingCart-overlay-navButtons-container">
-      <Link to="/your-bag">
-        <button
-          type="button"
+  constructor(props)
+  {
+    super(props);
+  }
+
+  render()
+  {
+    return (
+      <div className="shoppingCart-overlay-navButtons-container">
+        <Link
+          to="/your-bag"
           className="shoppingCart-overlay-navButtons-viewBag"
         >
           VIEW BAG
+        </Link>
+        <button
+          type="button"
+          className="shoppingCart-overlay-navButtons-checkOut"
+          // onClick={() => setShoppingCartItems([])}
+        >
+          CHECK OUT
         </button>
-      </Link>
-      <button
-        type="button"
-        className="shoppingCart-overlay-navButtons-checkOut"
-        onClick={() => setShoppingCartItems([])}
-      >
-        CHECK OUT
-      </button>
-    </div>
-  );
+      </div>
+    );
+  }
 }
+
 export default NavButtons;
+
+// function NavButtons({ setShoppingCartItems })
+// {
+//   return (
+//     <div className="shoppingCart-overlay-navButtons-container">
+//       <Link
+//         to="/your-bag"
+//         className="shoppingCart-overlay-navButtons-viewBag"
+//       >
+//         VIEW BAG
+//       </Link>
+//       <button
+//         type="button"
+//         className="shoppingCart-overlay-navButtons-checkOut"
+//         // onClick={() => setShoppingCartItems([])}
+//       >
+//         CHECK OUT
+//       </button>
+//     </div>
+//   );
+// }

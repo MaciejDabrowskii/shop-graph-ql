@@ -29,7 +29,10 @@ class NavbarCategories extends Component
     } = this.props;
 
     return (
-      <Query query={GET_CATEGORIES}>
+      <Query
+        query={GET_CATEGORIES}
+        onCompleted={(data) => setSelectedCategory(data.categories[0].name)}
+      >
         {({ data, loading }) =>
         {
           if (!loading)

@@ -1,15 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 
-function RenderImage({ product })
+class RenderImage extends Component
 {
-  return (
-    <div className="shoppingCart-overlay-image-container">
-      <img
-        src={product.gallery[0]}
-        alt={product.name}
-        className="shoppingCart-overlay-image"
-      />
-    </div>
-  );
+  constructor(props)
+  {
+    super(props);
+  }
+
+  render()
+  {
+    const {
+      product: { gallery, name },
+    } = this.props;
+    return (
+      <div className="shoppingCart-overlay-image-container">
+        <img
+          src={gallery[0]}
+          alt={name}
+          className="shoppingCart-overlay-image"
+        />
+      </div>
+    );
+  }
 }
 export default RenderImage;
+
+// function RenderImage({ product })
+// {
+//   return (
+//     <div className="shoppingCart-overlay-image-container">
+//       <img
+//         src={product.gallery[0]}
+//         alt={product.name}
+//         className="shoppingCart-overlay-image"
+//       />
+//     </div>
+//   );
+// }

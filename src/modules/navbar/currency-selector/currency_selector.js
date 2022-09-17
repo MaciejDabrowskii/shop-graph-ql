@@ -36,13 +36,13 @@ class CurrencySelector extends Component
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
-  handleClickOutside(event)
+  handleClickOutside = (event) =>
   {
     if (!this.dropdown.current.contains(event.target))
     {
       this.setState({ dropdownVisible: false });
     }
-  }
+  };
 
   handleDropdown = () => this.setState(
     (prevState) => ({ dropdownVisible: !prevState.dropdownVisible }),

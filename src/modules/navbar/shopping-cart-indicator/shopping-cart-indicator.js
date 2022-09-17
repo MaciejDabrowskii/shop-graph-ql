@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable consistent-return */
@@ -15,25 +16,75 @@ class ShoppingCartIndicator extends Component
     super(props);
 
     this.state = {
-      itemsQuantity: 6,
+      itemsQuantity: 0,
       cartOverlayVisible: false,
     };
-    this.cartCpntainerDiv = createRef();
+    this.cartContainerDiv = createRef();
     this.cartIndicator = createRef();
   }
 
   componentDidMount()
   {
-
+    document.addEventListener("mousedown", this.handleClickOutside);
   }
+
+  componentDidUpdate()
+  {
+    const { shoppingCartItems } = this.props;
+    const { itemsQuantity } = this.state;
+
+    if (itemsQuantity !== calculateCartItemsQuantity(shoppingCartItems))
+    {
+      this.setState((prevState) => ({
+        ...prevState,
+        itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
+      }));
+    }
+  }
+
+  // TODO: fix main content overlay
+  componentWillUnmount()
+  {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside = (event) =>
+  {
+    if (!this.cartContainerDiv.current.contains(event.target))
+    {
+      this.setState((prevState) => ({
+        ...prevState,
+        cartOverlayVisible: false,
+      }));
+
+      if (this.props.overlayVisible)
+      {
+        this.props.setOverlayVisible();
+      }
+    }
+  };
+
+  handleClickInside = () =>
+  {
+    this.setState((prevState) => ({
+      ...prevState,
+      cartOverlayVisible: true,
+    }));
+
+    if (!this.props.overlayVisible)
+    {
+      this.props.setOverlayVisible();
+    }
+  };
 
   render()
   {
     const {
       shoppingCartItems,
-      setOverlayVisible,
       selectedCurrency,
-      setShoppingCartItems,
+      incrementQuantity,
+      decrementQuantity,
+      removeItem,
     } = this.props;
 
     const {
@@ -42,11 +93,14 @@ class ShoppingCartIndicator extends Component
     } = this.state;
 
     return (
-      <div className="shopping-cart-indicator-container" ref={this.cartCpntainerDiv}>
+      <div
+        className="shopping-cart-indicator-container"
+        ref={this.cartContainerDiv}
+      >
         <div
           className="shopping-cart-icon-container"
           ref={this.cartIndicator}
-          // onClick={(e) => handleClickInside(e)}
+          onClick={this.handleClickInside}
         >
           <img src={cartIcon} alt="shopping cart icon" />
           {itemsQuantity > 0 && (
@@ -58,7 +112,9 @@ class ShoppingCartIndicator extends Component
           itemsQuantity={itemsQuantity}
           shoppingCartItems={shoppingCartItems}
           selectedCurrency={selectedCurrency}
-          setShoppingCartItems={setShoppingCartItems}
+          incrementQuantity={incrementQuantity}
+          decrementQuantity={decrementQuantity}
+          removeItem={removeItem}
         />
         )}
       </div>
