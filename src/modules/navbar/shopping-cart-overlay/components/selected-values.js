@@ -13,12 +13,12 @@ class SelectedValues extends Component
     const {
       attributes,
       selectedAttributes,
-      passedClass,
+      providedClass,
     } = this.props;
 
     return (
       <div className={
-        `${passedClass} product-details-info-attributes-container`
+        `${providedClass} product-details-info-attributes-container`
         }
       >
         {attributes.map(({ name, items }) =>
@@ -28,26 +28,26 @@ class SelectedValues extends Component
             return (
               <div
                 className={
-                `${passedClass} product-details-info-attribute-container`
+                `${providedClass} product-details-info-attribute-container`
                 }
                 key={name}
               >
                 <p
                   className={
-                    `${passedClass} product-details-info-attribute-name`
+                    `${providedClass} product-details-info-attribute-name`
                   }
                 >
                   {`${name.toUpperCase()}:`}
                 </p>
                 <div
                   className={
-                    `${passedClass} product-details-info-attribute-values-container`
+                    `${providedClass} product-details-info-attribute-values-container`
                   }
                 >
                   {items.map(({ id, value }) => (
                     <div
                       className={
-                        `${passedClass} product-details-info-attribute-wrapper${
+                        `${providedClass} product-details-info-attribute-wrapper${
                           selectedAttributes[name] === id
                             ? " selected" : ""}`
                       }
@@ -56,7 +56,7 @@ class SelectedValues extends Component
                       <div
                         style={{ backgroundColor: value }}
                         className={
-                          `${passedClass} product-details-info-attribute-color`
+                          `${providedClass} product-details-info-attribute-color`
                         }
                       />
                     </div>
@@ -68,20 +68,20 @@ class SelectedValues extends Component
           return (
             <div
               className={
-                `${passedClass} product-details-info-attribute-container`
+                `${providedClass} product-details-info-attribute-container`
               }
               key={name}
             >
               <p
                 className={
-                  `${passedClass} product-details-info-attribute-name`
+                  `${providedClass} product-details-info-attribute-name`
                 }
               >
                 {`${name.toUpperCase()}:`}
               </p>
               <div
                 className={
-                  `${passedClass} product-details-info-attribute-values-container`
+                  `${providedClass} product-details-info-attribute-values-container`
                 }
               >
                 {items.map(({ id, displayValue }) => (
@@ -89,8 +89,8 @@ class SelectedValues extends Component
                     key={id}
                     className={
                       selectedAttributes[name] === id
-                        ? `${passedClass} product-details-info-attribute-value active`
-                        : `${passedClass} product-details-info-attribute-value`
+                        ? `${providedClass} product-details-info-attribute-value active`
+                        : `${providedClass} product-details-info-attribute-value`
                     }
                   >
                     {displayValue}

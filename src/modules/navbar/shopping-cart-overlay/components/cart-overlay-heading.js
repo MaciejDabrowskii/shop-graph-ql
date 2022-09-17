@@ -10,13 +10,13 @@ class CartOverlayHeading extends Component
   render()
   {
     const {
-      passedClass,
+      providedClass,
       itemsQuantity,
     } = this.props;
 
     return (
-      <div className={`${passedClass}-heading`}>
-        <p className={`${passedClass}-heading-bolder`}>
+      <div className={`${providedClass}-heading`}>
+        <p className={`${providedClass}-heading-bolder`}>
           My Bag,
           {" "}
           <span>

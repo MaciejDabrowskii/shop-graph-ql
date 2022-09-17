@@ -96,20 +96,26 @@ class MainContent extends Component
                           shoppingCartItems={shoppingCartItems}
                           addItem={addItem}
                           incrementQuantity={incrementQuantity}
+
                         />
                       )}
                     />
                   ))}
-                  {/* <Route
+                  <Route
                     path="/your-bag"
                     element={(
                       <ShoppingCartDetails
                         shoppingCartItems={shoppingCartItems}
                         selectedCurrency={selectedCurrency}
-                        setShoppingCartItems={setShoppingCartItems}
+                        incrementQuantity={incrementQuantity}
+                        decrementQuantity={decrementQuantity}
+                        removeItem={removeItem}
+                        providedClass="shoppingCartDetails"
+
+                        // setShoppingCartItems={setShoppingCartItems}
                       />
                     )}
-                  /> */}
+                  />
                 </Routes>
                 {overlayVisible && <div className="category-overlay" />}
               </div>

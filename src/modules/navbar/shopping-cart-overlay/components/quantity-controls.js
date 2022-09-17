@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { Component } from "react";
 
-// className={`${passedClass}`}
 class QuantityControls extends Component
 {
   constructor(props)
@@ -13,13 +12,13 @@ class QuantityControls extends Component
   {
     const {
       product,
-      passedClass,
+      providedClass,
       incrementQuantity,
       decrementQuantity,
       removeItem,
     } = this.props;
     return (
-      <div className={`${passedClass}-quantityControl-container`}>
+      <div className={`${providedClass}-quantityControl-container`}>
         <button
           type="button"
           onClick={() => incrementQuantity(product)}

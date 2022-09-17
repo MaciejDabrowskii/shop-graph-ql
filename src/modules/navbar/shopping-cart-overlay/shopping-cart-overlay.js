@@ -32,7 +32,7 @@ class ShoppingCartOverlay extends Component
       <div className="shoppingCart-overlay-container">
         <CartOverlayHeading
           itemsQuantity={itemsQuantity}
-          passedClass="shoppingCart-overlay"
+          providedClass="shoppingCart-overlay"
         />
         <div className="shoppingCart-overlay-items-container">
           {shoppingCartItems.map((item) => (
@@ -49,13 +49,13 @@ class ShoppingCartOverlay extends Component
                 <RenderPrice
                   prices={item.prices}
                   selectedCurrency={selectedCurrency}
-                  passedClass="shoppingCart-overlay"
+                  providedClass="shoppingCart-overlay"
                 />
 
                 <SelectedValues
                   attributes={item.attributes}
                   selectedAttributes={item.selectedAttributes}
-                  passedClass="shoppingCart-overlay"
+                  providedClass="shoppingCart-overlay"
                 />
 
               </div>
@@ -65,7 +65,7 @@ class ShoppingCartOverlay extends Component
                   incrementQuantity={incrementQuantity}
                   decrementQuantity={decrementQuantity}
                   removeItem={removeItem}
-                  passedClass="shoppingCart-overlay"
+                  providedClass="shoppingCart-overlay"
                 />
                 <RenderImage product={item} />
               </div>
