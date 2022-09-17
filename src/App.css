@@ -6,6 +6,7 @@
 font-weight: 400;
 font-style: normal; */
 
+
 :root {
   --green: rgba(94, 206, 123, 1);
   --overlay: rgba(57, 55, 72, 0.22);
@@ -25,9 +26,11 @@ font-style: normal; */
   color: var(--dark);
 }
 
+
 .main-content-container {
   position: relative;
   padding: 10rem 12.5rem;
+  max-width: 1440px;
 }
 
 input[type="radio"] {

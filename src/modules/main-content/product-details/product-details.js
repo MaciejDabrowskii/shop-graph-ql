@@ -1,5 +1,7 @@
-import { gql, useLazyQuery } from "@apollo/client";
-import React, { useEffect } from "react";
+/* eslint-disable consistent-return */
+import { gql } from "@apollo/client";
+import { Query } from "@apollo/client/react/components";
+import React, { Component } from "react";
 import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 import "./product-details.css";
@@ -35,44 +37,94 @@ const GET_PRODUCT = gql`
   }
 `;
 
-function ProductDetails({
-  productId,
-  selectedCurrency,
-  shoppingCartItems,
-  setShoppingCartItems,
-})
+class ProductDetails extends Component
 {
-  const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
-
-  useEffect(() =>
+  constructor(props)
   {
-    getProducts({
-      variables: {
-        id: productId,
-      },
-    });
-  }, [productId]);
+    super(props);
+  }
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return console.log(error);
-
-  if (data)
+  render()
   {
+    const {
+      productId,
+      selectedCurrency,
+      shoppingCartItems,
+      addItem,
+      incrementQuantity,
+    } = this.props;
+
     return (
-      <div className="product-details-container">
-        <RenderImages
-          product={data.product}
-        />
-        <RenderInfo
-          product={data.product}
-          selectedCurrency={selectedCurrency}
-          shoppingCartItems={shoppingCartItems}
-          setShoppingCartItems={setShoppingCartItems}
-          showDetails
-          providedClass="product-details-info"
-        />
-      </div>
+      <Query
+        query={GET_PRODUCT}
+        variables={{ id: productId }}
+      >
+        {({ data, loading }) =>
+        {
+          if (!loading)
+          {
+            const { product } = data;
+            return (
+              <div className="product-details-container">
+                <RenderImages
+                  product={product}
+                />
+                <RenderInfo
+                  product={product}
+                  selectedCurrency={selectedCurrency}
+                  shoppingCartItems={shoppingCartItems}
+                  addItem={addItem}
+                  incrementQuantity={incrementQuantity}
+                  showDetails
+                  providedClass="product-details-info"
+                />
+              </div>
+            );
+          }
+        }}
+      </Query>
     );
   }
 }
 export default ProductDetails;
+
+// function ProductDetails({
+//   productId,
+//   selectedCurrency,
+//   shoppingCartItems,
+//   setShoppingCartItems,
+// })
+// {
+//   const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
+
+//   useEffect(() =>
+//   {
+//     getProducts({
+//       variables: {
+//         id: productId,
+//       },
+//     });
+//   }, [productId]);
+
+//   if (loading) return <h1>Loading...</h1>;
+//   if (error) return console.log(error);
+
+//   if (data)
+//   {
+//     return (
+//       <div className="product-details-container">
+//         <RenderImages
+//           product={data.product}
+//         />
+//         <RenderInfo
+//           product={data.product}
+//           selectedCurrency={selectedCurrency}
+//           shoppingCartItems={shoppingCartItems}
+//           setShoppingCartItems={setShoppingCartItems}
+//           showDetails
+//           providedClass="product-details-info"
+//         />
+//       </div>
+//     );
+//   }
+// }

@@ -14,17 +14,17 @@ class RenderPrice extends Component
     const {
       prices,
       selectedCurrency,
-      passedClass,
+      providedClass,
     } = this.props;
 
     return (
-      <div className={`${passedClass}-info-price-container`}>
+      <div className={`${providedClass}-price-container`}>
         {prices.map(({ currency, amount }) =>
         {
           if (currency.label === selectedCurrency.label)
           {
             return (
-              <p key={amount} className="product-details-info-price">
+              <p key={amount} className={`${providedClass}-price`}>
                 {currency.symbol + amount}
               </p>
             );

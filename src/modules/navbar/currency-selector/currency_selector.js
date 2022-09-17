@@ -24,6 +24,7 @@ class CurrencySelector extends Component
     this.state = { dropdownVisible: false };
     this.dropdown = createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleDropdown = this.handleDropdown.bind(this);
   }
 
   componentDidMount()

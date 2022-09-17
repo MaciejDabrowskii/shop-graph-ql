@@ -22,7 +22,7 @@ class QuantityControls extends Component
       <div className={`${passedClass}-quantityControl-container`}>
         <button
           type="button"
-          onClick={incrementQuantity(product)}
+          onClick={() => incrementQuantity(product)}
         >
           {"\u002B"}
         </button>
@@ -31,8 +31,8 @@ class QuantityControls extends Component
           type="button"
           onClick={
           product.quantity > 1
-            ? decrementQuantity(product)
-            : removeItem(product)
+            ? () => decrementQuantity(product)
+            : () => removeItem(product)
           }
         >
           {"\u2212"}

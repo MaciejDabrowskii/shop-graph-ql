@@ -14,9 +14,12 @@ class ShoppingCartIndicator extends Component
   constructor(props)
   {
     super(props);
+    const { shoppingCartItems } = this.props;
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleClickInside = this.handleClickInside.bind(this);
 
     this.state = {
-      itemsQuantity: 0,
+      itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
       cartOverlayVisible: false,
     };
     this.cartContainerDiv = createRef();
@@ -42,7 +45,6 @@ class ShoppingCartIndicator extends Component
     }
   }
 
-  // TODO: fix main content overlay
   componentWillUnmount()
   {
     document.removeEventListener("mousedown", this.handleClickOutside);

@@ -28,6 +28,12 @@ class App extends Component
       shoppingCartItems: [],
       overlayVisible: false,
     };
+    this.setSelectedCategory = this.setSelectedCategory.bind(this);
+    this.setSelectedCurrency = this.setSelectedCurrency.bind(this);
+    this.setOverlayVisible = this.setOverlayVisible.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   // I have decided to go with the constat approach of using prevState in all state setters
@@ -55,12 +61,16 @@ class App extends Component
     shoppingCartItems: [...prevState.shoppingCartItems, item],
   }));
 
-  incrementQuantity = (passedItem) => this.setState((prevState) => ({
-    ...prevState,
-    shoppingCartItems: prevState.shoppingCartItems.map((item) => (
-      item.cartId === passedItem.cartId
-        ? item.quantity + 1 : item)),
-  }));
+  incrementQuantity = (passedItem) =>
+  {
+    const { cartId } = passedItem;
+    this.setState((prevState) => ({
+      ...prevState,
+      shoppingCartItems: prevState.shoppingCartItems.map((item) => (
+        item.cartId === cartId
+          ? { ...item, quantity: item.quantity + 1 } : item)),
+    }));
+  };
 
   decrementQuantity = (passedItem) =>
   {
@@ -68,7 +78,8 @@ class App extends Component
     this.setState((prevState) => ({
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems.map((item) => (
-        item.cartId === cartId ? { ...item, quantity: item.quantity - 1 } : item
+        item.cartId === cartId
+          ? { ...item, quantity: item.quantity - 1 } : item
       )),
     }));
   };
@@ -97,13 +108,12 @@ class App extends Component
           <link rel="stylesheet" href="https://use.typekit.net/fwk2oee.css" />
           <Navbar
             selectedCategory={selectedCategory}
-            setSelectedCategory={this.setSelectedCategory}
             selectedCurrency={selectedCurrency}
-            setSelectedCurrency={this.setSelectedCurrency}
             shoppingCartItems={shoppingCartItems}
-            setShoppingCartItems={this.setShoppingCartItems}
-            setOverlayVisible={this.setOverlayVisible}
             overlayVisible={overlayVisible}
+            setSelectedCategory={this.setSelectedCategory}
+            setSelectedCurrency={this.setSelectedCurrency}
+            setOverlayVisible={this.setOverlayVisible}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}
@@ -112,8 +122,8 @@ class App extends Component
             selectedCurrency={selectedCurrency}
             selectedCategory={selectedCategory}
             shoppingCartItems={shoppingCartItems}
-            addItem={this.addItem}
             overlayVisible={overlayVisible}
+            addItem={this.addItem}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}

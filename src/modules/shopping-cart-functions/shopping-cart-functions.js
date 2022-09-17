@@ -1,14 +1,5 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-function increaseQuantity(product)
-{
-  return { ...product, quantity: product.quantity + 1 };
-}
-
-function decreaseQuantity(product)
-{
-  return { ...product, quantity: product.quantity - 1 };
-}
 
 function calculateSum(shoppingCartItems, selectedCurrency)
 {
@@ -41,8 +32,6 @@ function calculateTax(sum, items, currency)
   return Math.round(sum(items, currency) * 0.21 * 100) / 100;
 }
 export {
-  increaseQuantity,
-  decreaseQuantity,
   calculateSum,
   calculateCartItemsQuantity,
   calculateTax,

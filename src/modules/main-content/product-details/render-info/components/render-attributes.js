@@ -1,101 +1,203 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { Component } from "react";
 
-function RenderAttributes({
-  attributes,
-  selectedAttributes,
-  setSelectedAttributes,
-})
+class RenderAttributes extends Component
 {
-  const updateAttributes = (e, attribute) =>
+  constructor(props)
   {
-    setSelectedAttributes({
-      ...selectedAttributes,
-      [attribute.name]: e.target.value,
-    });
-  };
-  return (
-    <div className="product-details-info-attributes-container">
-      {attributes.map((attribute) =>
-      {
-        if (attribute.name === "Color")
+    super(props);
+  }
+
+  render()
+  {
+    const {
+      attributes,
+      selectedAttributes,
+      updateAttributes,
+      providedClass,
+    } = this.props;
+
+    return (
+      <div className={`${providedClass}-attributes-container`}>
+        {attributes.map(({ name, items, id }) =>
         {
-          return (
-            <div
-              className="product-details-info-attribute-container"
-              key={attribute.name}
-            >
-              <p className="product-details-info-attribute-name">
-                {`${attribute.name.toUpperCase()}:`}
-              </p>
-              <div className="product-details-info-attribute-values-container">
-                {attribute.items.map((item) => (
-                  <div
-                    className={selectedAttributes[attribute.name] === item.id
-                      ? "product-details-info-attribute-wrapper active"
-                      : "product-details-info-attribute-wrapper"}
-                    key={item.value}
-                  >
-                    <label
-                      className="product-details-info-attribute-color"
-                      style={
+          if (name === "Color")
+          {
+            return (
+              <div
+                className={`${providedClass}-attribute-container`}
+                key={name}
+              >
+                <p className={`${providedClass}-attribute-name`}>
+                  {`${name.toUpperCase()}:`}
+                </p>
+                <div className={`${providedClass}-attribute-values-container`}>
+                  {items.map((item) => (
+                    <div
+                      className={selectedAttributes[name] === item.id
+                        ? `${providedClass}-attribute-wrapper active`
+                        : `${providedClass}-attribute-wrapper`}
+                      key={item.value}
+                    >
+                      <label
+                        className={`${providedClass}-attribute-color`}
+                        style={
                         {
                           backgroundColor: item.value,
                           border: item.id === "White"
                             ? "1px solid rgba(0, 0, 0, 0.400)" : "",
                         }
                       }
-                      htmlFor={item.id}
-                    >
-                      <input
-                        type="radio"
-                        value={item.id}
-                        name="color"
-                        id={item.id}
-                        onChange={(e) => updateAttributes(e, attribute)}
-                      />
-                    </label>
-                  </div>
+                        htmlFor={item.id}
+                      >
+                        <input
+                          type="radio"
+                          value={item.id}
+                          name="color"
+                          id={item.id}
+                          onChange={(e) => updateAttributes(e, name)}
+                        />
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div
+              className={`${providedClass}-attribute-container`}
+              key={name}
+            >
+              <p className="product-details-info-attribute-name">
+                {`${name.toUpperCase()}:`}
+              </p>
+              <div
+                className={`${providedClass}-attribute-values-container`}
+              >
+                {items.map((item) => (
+                  <label
+                    className={selectedAttributes[name] === item.id
+                      ? `${providedClass}-attribute-value active`
+                      : `${providedClass}-attribute-value`}
+                    htmlFor={item.name}
+                    key={item.id + item.name}
+                  >
+                    <input
+                      type="radio"
+                      value={item.id}
+                      name={id}
+                      onChange={(e) => updateAttributes(e, name)}
+                      id={item.name}
+                    />
+                    {item.displayValue}
+                  </label>
                 ))}
               </div>
             </div>
           );
-        }
-        return (
-          <div
-            className="product-details-info-attribute-container"
-            key={attribute.name}
-          >
-            <p className="product-details-info-attribute-name">
-              {`${attribute.name.toUpperCase()}:`}
-            </p>
-            <div
-              className="product-details-info-attribute-values-container"
-            >
-              {attribute.items.map((item) => (
-                <label
-                  className={selectedAttributes[attribute.name] === item.id
-                    ? "product-details-info-attribute-value active"
-                    : "product-details-info-attribute-value"}
-                  htmlFor={item.name}
-                  key={item.id + item.name}
-                >
-                  <input
-                    type="radio"
-                    value={item.id}
-                    name={attribute.id}
-                    onChange={(e) => updateAttributes(e, attribute)}
-                    id={item.name}
-                  />
-                  {item.displayValue}
-                </label>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+        })}
+      </div>
+    );
+  }
 }
+
 export default RenderAttributes;
+
+// function RenderAttributes({
+//   attributes,
+//   selectedAttributes,
+//   setSelectedAttributes,
+// })
+// {
+//   const updateAttributes = (e, attribute) =>
+//   {
+//     setSelectedAttributes({
+//       ...selectedAttributes,
+//       [attribute.name]: e.target.value,
+//     });
+//   };
+//   return (
+//     <div className="product-details-info-attributes-container">
+//       {attributes.map((attribute) =>
+//       {
+//         if (attribute.name === "Color")
+//         {
+//           return (
+//             <div
+//               className="product-details-info-attribute-container"
+//               key={attribute.name}
+//             >
+//               <p className="product-details-info-attribute-name">
+//                 {`${attribute.name.toUpperCase()}:`}
+//               </p>
+//               <div className="product-details-info-attribute-values-container">
+//                 {attribute.items.map((item) => (
+//                   <div
+//                     className={selectedAttributes[attribute.name] === item.id
+//                       ? "product-details-info-attribute-wrapper active"
+//                       : "product-details-info-attribute-wrapper"}
+//                     key={item.value}
+//                   >
+//                     <label
+//                       className="product-details-info-attribute-color"
+//                       style={
+//                         {
+//                           backgroundColor: item.value,
+//                           border: item.id === "White"
+//                             ? "1px solid rgba(0, 0, 0, 0.400)" : "",
+//                         }
+//                       }
+//                       htmlFor={item.id}
+//                     >
+//                       <input
+//                         type="radio"
+//                         value={item.id}
+//                         name="color"
+//                         id={item.id}
+//                         onChange={(e) => updateAttributes(e, attribute)}
+//                       />
+//                     </label>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           );
+//         }
+//         return (
+//           <div
+//             className="product-details-info-attribute-container"
+//             key={attribute.name}
+//           >
+//             <p className="product-details-info-attribute-name">
+//               {`${attribute.name.toUpperCase()}:`}
+//             </p>
+//             <div
+//               className="product-details-info-attribute-values-container"
+//             >
+//               {attribute.items.map((item) => (
+//                 <label
+//                   className={selectedAttributes[attribute.name] === item.id
+//                     ? "product-details-info-attribute-value active"
+//                     : "product-details-info-attribute-value"}
+//                   htmlFor={item.name}
+//                   key={item.id + item.name}
+//                 >
+//                   <input
+//                     type="radio"
+//                     value={item.id}
+//                     name={attribute.id}
+//                     onChange={(e) => updateAttributes(e, attribute)}
+//                     id={item.name}
+//                   />
+//                   {item.displayValue}
+//                 </label>
+//               ))}
+//             </div>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }

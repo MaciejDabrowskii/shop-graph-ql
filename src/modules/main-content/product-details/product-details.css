@@ -4,6 +4,9 @@
     font-family: 'Raleway', sans-serif;
 }
 
+
+
+
 .product-details-images-container {
     display: flex;
     gap: 5rem;
@@ -216,4 +219,27 @@
     background-color: white;
     border: 1px solid var(--green);
     color: var(--green);
+}
+
+@media only screen and (max-width: 1231px) {
+    .product-details-container{ 
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .product-details-images-selected-image { 
+        width: 100%;
+        object-fit: scale-down;
+        height: 30rem
+    }
+
+    .main-content-container {
+        padding: 10rem 0
+    }
+
+    .product-details-images-sidebar {
+        gap: 1rem
+    }
 }

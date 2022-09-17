@@ -1,12 +1,32 @@
 /* eslint-disable react/no-danger */
-import React from "react";
+import React, { Component } from "react";
 
-function RenderDescription({ description })
+class RenderDescription extends Component
 {
-  return (
-    <div className="product-details-info-description-container">
-      <div dangerouslySetInnerHTML={{ __html: description }} />
-    </div>
-  );
+  constructor(props)
+  {
+    super(props);
+  }
+
+  render()
+  {
+    const {
+      description,
+    } = this.props;
+    return (
+      <div className="product-details-info-description-container">
+        <div dangerouslySetInnerHTML={{ __html: description }} />
+      </div>
+    );
+  }
 }
 export default RenderDescription;
+
+// function RenderDescription({ description })
+// {
+//   return (
+//     <div className="product-details-info-description-container">
+//       <div dangerouslySetInnerHTML={{ __html: description }} />
+//     </div>
+//   );
+// }

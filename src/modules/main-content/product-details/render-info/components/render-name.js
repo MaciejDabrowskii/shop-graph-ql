@@ -11,12 +11,12 @@ class RenderName extends Component
   {
     const {
       product: { brand, name },
-      passedClass,
+      providedClass,
     } = this.props;
     return (
-      <div className={`${passedClass}-info-name-container`}>
-        <p className={`${passedClass}-info-name-brand`}>{brand}</p>
-        <p className={`${passedClass}-info-name-brand`}>{name}</p>
+      <div className={`${providedClass}-info-name-container`}>
+        <p className={`${providedClass}-info-name-brand`}>{brand}</p>
+        <p className={`${providedClass}-info-name-brand`}>{name}</p>
       </div>
     );
   }

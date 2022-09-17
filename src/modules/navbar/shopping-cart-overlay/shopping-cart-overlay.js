@@ -18,7 +18,6 @@ class ShoppingCartOverlay extends Component
     super(props);
   }
 
-  // className={`${passedClass}`}
   render()
   {
     const {
@@ -28,7 +27,6 @@ class ShoppingCartOverlay extends Component
       incrementQuantity,
       decrementQuantity,
       removeItem,
-      // setShoppingCartItems
     } = this.props;
     return (
       <div className="shoppingCart-overlay-container">
@@ -46,7 +44,7 @@ class ShoppingCartOverlay extends Component
 
                 <RenderName
                   product={item}
-                  passedClass="shoppingCart-overlay"
+                  providedClass="shoppingCart-overlay"
                 />
                 <RenderPrice
                   prices={item.prices}

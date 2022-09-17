@@ -1,7 +1,8 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
-import { gql, useLazyQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import { Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
@@ -54,8 +55,8 @@ class MainContent extends Component
       selectedCurrency,
       selectedCategory,
       shoppingCartItems,
-      addItem,
       overlayVisible,
+      addItem,
       incrementQuantity,
       decrementQuantity,
       removeItem,
@@ -64,7 +65,6 @@ class MainContent extends Component
       <Query
         query={GET_CATEGORY_PRODUCTS}
         variables={{ name: selectedCategory }}
-        onCompleted={(data) => console.log(data)}
       >
         {({ data, loading }) =>
         {
@@ -85,7 +85,7 @@ class MainContent extends Component
                       />
                     )}
                   />
-                  {/* {products.map((product) => (
+                  {products.map((product) => (
                     <Route
                       path={`/${product.id}`}
                       key={product.id}
@@ -94,12 +94,13 @@ class MainContent extends Component
                           productId={product.id}
                           selectedCurrency={selectedCurrency}
                           shoppingCartItems={shoppingCartItems}
-                          setShoppingCartItems={setShoppingCartItems}
+                          addItem={addItem}
+                          incrementQuantity={incrementQuantity}
                         />
                       )}
                     />
                   ))}
-                  <Route
+                  {/* <Route
                     path="/your-bag"
                     element={(
                       <ShoppingCartDetails
