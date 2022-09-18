@@ -1,14 +1,9 @@
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable react/no-unused-state */
-/* eslint-disable no-unused-vars */
+
 /* eslint-disable max-len */
 /* eslint-disable react/react-in-jsx-scope */
 import React, { Component } from "react";
-import {
-  ApolloClient,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./modules/navbar/navbar";
@@ -35,6 +30,7 @@ class App extends Component
     this.incrementQuantity = this.incrementQuantity.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.clearCart = this.clearCart.bind(this);
   }
 
   componentDidMount()
@@ -99,6 +95,14 @@ class App extends Component
     }));
   };
 
+  clearCart = () =>
+  {
+    this.setState((prevState) => ({
+      ...prevState,
+      shoppingCartItems: [],
+    }));
+  };
+
   render()
   {
     const {
@@ -123,6 +127,7 @@ class App extends Component
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}
+            clearCart={this.clearCart}
           />
           <MainContent
             selectedCurrency={selectedCurrency}
@@ -133,6 +138,7 @@ class App extends Component
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}
+            clearCart={this.clearCart}
           />
         </BrowserRouter>
       </div>

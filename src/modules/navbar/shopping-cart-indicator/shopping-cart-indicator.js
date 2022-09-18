@@ -89,6 +89,7 @@ class ShoppingCartIndicator extends Component
       incrementQuantity,
       decrementQuantity,
       removeItem,
+      clearCart,
     } = this.props;
 
     const {
@@ -119,6 +120,7 @@ class ShoppingCartIndicator extends Component
           incrementQuantity={incrementQuantity}
           decrementQuantity={decrementQuantity}
           removeItem={removeItem}
+          clearCart={clearCart}
         />
         )}
       </div>

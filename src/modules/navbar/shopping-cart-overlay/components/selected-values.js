@@ -54,7 +54,11 @@ class SelectedValues extends Component
                       key={value}
                     >
                       <div
-                        style={{ backgroundColor: value }}
+                        style={{
+                          backgroundColor: value,
+                          border: id === "White"
+                            ? "1px solid rgba(0, 0, 0, 0.400)" : "",
+                        }}
                         className={
                           `${providedClass} product-details-info-attribute-color`
                         }

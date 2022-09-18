@@ -27,6 +27,7 @@ class ShoppingCartOverlay extends Component
       incrementQuantity,
       decrementQuantity,
       removeItem,
+      clearCart,
     } = this.props;
     return (
       <div className="shoppingCart-overlay-container">
@@ -79,7 +80,9 @@ class ShoppingCartOverlay extends Component
            ${calculateSum(shoppingCartItems, selectedCurrency)}`}
           </p>
         </div>
-        <NavButtons />
+        <NavButtons
+          clearCart={clearCart}
+        />
       </div>
     );
   }

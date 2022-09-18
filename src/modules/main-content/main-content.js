@@ -60,6 +60,7 @@ class MainContent extends Component
       incrementQuantity,
       decrementQuantity,
       removeItem,
+      clearCart,
     } = this.props;
     return (
       <Query
@@ -82,6 +83,8 @@ class MainContent extends Component
                         selectedCurrency={selectedCurrency}
                         categoryName={name}
                         shoppingCartItems={shoppingCartItems}
+                        addItem={addItem}
+                        incrementQuantity={incrementQuantity}
                       />
                     )}
                   />
@@ -111,8 +114,7 @@ class MainContent extends Component
                         decrementQuantity={decrementQuantity}
                         removeItem={removeItem}
                         providedClass="shoppingCartDetails"
-
-                        // setShoppingCartItems={setShoppingCartItems}
+                        clearCart={clearCart}
                       />
                     )}
                   />

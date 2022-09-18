@@ -13,7 +13,7 @@ class RenderInfo extends Component
     super(props);
 
     this.state = {
-      selectedAttributes: {},
+      selectedAttributes: this.setInitialAttributes() || {},
       showWarning: false,
     };
 
@@ -25,25 +25,16 @@ class RenderInfo extends Component
     this.updateAttributes = this.updateAttributes.bind(this);
   }
 
-  componentDidMount()
-  {
-    this.setInitialAttributes();
-  }
-
   setInitialAttributes = () =>
   {
-    const { product } = this.props;
-    product.attributes.map((atribute) =>
+    const { product: { attributes } } = this.props;
+    const initialObject = {};
+    attributes.map((atribute) =>
     {
-      this.setState(
-        (prevState) => ({
-          ...prevState,
-          selectedAttributes: {
-            ...prevState.selectedAttributes, [atribute.name]: "",
-          },
-        }),
-      );
+      initialObject[atribute.name] = "";
     });
+    console.log(initialObject);
+    return initialObject;
   };
 
   generateCartiD = () =>
@@ -129,7 +120,10 @@ class RenderInfo extends Component
   {
     const {
       product: {
-        attributes, prices, inStock, description,
+        attributes,
+        prices,
+        inStock,
+        description,
       },
       product,
       selectedCurrency,
@@ -141,6 +135,7 @@ class RenderInfo extends Component
       selectedAttributes,
       showWarning,
     } = this.state;
+    console.log("renderinfo", this.state);
 
     return (
       <div className={`${providedClass}-container`}>

@@ -70,7 +70,7 @@ class RenderAttributes extends Component
               className={`${providedClass}-attribute-container`}
               key={name}
             >
-              <p className="product-details-info-attribute-name">
+              <p className={`${providedClass}-attribute-name`}>
                 {`${name.toUpperCase()}:`}
               </p>
               <div

@@ -22,11 +22,11 @@ class ShoppingCartDetails extends Component
     const {
       shoppingCartItems,
       selectedCurrency,
-      setShoppingCartItems,
       incrementQuantity,
       decrementQuantity,
       removeItem,
       providedClass,
+      clearCart,
     } = this.props;
     return (
       <div className="shoppingCartDetails-container">
@@ -67,12 +67,11 @@ class ShoppingCartDetails extends Component
           selectedCurrency={selectedCurrency}
         />
         <button
-          onClick={() => setShoppingCartItems([])}
+          onClick={() => clearCart()}
           type="button"
           className="shoppingCartDetails-order-btn"
         >
           ORDER
-
         </button>
       </div>
     );

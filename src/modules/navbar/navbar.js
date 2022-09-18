@@ -28,6 +28,7 @@ class Navbar extends Component
       incrementQuantity,
       decrementQuantity,
       removeItem,
+      clearCart,
     } = this.props;
 
     return (
@@ -53,6 +54,7 @@ class Navbar extends Component
             incrementQuantity={incrementQuantity}
             decrementQuantity={decrementQuantity}
             removeItem={removeItem}
+            clearCart={clearCart}
           />
         </div>
       </div>

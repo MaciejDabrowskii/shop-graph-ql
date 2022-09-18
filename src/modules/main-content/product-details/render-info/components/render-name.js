@@ -14,9 +14,9 @@ class RenderName extends Component
       providedClass,
     } = this.props;
     return (
-      <div className={`${providedClass}-info-name-container`}>
-        <p className={`${providedClass}-info-name-brand`}>{brand}</p>
-        <p className={`${providedClass}-info-name-brand`}>{name}</p>
+      <div className={`${providedClass}-name-container`}>
+        <p className={`${providedClass}-name-brand`}>{brand}</p>
+        <p className={`${providedClass}-name`}>{name}</p>
       </div>
     );
   }

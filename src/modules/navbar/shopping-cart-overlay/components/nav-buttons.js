@@ -10,6 +10,7 @@ class NavButtons extends Component
 
   render()
   {
+    const { clearCart } = this.props;
     return (
       <div className="shoppingCart-overlay-navButtons-container">
         <Link
@@ -21,7 +22,7 @@ class NavButtons extends Component
         <button
           type="button"
           className="shoppingCart-overlay-navButtons-checkOut"
-          // onClick={() => setShoppingCartItems([])}
+          onClick={() => clearCart()}
         >
           CHECK OUT
         </button>

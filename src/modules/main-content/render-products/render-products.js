@@ -1,43 +1,50 @@
+/* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
+
 import "./render-products.css";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart-white.svg";
+import RenderInfo from "../product-details/render-info/render-info";
 
 class RenderProducts extends Component
 {
   constructor(props)
   {
     super(props);
+
+    this.state = this.setInitialState();
+
     this.setInitialState = this.setInitialState.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
-    this.state = {};
-  }
-
-  componentDidMount()
-  {
-    this.setInitialState();
-    console.log(this.state);
+    this.showAttributes = this.showAttributes.bind(this);
+    this.hideAttributes = this.hideAttributes.bind(this);
   }
 
   setInitialState = () =>
   {
     const { products } = this.props;
-    products.map((product) => this.setState((prevState) => ({
-      ...prevState,
-      [product.id]: false,
-    })));
+    const initialObject = {
+      showButton: {},
+      showDetails: {},
+    };
+    products.map((product) =>
+    {
+      initialObject.showButton[product.id] = false;
+      initialObject.showDetails[product.id] = false;
+    });
+    return initialObject;
   };
 
   handleMouseOver = (id) =>
   {
     this.setState((prevState) => ({
       ...prevState,
-      [id]: true,
+      showButton: { ...prevState.showButton, [id]: true },
     }));
   };
 
@@ -45,7 +52,24 @@ class RenderProducts extends Component
   {
     this.setState((prevState) => ({
       ...prevState,
-      [id]: false,
+      showButton: { ...prevState.showButton, [id]: false },
+    }));
+  };
+
+  showAttributes = (id) =>
+  {
+    this.setState((prevState) => ({
+      ...prevState,
+      showDetails: { ...prevState.showDetails, [id]: true },
+    }));
+    console.log("aaaa", this.state);
+  };
+
+  hideAttributes = (id) =>
+  {
+    this.setState((prevState) => ({
+      ...prevState,
+      showDetails: { ...prevState.showDetails, [id]: false },
     }));
   };
 
@@ -55,62 +79,86 @@ class RenderProducts extends Component
       products,
       selectedCurrency,
       categoryName,
+      shoppingCartItems,
+      addItem,
+      incrementQuantity,
     } = this.props;
     return (
       <div className="category-products">
         <p className="category-heading">{categoryName.toUpperCase()}</p>
         <div className="category-products-container">
-          {products.map(({
-            id,
-            gallery,
-            name,
-            prices,
-            inStock,
-          }) => (
+          {products.map((product) => (
             <div
-              onMouseOver={() => this.handleMouseOver(id)}
-              onMouseOut={() => this.handleMouseOut(id)}
-              className="category-product"
-              key={id}
+              onMouseOver={() => this.handleMouseOver(product.id)}
+              onMouseOut={() => this.handleMouseOut(product.id)}
+              className={`category-product${this.state.showDetails[product.id] ? " active" : ""}`}
+              key={product.id}
             >
-              <Link to={`/${id}`} key={id}>
-                <img
-                  src={gallery[0]}
-                  className="category-product-image"
-                  alt={`${name}`}
-                />
-                <div className="category-product-info-container">
-                  <p className="category-product-name">{name}</p>
-                  {prices.map((price) =>
-                  {
-                    if (price.currency.label === selectedCurrency.label)
-                    {
-                      return (
-                        <p
-                          key={price.currency.label}
-                          className="category-product-price"
-                        >
-                          {`${price.currency.symbol} ${price.amount}`}
-                        </p>
-                      );
-                    }
-                  })}
-                </div>
-                {!inStock && (
-                <div className="category-product-outOfStock-overlay-container">
-                  <p
-                    className="category-product-outOfStock-overlay"
-                  >
-                    OUT OF STOCK
+              {
+                  !this.state.showDetails[product.id]
+                    ? (
+                      <Link to={`/${product.id}`} key={product.id}>
+                        <img
+                          src={product.gallery[0]}
+                          className="category-product-image"
+                          alt={`${product.name}`}
+                        />
+                        <div className="category-product-info-container">
+                          <p className="category-product-name">{product.name}</p>
+                          {product.prices.map((price) =>
+                          {
+                            if (price.currency.label === selectedCurrency.label)
+                            {
+                              return (
+                                <p
+                                  key={price.currency.label}
+                                  className="category-product-price"
+                                >
+                                  {`${price.currency.symbol} ${price.amount}`}
+                                </p>
+                              );
+                            }
+                          })}
+                        </div>
+                        {!product.inStock && (
+                        <div className="category-product-outOfStock-overlay-container">
+                          <p
+                            className="category-product-outOfStock-overlay"
+                          >
+                            OUT OF STOCK
 
-                  </p>
-                </div>
-                )}
-              </Link>
-              {this.state[id] && inStock && (
+                          </p>
+                        </div>
+                        )}
+                      </Link>
+                    )
+                    : (
+                      <div
+                        className="category-product-attributes-wrapper"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => this.hideAttributes(product.id)}
+                        >
+                          ✖
+                        </button>
+                        <RenderInfo
+                          product={product}
+                          selectedCurrency={selectedCurrency}
+                          shoppingCartItems={shoppingCartItems}
+                          addItem={addItem}
+                          incrementQuantity={incrementQuantity}
+                          showDetails={false}
+                          providedClass="category-product"
+                        />
+                      </div>
+                    )
+                }
+              { (this.state.showButton[product.id] && !this.state.showDetails[product.id] && product.inStock) && (
               <button
                 type="button"
                 className="category-product-add-button"
+                onClick={() => this.showAttributes(product.id)}
               >
                 <img
                   src={emptyCart}
