@@ -61,38 +61,5 @@ class Navbar extends Component
     );
   }
 }
-// function Navbar({
-//   selectedCategory,
-//   setSelectedCategory,
-//   selectedCurrency,
-//   setSelectedCurrency,
-//   shoppingCartItems,
-//   setShoppingCartItems,
-//   setOverlayVisible,
-// })
-// {
-//   return (
-//     <div className="navbar">
-//       <NavbarCategories
-//         setSelectedCategory={setSelectedCategory}
-//         selectedCategory={selectedCategory}
-//       />
-//       <div className="navbar-brand-logo-container">
-//         <img src={brandIcon} alt="brand icon" className="brand-logo" />
-//       </div>
-//       <div className="navbar-controls-container">
-//         <CurrencySelector
-//           selectedCurrency={selectedCurrency}
-//           setSelectedCurrency={setSelectedCurrency}
-//         />
-//         <ShoppingCartIndicator
-//           shoppingCartItems={shoppingCartItems}
-//           setShoppingCartItems={setShoppingCartItems}
-//           setOverlayVisible={setOverlayVisible}
-//           selectedCurrency={selectedCurrency}
-//         />
-//       </div>
-//     </div>
-//   );
-// }
+
 export default Navbar;

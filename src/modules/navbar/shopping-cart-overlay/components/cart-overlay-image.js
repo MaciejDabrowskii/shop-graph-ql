@@ -24,16 +24,3 @@ class RenderImage extends Component
   }
 }
 export default RenderImage;
-
-// function RenderImage({ product })
-// {
-//   return (
-//     <div className="shoppingCart-overlay-image-container">
-//       <img
-//         src={product.gallery[0]}
-//         alt={product.name}
-//         className="shoppingCart-overlay-image"
-//       />
-//     </div>
-//   );
-// }

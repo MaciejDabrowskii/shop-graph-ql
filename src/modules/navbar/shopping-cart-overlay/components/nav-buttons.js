@@ -32,24 +32,3 @@ class NavButtons extends Component
 }
 
 export default NavButtons;
-
-// function NavButtons({ setShoppingCartItems })
-// {
-//   return (
-//     <div className="shoppingCart-overlay-navButtons-container">
-//       <Link
-//         to="/your-bag"
-//         className="shoppingCart-overlay-navButtons-viewBag"
-//       >
-//         VIEW BAG
-//       </Link>
-//       <button
-//         type="button"
-//         className="shoppingCart-overlay-navButtons-checkOut"
-//         // onClick={() => setShoppingCartItems([])}
-//       >
-//         CHECK OUT
-//       </button>
-//     </div>
-//   );
-// }

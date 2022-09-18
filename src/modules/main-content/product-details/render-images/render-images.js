@@ -49,31 +49,3 @@ class RenderImages extends Component
   }
 }
 export default RenderImages;
-
-// function RenderImages({ product })
-// {
-//   const [selectedImage, setSelectedImage] = useState(product.gallery[0]);
-
-//   return (
-//     <div className="product-details-images-container">
-//       <div className="product-details-images-sidebar">
-//         {product.gallery.map((image) => (
-//           <img
-//             src={image}
-//             key={image}
-//             className="product-details-images-sidebar-image"
-//             alt={`${product.name} small`}
-//             onClick={() => setSelectedImage(image)}
-//           />
-//         ))}
-//       </div>
-//       <div className="product-details-images-selected-container">
-//         <img
-//           className="product-details-images-selected-image"
-//           src={selectedImage}
-//           alt={`${product.name} big`}
-//         />
-//       </div>
-//     </div>
-//   );
-// }

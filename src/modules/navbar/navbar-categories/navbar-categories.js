@@ -64,41 +64,4 @@ class NavbarCategories extends Component
   }
 }
 
-// import React, { useEffect } from "react";
-// import { useQuery, gql } from "@apollo/client";
-// import { Link } from "react-router-dom";
-
-// const GET_CATEGORIES = gql`
-//   {
-//     categories {
-//       name
-//     }
-//   }
-// `;
-
-// function NavbarCategories({ setSelectedCategory, selectedCategory })
-// {
-//   const { data, loading, error } = useQuery(GET_CATEGORIES);
-
-//   useEffect(() =>
-//   {
-//     if (!loading)
-//     {
-//       if (selectedCategory === "")
-//       {
-//         data.categories.map(({ name }) =>
-//         {
-//           if (name === "all") setSelectedCategory(name);
-//         });
-//       }
-//     }
-//   }, [loading]);
-
-//   if (loading) return <h1>Loading...</h1>;
-//   if (error) console.log(error);
-
-//   return (
-
-//   );
-// }
 export default NavbarCategories;

@@ -21,12 +21,3 @@ class RenderDescription extends Component
   }
 }
 export default RenderDescription;
-
-// function RenderDescription({ description })
-// {
-//   return (
-//     <div className="product-details-info-description-container">
-//       <div dangerouslySetInnerHTML={{ __html: description }} />
-//     </div>
-//   );
-// }
