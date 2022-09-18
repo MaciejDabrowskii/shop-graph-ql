@@ -19,15 +19,16 @@ class App extends Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      selectedCategory: "",
-      selectedCurrency: {
-        symbol: "",
-        label: "",
-      },
-      shoppingCartItems: [],
-      overlayVisible: false,
-    };
+    this.state = JSON.parse(localStorage.getItem("ShopData"))
+     || {
+       selectedCategory: "",
+       selectedCurrency: {
+         symbol: "",
+         label: "",
+       },
+       shoppingCartItems: [],
+       overlayVisible: false,
+     };
     this.setSelectedCategory = this.setSelectedCategory.bind(this);
     this.setSelectedCurrency = this.setSelectedCurrency.bind(this);
     this.setOverlayVisible = this.setOverlayVisible.bind(this);
@@ -36,10 +37,15 @@ class App extends Component
     this.removeItem = this.removeItem.bind(this);
   }
 
-  // I have decided to go with the constat approach of using prevState in all state setters
-  // insted:
-  // setSelectedCategory = (category) => this.setState({ selectedCategory: category });
-  // setSelectedCurrency = (currency) => this.setState({ selectedCurrency: currency });
+  componentDidMount()
+  {
+
+  }
+
+  componentDidUpdate()
+  {
+    localStorage.setItem("ShopData", JSON.stringify(this.state));
+  }
 
   setSelectedCategory = (category) => this.setState((prevState) => ({
     ...prevState,

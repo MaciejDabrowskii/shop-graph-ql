@@ -18,7 +18,8 @@ class ShoppingCartIndicator extends Component
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleClickInside = this.handleClickInside.bind(this);
 
-    this.state = {
+    this.state = JSON.parse(localStorage.getItem("CartOverlayData"))
+    || {
       itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
       cartOverlayVisible: false,
     };
@@ -35,6 +36,7 @@ class ShoppingCartIndicator extends Component
   {
     const { shoppingCartItems } = this.props;
     const { itemsQuantity } = this.state;
+    localStorage.setItem("CartOverlayData", JSON.stringify(this.state));
 
     if (itemsQuantity !== calculateCartItemsQuantity(shoppingCartItems))
     {

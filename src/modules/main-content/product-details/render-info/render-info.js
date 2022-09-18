@@ -16,6 +16,7 @@ class RenderInfo extends Component
       selectedAttributes: {},
       showWarning: false,
     };
+
     this.setInitialAttributes = this.setInitialAttributes.bind(this);
     this.generateCartiD = this.generateCartiD.bind(this);
     this.warning = this.warning.bind(this);
