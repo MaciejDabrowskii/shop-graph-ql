@@ -364,6 +364,9 @@ button:hover {
 }
 
 .shoppingCart-overlay-navButtons-viewBag {
+    font-size: 1.75rem;
+    text-align: center;
+    text-decoration: none;
     border: 1px solid var(--dark);
     padding: 1.5rem 0;
     font-weight: 600;
