@@ -11,6 +11,7 @@
 .navbar-categories-container {
   display: flex;
   justify-content: space-evenly;
+  box-sizing: border-box;
 }
 
 .navbar-category {
@@ -18,6 +19,9 @@
   padding: 3.5rem 2rem;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
+  border-bottom: 3px solid rgba(255, 255, 255, 0);
+  transition: all .3s ease-in-out; 
 }
 
 .navbar-category.active {
@@ -93,6 +97,10 @@
   font-size: 2.25rem;
   line-height: 3.75rem;
   margin: 0.5rem 1.5rem 0.5rem 0;
+}
+
+.currency-selector-item > * {
+  transition: all .3s ease-in-out; 
 }
 
 .currency-selector-item:hover > * {
@@ -281,6 +289,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all .3s ease-in-out; 
 }
 
 .shoppingCart-overlay-quantityControl-container > button:hover {
@@ -336,6 +345,7 @@
   font-weight: 600;
   cursor: pointer;
   width: 17.5rem;
+  transition: all .3s ease-in-out; 
 }
 .shoppingCart-overlay-navButtons-viewBag:hover {
   background-color: var(--dark);
@@ -350,6 +360,7 @@
   width: 17.5rem;
   background-color: var(--green);
   color: white;
+  transition: all .3s ease-in-out; 
 }
 
 .shoppingCart-overlay-navButtons-checkOut:hover {

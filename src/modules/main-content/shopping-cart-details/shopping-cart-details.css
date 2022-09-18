@@ -97,6 +97,7 @@
   height: 5.75rem;
   font-size: 4rem;
   cursor: pointer;
+  transition: all .3s ease-in-out; 
 }
 
 .shoppingCartDetails-quantityControl-container > button:hover {
