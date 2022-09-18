@@ -55,11 +55,13 @@
 }
 
 .category-product-name {
+  font-size: 2.25rem;
   font-weight: 300;
 }
 
 .category-product-price {
   font-weight: 500;
+  font-size: 2.25rem;
 }
 
 .category-product-add-button {
@@ -158,10 +160,6 @@
   font-weight: 600;
 }
 
-.category-product-name {
-  font-size: 3rem;
-}
-
 .category-product-attributes-container {
   display: flex;
   flex-direction: column;
@@ -223,10 +221,6 @@
 
 .category-product-price-heading {
   font-size: 2.25rem;
-}
-
-.category-product-price {
-  font-size: 2rem;
 }
 
 .category-product-button-container {
