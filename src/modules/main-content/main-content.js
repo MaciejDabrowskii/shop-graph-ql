@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 import { gql } from "@apollo/client";

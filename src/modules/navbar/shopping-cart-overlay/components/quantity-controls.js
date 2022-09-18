@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { Component } from "react";
 
 class QuantityControls extends Component

@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 
 class RenderAttributes extends Component

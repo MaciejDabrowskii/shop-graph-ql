@@ -1,7 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable consistent-return */
 import React, { Component, createRef } from "react";
 import cartIcon from "../../../assets/EmptyCart.svg";
 import ShoppingCartOverlay

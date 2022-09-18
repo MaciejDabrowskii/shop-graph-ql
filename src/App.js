@@ -1,8 +1,3 @@
-/* eslint-disable react/no-unused-class-component-methods */
-/* eslint-disable react/no-unused-state */
-
-/* eslint-disable max-len */
-/* eslint-disable react/react-in-jsx-scope */
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
@@ -91,7 +86,8 @@ class App extends Component
     const { cartId } = passedItem;
     this.setState((prevState) => ({
       ...prevState,
-      shoppingCartItems: prevState.shoppingCartItems.filter((item) => item.cartId !== cartId),
+      shoppingCartItems: prevState.shoppingCartItems
+        .filter((item) => item.cartId !== cartId),
     }));
   };
 

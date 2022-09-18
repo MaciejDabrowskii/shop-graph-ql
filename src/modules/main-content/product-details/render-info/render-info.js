@@ -1,5 +1,4 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable no-return-assign */
 import React, { Component } from "react";
 import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
