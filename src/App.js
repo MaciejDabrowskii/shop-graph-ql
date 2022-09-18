@@ -28,11 +28,6 @@ class App extends Component
     this.clearCart = this.clearCart.bind(this);
   }
 
-  componentDidMount()
-  {
-
-  }
-
   componentDidUpdate()
   {
     localStorage.setItem("ShopData", JSON.stringify(this.state));

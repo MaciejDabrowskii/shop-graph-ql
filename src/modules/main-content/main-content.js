@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 import { gql } from "@apollo/client";
 import { Routes, Route } from "react-router-dom";
+import Loading from "./loading-component/loading-component";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
@@ -66,8 +67,13 @@ class MainContent extends Component
         query={GET_CATEGORY_PRODUCTS}
         variables={{ name: selectedCategory }}
       >
-        {({ data, loading }) =>
+        {({ data, loading, error }) =>
         {
+          if (loading) return <Loading height="600px" />;
+          if (error)
+          {
+            console.log(error); return <p>Error, check out the console</p>;
+          }
           if (!loading)
           {
             const { category: { products, name } } = data;

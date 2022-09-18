@@ -4,6 +4,7 @@
 import React, { Component, createRef } from "react";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
+import Loading from "../../main-content/loading-component/loading-component";
 
 const GET_CURRENCY = gql`
   {
@@ -61,8 +62,13 @@ class CurrencySelector extends Component
         query={GET_CURRENCY}
         onCompleted={(data) => setSelectedCurrency(data.currencies[0])}
       >
-        {({ data, loading }) =>
+        {({ data, loading, error }) =>
         {
+          if (loading) return <Loading height="100%" />;
+          if (error)
+          {
+            console.log(error); return <p>Error, check out the console</p>;
+          }
           if (!loading)
           {
             const { currencies } = data;

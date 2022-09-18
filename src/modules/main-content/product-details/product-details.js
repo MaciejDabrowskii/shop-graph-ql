@@ -4,6 +4,7 @@ import { Query } from "@apollo/client/react/components";
 import React, { Component } from "react";
 import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
+import Loading from "../loading-component/loading-component";
 import "./product-details.css";
 
 const GET_PRODUCT = gql`
@@ -59,8 +60,13 @@ class ProductDetails extends Component
         query={GET_PRODUCT}
         variables={{ id: productId }}
       >
-        {({ data, loading }) =>
+        {({ data, loading, error }) =>
         {
+          if (loading) return <Loading height="600px" />;
+          if (error)
+          {
+            console.log(error); return <p>Error, check out the console</p>;
+          }
           if (!loading)
           {
             const { product } = data;

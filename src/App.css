@@ -22,6 +22,30 @@
   color: var(--dark);
 }
 
+.spiner-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spiner {
+  color: var(--green);
+  animation: 2s rotate infinite;
+  object-fit: none;
+}
+
+@keyframes rotate {
+  
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .main-content-container {
   position: relative;
   padding: 10rem 12.5rem;
