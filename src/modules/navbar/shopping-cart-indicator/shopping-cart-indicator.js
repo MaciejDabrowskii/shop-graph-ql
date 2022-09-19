@@ -73,11 +73,7 @@ class ShoppingCartIndicator extends Component
       ...prevState,
       cartOverlayVisible: !prevState.cartOverlayVisible,
     }));
-
-    if (!this.props.overlayVisible)
-    {
-      this.props.setOverlayVisible();
-    }
+    this.props.setOverlayVisible();
   };
 
   render()
