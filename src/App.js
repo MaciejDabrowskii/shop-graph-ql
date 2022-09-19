@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
@@ -26,6 +27,7 @@ class App extends Component
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.clearCart = this.clearCart.bind(this);
+    this.addToCartAttributeless = this.addToCartAttributeless.bind(this);
   }
 
   componentDidUpdate()
@@ -94,6 +96,33 @@ class App extends Component
     }));
   };
 
+  addToCartAttributeless = (product) =>
+  {
+    const { attributes, id } = product;
+    const { shoppingCartItems } = this.state;
+    if (
+      shoppingCartItems.some((item) => item.cartId === id)
+    )
+    {
+      shoppingCartItems.map((item) =>
+      {
+        if (
+          item.cartId === id
+        ) this.incrementQuantity(item);
+      });
+    }
+    else
+    {
+      this.addItem({
+        ...product,
+        cartId: id,
+        quantity: 1,
+        selectedAttributes: attributes,
+      });
+    }
+    console.log(shoppingCartItems);
+  };
+
   render()
   {
     const {
@@ -130,6 +159,7 @@ class App extends Component
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}
             clearCart={this.clearCart}
+            addToCartAttributeless={this.addToCartAttributeless}
           />
         </BrowserRouter>
       </div>

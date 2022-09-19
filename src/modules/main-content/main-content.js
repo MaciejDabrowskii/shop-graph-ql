@@ -61,6 +61,7 @@ class MainContent extends Component
       decrementQuantity,
       removeItem,
       clearCart,
+      addToCartAttributeless,
     } = this.props;
     return (
       <Query
@@ -90,6 +91,7 @@ class MainContent extends Component
                         shoppingCartItems={shoppingCartItems}
                         addItem={addItem}
                         incrementQuantity={incrementQuantity}
+                        addToCartAttributeless={addToCartAttributeless}
                       />
                     )}
                   />

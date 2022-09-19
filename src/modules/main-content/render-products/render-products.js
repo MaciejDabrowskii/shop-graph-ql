@@ -81,6 +81,7 @@ class RenderProducts extends Component
       shoppingCartItems,
       addItem,
       incrementQuantity,
+      addToCartAttributeless,
     } = this.props;
     return (
       <div className="category-products">
@@ -157,7 +158,11 @@ class RenderProducts extends Component
               <button
                 type="button"
                 className="category-product-add-button"
-                onClick={() => this.showAttributes(product.id)}
+                onClick={
+                  product.attributes.length > 0
+                    ? () => this.showAttributes(product.id)
+                    : () => addToCartAttributeless(product)
+                }
               >
                 <img
                   src={emptyCart}
