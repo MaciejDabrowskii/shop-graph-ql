@@ -71,7 +71,7 @@ class ShoppingCartIndicator extends Component
   {
     this.setState((prevState) => ({
       ...prevState,
-      cartOverlayVisible: true,
+      cartOverlayVisible: !prevState.cartOverlayVisible,
     }));
 
     if (!this.props.overlayVisible)
