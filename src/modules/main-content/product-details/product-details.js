@@ -68,6 +68,7 @@ function ProductDetails({
           selectedCurrency={selectedCurrency}
           shoppingCartItems={shoppingCartItems}
           setShoppingCartItems={setShoppingCartItems}
+          providedClass="product-details-info"
         />
       </div>
     );

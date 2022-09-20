@@ -6,43 +6,41 @@ import {
 } from "../../../shopping-cart-functions/shopping-cart-functions";
 
 function QuantityControls({
-  product,
+  product: { cartId, quantity },
   shoppingCartItems,
   setShoppingCartItems,
+  providedClass,
 })
 {
   return (
-    <div className="shoppingCart-overlay-quantityControl-container">
+    <div className={`${providedClass}-quantityControl-container`}>
       <button
         type="button"
         onClick={() => setShoppingCartItems(
           () => shoppingCartItems.map(
-            (item) => (item.cartId === product.cartId
+            (item) => (item.cartId === cartId
               ? increaseQuantity(item) : item),
           ),
         )}
       >
         {"\u002B"}
-
       </button>
-      <p>{product.quantity}</p>
+      <p>{quantity}</p>
       <button
         type="button"
-        className="shoppingCart-overlay-quantityControl-minus"
         onClick={
-          product.quantity > 1
+          quantity > 1
             ? () => setShoppingCartItems(() => shoppingCartItems.map(
-              (item) => (item.cartId === product.cartId
+              (item) => (item.cartId === cartId
                 ? decreaseQuantity(item)
                 : item),
             ))
             : () => setShoppingCartItems(() => shoppingCartItems.filter(
-              (item) => item.cartId !== product.cartId,
+              (item) => item.cartId !== cartId,
             ))
         }
       >
         {"\u2212"}
-
       </button>
 
     </div>

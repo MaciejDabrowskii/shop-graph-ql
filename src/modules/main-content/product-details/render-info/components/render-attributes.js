@@ -2,11 +2,14 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 
-function RenderAttributes({
-  attributes,
-  selectedAttributes,
-  setSelectedAttributes,
-})
+function RenderAttributes(
+  {
+    attributes,
+    selectedAttributes,
+    setSelectedAttributes,
+    providedClass,
+  },
+)
 {
   const updateAttributes = (e, attribute) =>
   {
@@ -19,33 +22,34 @@ function RenderAttributes({
     <div className="product-details-info-attributes-container">
       {attributes.map((attribute) =>
       {
-        if (attribute.name === "Color")
+        const { name, items, id } = attribute;
+        if (name === "Color")
         {
           return (
             <div
-              className="product-details-info-attribute-container"
-              key={attribute.name}
+              className={`${providedClass}-attribute-container`}
+              key={name}
             >
-              <p className="product-details-info-attribute-name">
-                {`${attribute.name.toUpperCase()}:`}
+              <p className={`${providedClass}-attribute-name`}>
+                {`${name.toUpperCase()}:`}
               </p>
-              <div className="product-details-info-attribute-values-container">
-                {attribute.items.map((item) => (
+              <div className={`${providedClass}-attribute-values-container`}>
+                {items.map((item) => (
                   <div
-                    className={selectedAttributes[attribute.name] === item.id
-                      ? "product-details-info-attribute-wrapper active"
-                      : "product-details-info-attribute-wrapper"}
+                    className={selectedAttributes[name] === item.id
+                      ? `${providedClass}-attribute-wrapper active`
+                      : `${providedClass}-attribute-wrapper`}
                     key={item.value}
                   >
                     <label
-                      className="product-details-info-attribute-color"
+                      className={`${providedClass}-attribute-color`}
                       style={
-                        {
-                          backgroundColor: item.value,
-                          border: item.id === "White"
-                            ? "1px solid rgba(0, 0, 0, 0.400)" : "",
-                        }
-                      }
+                    {
+                      backgroundColor: item.value,
+                      border: item.id === "White"
+                        ? "1px solid rgba(0, 0, 0, 0.400)" : "",
+                    }
+                  }
                       htmlFor={item.id}
                     >
                       <input
@@ -64,27 +68,27 @@ function RenderAttributes({
         }
         return (
           <div
-            className="product-details-info-attribute-container"
-            key={attribute.name}
+            className={`${providedClass}-attribute-container`}
+            key={name}
           >
-            <p className="product-details-info-attribute-name">
-              {`${attribute.name.toUpperCase()}:`}
+            <p className={`${providedClass}-attribute-name`}>
+              {`${name.toUpperCase()}:`}
             </p>
             <div
-              className="product-details-info-attribute-values-container"
+              className={`${providedClass}-attribute-values-container`}
             >
-              {attribute.items.map((item) => (
+              {items.map((item) => (
                 <label
-                  className={selectedAttributes[attribute.name] === item.id
-                    ? "product-details-info-attribute-value active"
-                    : "product-details-info-attribute-value"}
+                  className={selectedAttributes[name] === item.id
+                    ? `${providedClass}-attribute-value active`
+                    : `${providedClass}-attribute-value`}
                   htmlFor={item.name}
                   key={item.id + item.name}
                 >
                   <input
                     type="radio"
                     value={item.id}
-                    name={attribute.id}
+                    name={id}
                     onChange={(e) => updateAttributes(e, attribute)}
                     id={item.name}
                   />

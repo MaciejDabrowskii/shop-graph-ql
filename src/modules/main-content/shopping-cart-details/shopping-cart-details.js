@@ -10,11 +10,14 @@ import ImageSelector from "./image-selector/image-selector";
 import Details from "./details.js/details";
 import "./shopping-cart-details.css";
 
-function ShoppingCartDetails({
-  shoppingCartItems,
-  selectedCurrency,
-  setShoppingCartItems,
-})
+function ShoppingCartDetails(
+  {
+    shoppingCartItems,
+    selectedCurrency,
+    setShoppingCartItems,
+    providedClass,
+  },
+)
 {
   return (
     <div className="shoppingCartDetails-container">
@@ -22,14 +25,19 @@ function ShoppingCartDetails({
       {shoppingCartItems.map((item) => (
         <div key={item.cartId} className="shoppingCartDetails-item-container">
           <div className="shoppingCartDetails-item-data-wrapper">
-            <RenderName product={item} />
+            <RenderName
+              product={item}
+              providedClass={providedClass}
+            />
             <RenderPrice
               prices={item.prices}
               selectedCurrency={selectedCurrency}
+              providedClass={providedClass}
             />
             <SelectedValues
               attributes={item.attributes}
               selectedAttributes={item.selectedAttributes}
+              providedClass={providedClass}
             />
           </div>
           <div className="shoppingCartDetails-item-image-wrapper">
@@ -37,6 +45,7 @@ function ShoppingCartDetails({
               product={item}
               shoppingCartItems={shoppingCartItems}
               setShoppingCartItems={setShoppingCartItems}
+              providedClass={providedClass}
             />
             <ImageSelector product={item} />
           </div>
@@ -52,7 +61,6 @@ function ShoppingCartDetails({
         className="shoppingCartDetails-order-btn"
       >
         ORDER
-
       </button>
     </div>
   );

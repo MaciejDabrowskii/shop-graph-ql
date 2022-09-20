@@ -1,10 +1,10 @@
 import React from "react";
 
-function CartOverlayHeading({ itemsQuantity })
+function CartOverlayHeading({ providedClass, itemsQuantity })
 {
   return (
-    <div className="shoppingCart-overlay-heading">
-      <p className="shoppingCart-overlay-heading-bolder">
+    <div className={`${providedClass}-heading`}>
+      <p className={`${providedClass}-heading-bolder`}>
         My Bag,
         {" "}
         <span>

@@ -107,6 +107,7 @@ function MainContent({
               shoppingCartItems={shoppingCartItems}
               selectedCurrency={selectedCurrency}
               setShoppingCartItems={setShoppingCartItems}
+              providedClass="shoppingCartDetails"
             />
           )}
         />

@@ -1,32 +1,60 @@
 import React from "react";
 
-function SelectedValues({ attributes, selectedAttributes })
+function SelectedValues(
+  {
+    attributes,
+    selectedAttributes,
+    providedClass,
+  },
+)
 {
   return (
-    <div className="product-details-info-attributes-container">
-      {attributes.map((attribute) =>
+    <div className={
+      `${providedClass} product-details-info-attributes-container`
+      }
+    >
+      {attributes.map(({ name, items }) =>
       {
-        if (attribute.name === "Color")
+        if (name === "Color")
         {
           return (
             <div
-              className="product-details-info-attribute-container"
-              key={attribute.name}
+              className={
+              `${providedClass} product-details-info-attribute-container`
+              }
+              key={name}
             >
-              <p className="product-details-info-attribute-name">
-                {`${attribute.name.toUpperCase()}:`}
+              <p
+                className={
+                  `${providedClass} product-details-info-attribute-name`
+                }
+              >
+                {`${name.toUpperCase()}:`}
               </p>
-              <div className="product-details-info-attribute-values-container">
-                {attribute.items.map((item) => (
+              <div
+                className={
+                  `${providedClass}
+                   product-details-info-attribute-values-container`
+                }
+              >
+                {items.map(({ id, value }) => (
                   <div
-                    className={`product-details-info-attribute-wrapper${
-                      selectedAttributes[attribute.name] === item.id
-                        ? " selected" : ""}`}
-                    key={item.value}
+                    className={
+                      `${providedClass} product-details-info-attribute-wrapper${
+                        selectedAttributes[name] === id
+                          ? " selected" : ""}`
+                    }
+                    key={value}
                   >
                     <div
-                      style={{ backgroundColor: item.value }}
-                      className="product-details-info-attribute-color"
+                      style={{
+                        backgroundColor: value,
+                        border: id === "White"
+                          ? "1px solid rgba(0, 0, 0, 0.400)" : "",
+                      }}
+                      className={
+                        `${providedClass} product-details-info-attribute-color`
+                      }
                     />
                   </div>
                 ))}
@@ -36,25 +64,36 @@ function SelectedValues({ attributes, selectedAttributes })
         }
         return (
           <div
-            className="product-details-info-attribute-container"
-            key={attribute.name}
+            className={
+              `${providedClass} product-details-info-attribute-container`
+            }
+            key={name}
           >
-            <p className="product-details-info-attribute-name">
-              {`${attribute.name.toUpperCase()}:`}
+            <p
+              className={
+                `${providedClass} product-details-info-attribute-name`
+              }
+            >
+              {`${name.toUpperCase()}:`}
             </p>
             <div
-              className="
-                  product-details-info-attribute-values-container
-                  "
+              className={
+                `${providedClass}
+                 product-details-info-attribute-values-container`
+              }
             >
-              {attribute.items.map((item) => (
+              {items.map(({ id, displayValue }) => (
                 <div
-                  key={item.id}
-                  className={selectedAttributes[attribute.name] === item.id
-                    ? "product-details-info-attribute-value active"
-                    : "product-details-info-attribute-value"}
+                  key={id}
+                  className={
+                    selectedAttributes[name] === id
+                      ? `${providedClass}
+                       product-details-info-attribute-value active`
+                      : `${providedClass}
+                       product-details-info-attribute-value`
+                  }
                 >
-                  {item.displayValue}
+                  {displayValue}
                 </div>
               ))}
             </div>

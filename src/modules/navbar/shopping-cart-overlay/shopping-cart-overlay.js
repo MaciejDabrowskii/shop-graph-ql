@@ -20,7 +20,10 @@ function ShoppingCartOverlay({
 {
   return (
     <div className="shoppingCart-overlay-container">
-      <CartOverlayHeading itemsQuantity={itemsQuantity} />
+      <CartOverlayHeading
+        providedClass="shoppingCart-overlay"
+        itemsQuantity={itemsQuantity}
+      />
       <div className="shoppingCart-overlay-items-container">
         {shoppingCartItems.map((item) => (
           <div
@@ -29,15 +32,20 @@ function ShoppingCartOverlay({
           >
             <div className="shoppingCart-overlay-item-data-wrapper">
 
-              <RenderName product={item} />
+              <RenderName
+                providedClass="shoppingCart-overlay"
+                product={item}
+              />
               <RenderPrice
                 prices={item.prices}
                 selectedCurrency={selectedCurrency}
+                providedClass="shoppingCart-overlay"
               />
 
               <SelectedValues
                 attributes={item.attributes}
                 selectedAttributes={item.selectedAttributes}
+                providedClass="shoppingCart-overlay"
               />
 
             </div>
@@ -46,6 +54,7 @@ function ShoppingCartOverlay({
                 product={item}
                 shoppingCartItems={shoppingCartItems}
                 setShoppingCartItems={setShoppingCartItems}
+                providedClass="shoppingCart-overlay"
               />
               <RenderImage product={item} />
             </div>

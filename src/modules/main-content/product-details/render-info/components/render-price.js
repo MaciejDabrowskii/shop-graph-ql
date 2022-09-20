@@ -2,17 +2,23 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 
-function RenderPrice({ prices, selectedCurrency })
+function RenderPrice(
+  {
+    prices,
+    selectedCurrency,
+    providedClass,
+  },
+)
 {
   return (
-    <div className="product-details-info-price-container">
-      {prices.map((price) =>
+    <div className={`${providedClass}-price-container`}>
+      {prices.map(({ currency, amount }) =>
       {
-        if (price.currency.label === selectedCurrency.label)
+        if (currency.label === selectedCurrency.label)
         {
           return (
-            <p key={price.amount} className="product-details-info-price">
-              {price.currency.symbol + price.amount}
+            <p key={amount} className={`${providedClass}-price`}>
+              {currency.symbol + amount}
             </p>
           );
         }
