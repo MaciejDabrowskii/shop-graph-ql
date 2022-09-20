@@ -86,7 +86,8 @@ function RenderProducts(
           <div
             onMouseOver={() => handleMouseOver(product.id)}
             onMouseOut={() => handleMouseOut(product.id)}
-            className="category-product"
+            className={`category-product${showDetails[product.id]
+              ? " active" : ""}`}
             key={product.id}
           >
             {
