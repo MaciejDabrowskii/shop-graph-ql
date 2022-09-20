@@ -1,2 +1,4 @@
 node_modules
 assets
+# Ignore all js files:
+*.js

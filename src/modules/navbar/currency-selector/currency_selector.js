@@ -1,9 +1,10 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React, { useEffect, useState, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
+import Loading from "../../main-content/loading-component/loading-component";
 
 const GET_CURRENCY = gql`
   {
@@ -41,7 +42,6 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
     if (!loading)
     {
       setCurrencies(data.currencies);
-      console.log(currencies);
     }
   }, [loading]);
 
@@ -72,8 +72,11 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
     return () => document.removeEventListener("mousedown", handleClickOutside);
   });
 
-  if (error) return console.log(error);
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading height="100%" />;
+  if (error)
+  {
+    console.log(error); return <p>Error, check out the console</p>;
+  }
 
   return (
     <div

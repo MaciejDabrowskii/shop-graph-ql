@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
+import Loading from "./loading-component/loading-component";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query category($name: String!) {
@@ -70,8 +71,11 @@ function MainContent({
     }
   }, [data]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return console.log(error);
+  if (loading) return <Loading height="600px" />;
+  if (error)
+  {
+    console.log(error); return <p>Error, check out the console</p>;
+  }
 
   return (
     <div className="main-content-container">
@@ -83,6 +87,8 @@ function MainContent({
               products={products}
               selectedCurrency={selectedCurrency}
               categoryName={categoryName}
+              shoppingCartItems={shoppingCartItems}
+              setShoppingCartItems={setShoppingCartItems}
             />
           )}
         />

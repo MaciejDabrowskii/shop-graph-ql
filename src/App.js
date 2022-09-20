@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";

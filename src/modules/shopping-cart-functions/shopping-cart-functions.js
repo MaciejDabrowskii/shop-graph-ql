@@ -1,5 +1,5 @@
-/* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
+
 function increaseQuantity(product)
 {
   return { ...product, quantity: product.quantity + 1 };

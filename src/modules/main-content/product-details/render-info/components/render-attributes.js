@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
 import React from "react";
 
 function RenderAttributes(

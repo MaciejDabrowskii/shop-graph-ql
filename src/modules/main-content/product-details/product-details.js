@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 import "./product-details.css";
+import Loading from "../loading-component/loading-component";
 
 const GET_PRODUCT = gql`
   query product($id: String!) {
@@ -53,8 +54,11 @@ function ProductDetails({
     });
   }, [productId]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return console.log(error);
+  if (loading) return <Loading height="600px" />;
+  if (error)
+  {
+    console.log(error); return <p>Error, check out the console</p>;
+  }
 
   if (data)
   {
@@ -69,6 +73,7 @@ function ProductDetails({
           shoppingCartItems={shoppingCartItems}
           setShoppingCartItems={setShoppingCartItems}
           providedClass="product-details-info"
+          showDetails
         />
       </div>
     );

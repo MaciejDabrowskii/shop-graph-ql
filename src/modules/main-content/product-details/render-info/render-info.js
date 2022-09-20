@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
+
 import React, { useState } from "react";
 import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
@@ -13,6 +12,7 @@ function RenderInfo({
   shoppingCartItems,
   setShoppingCartItems,
   providedClass,
+  showDetails,
 })
 {
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
@@ -107,11 +107,13 @@ function RenderInfo({
           )}
         </div>
       ) : (
-        <div className={`${providedClass}-warning`}>
+        <div className={`${providedClass}-outOfStock-container`}>
           OUT OF STOCK
         </div>
       )}
-      <RenderDescription description={product.description} />
+      {showDetails && (
+        <RenderDescription description={product.description} />
+      )}
     </div>
   );
 }
