@@ -134,6 +134,7 @@ class RenderProducts extends Component
                     )
                     : (
                       <div
+                        key={product.id}
                         className="category-product-attributes-wrapper"
                       >
                         <button

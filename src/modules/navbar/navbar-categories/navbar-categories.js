@@ -32,7 +32,13 @@ class NavbarCategories extends Component
     return (
       <Query
         query={GET_CATEGORIES}
-        onCompleted={(data) => setSelectedCategory(data.categories[0].name)}
+        onCompleted={(data) =>
+        {
+          if (selectedCategory === "")
+          {
+            setSelectedCategory(data.categories[0].name);
+          }
+        }}
       >
         {({ data, loading, error }) =>
         {
