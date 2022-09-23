@@ -21,7 +21,7 @@ App created with [React](https://reactjs.org/) library.
 - [Endpoint](https://github.com/scandiweb/junior-react-endpoint)
   <br/>
 
-## The Project have 2 versions based on:
+## The Project has 2 versions based on:
 
 - [React Class Component - classComponent branch](https://github.com/MaciejDabrowskii/shop-graph-ql/tree/classComponent)
 - [React Function Component - main branch](https://github.com/MaciejDabrowskii/shop-graph-ql)
