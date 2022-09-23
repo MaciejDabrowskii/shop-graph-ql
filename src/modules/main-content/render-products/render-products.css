@@ -10,7 +10,7 @@
 .category-products-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 48.25rem);
-  grid-template-rows: repeat(auto-fill, 55.5rem);
+  grid-template-rows: repeat(auto-fill, minmax(55.5rem, 58rem));
   gap: 5rem;
   align-items: center;
   justify-content: center;
