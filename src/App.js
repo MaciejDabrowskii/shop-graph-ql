@@ -120,7 +120,6 @@ class App extends Component
         selectedAttributes: attributes,
       });
     }
-    console.log(shoppingCartItems);
   };
 
   render()
