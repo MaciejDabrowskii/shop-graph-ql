@@ -63,13 +63,16 @@ class ProductDetails extends Component
         {({ data, loading, error }) =>
         {
           if (loading) return <Loading height="600px" />;
+
           if (error)
           {
             console.log(error); return <p>Error, check out the console</p>;
           }
+
           if (!loading)
           {
             const { product } = data;
+
             return (
               <div className="product-details-container">
                 <RenderImages
@@ -92,4 +95,5 @@ class ProductDetails extends Component
     );
   }
 }
+
 export default ProductDetails;

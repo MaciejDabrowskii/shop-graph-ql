@@ -12,6 +12,7 @@ class RenderImage extends Component
     const {
       product: { gallery, name },
     } = this.props;
+
     return (
       <div className="shoppingCart-overlay-image-container">
         <img
@@ -23,4 +24,5 @@ class RenderImage extends Component
     );
   }
 }
+
 export default RenderImage;

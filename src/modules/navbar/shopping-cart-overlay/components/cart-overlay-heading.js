@@ -27,4 +27,5 @@ class CartOverlayHeading extends Component
     );
   }
 }
+
 export default CartOverlayHeading;

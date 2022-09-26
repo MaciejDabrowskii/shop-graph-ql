@@ -63,6 +63,7 @@ class RenderAttributes extends Component
               </div>
             );
           }
+
           return (
             <div
               className={`${providedClass}-attribute-container`}

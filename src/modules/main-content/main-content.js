@@ -63,6 +63,7 @@ class MainContent extends Component
       clearCart,
       addToCartAttributeless,
     } = this.props;
+
     return (
       <Query
         query={GET_CATEGORY_PRODUCTS}
@@ -71,13 +72,16 @@ class MainContent extends Component
         {({ data, loading, error }) =>
         {
           if (loading) return <Loading height="600px" />;
+
           if (error)
           {
             console.log(error); return <p>Error, check out the console</p>;
           }
+
           if (!loading)
           {
             const { category: { products, name } } = data;
+
             return (
               <div className="main-content-container">
                 <Routes>
@@ -135,4 +139,5 @@ class MainContent extends Component
     );
   }
 }
+
 export default MainContent;

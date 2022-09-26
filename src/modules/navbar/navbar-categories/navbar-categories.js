@@ -43,13 +43,16 @@ class NavbarCategories extends Component
         {({ data, loading, error }) =>
         {
           if (loading) return <Loading height="100%" />;
+
           if (error)
           {
             console.log(error); return <p>Error, check out the console</p>;
           }
+
           if (!loading)
           {
             const { categories } = data;
+
             return (
               <div className="navbar-categories-container">
                 {categories.map(({ name }) => (

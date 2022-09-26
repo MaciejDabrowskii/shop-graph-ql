@@ -13,6 +13,7 @@ class RenderName extends Component
       product: { brand, name },
       providedClass,
     } = this.props;
+
     return (
       <div className={`${providedClass}-name-container`}>
         <p className={`${providedClass}-name-brand`}>{brand}</p>

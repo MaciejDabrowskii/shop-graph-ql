@@ -16,6 +16,7 @@ class QuantityControls extends Component
       decrementQuantity,
       removeItem,
     } = this.props;
+
     return (
       <div className={`${providedClass}-quantityControl-container`}>
         <button
@@ -39,4 +40,5 @@ class QuantityControls extends Component
     );
   }
 }
+
 export default QuantityControls;

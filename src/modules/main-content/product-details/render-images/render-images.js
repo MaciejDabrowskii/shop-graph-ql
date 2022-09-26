@@ -7,7 +7,9 @@ class RenderImages extends Component
   constructor(props)
   {
     super(props);
+
     const { product: { gallery } } = this.props;
+
     this.state = { selectedImg: gallery[0] };
     this.setSelectedImage = this.setSelectedImage.bind(this);
   }
@@ -22,7 +24,9 @@ class RenderImages extends Component
     const {
       product: { name, gallery },
     } = this.props;
+
     const { selectedImg } = this.state;
+
     return (
       <div className="product-details-images-container">
         <div className="product-details-images-sidebar">
@@ -47,4 +51,5 @@ class RenderImages extends Component
     );
   }
 }
+
 export default RenderImages;

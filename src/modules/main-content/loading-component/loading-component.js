@@ -11,6 +11,7 @@ class Loading extends Component
   render()
   {
     const { height } = this.props;
+
     return (
       <div className="spiner-container">
         <img
@@ -24,4 +25,5 @@ class Loading extends Component
     );
   }
 }
+
 export default Loading;

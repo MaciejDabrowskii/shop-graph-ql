@@ -34,4 +34,5 @@ class RenderPrice extends Component
     );
   }
 }
+
 export default RenderPrice;

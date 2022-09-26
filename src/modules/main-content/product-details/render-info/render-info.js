@@ -27,7 +27,9 @@ class RenderInfo extends Component
   setInitialAttributes = () =>
   {
     const { product: { attributes } } = this.props;
+
     const initialObject = {};
+
     attributes.map((atribute) =>
     {
       initialObject[atribute.name] = "";
@@ -38,6 +40,7 @@ class RenderInfo extends Component
   generateCartiD = () =>
   {
     const { product: { id } } = this.props;
+
     const { selectedAttributes } = this.state;
 
     return id + Object.values(selectedAttributes)
@@ -61,6 +64,7 @@ class RenderInfo extends Component
   checkAttributes = () =>
   {
     const { selectedAttributes } = this.state;
+
     return Object.values(selectedAttributes)
       .every((attribute) => attribute !== "");
   };
@@ -73,6 +77,7 @@ class RenderInfo extends Component
       addItem,
       product,
     } = this.props;
+
     const { selectedAttributes } = this.state;
 
     if (this.checkAttributes())
@@ -104,6 +109,7 @@ class RenderInfo extends Component
   updateAttributes = (e, attributeName) =>
   {
     const { selectedAttributes } = this.state;
+
     this.setState((prevState) => ({
       ...prevState,
       selectedAttributes: {

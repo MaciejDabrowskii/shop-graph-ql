@@ -13,6 +13,7 @@ class RenderDescription extends Component
     const {
       description,
     } = this.props;
+
     return (
       <div className="product-details-info-description-container">
         <div dangerouslySetInnerHTML={{ __html: description }} />
@@ -20,4 +21,5 @@ class RenderDescription extends Component
     );
   }
 }
+
 export default RenderDescription;

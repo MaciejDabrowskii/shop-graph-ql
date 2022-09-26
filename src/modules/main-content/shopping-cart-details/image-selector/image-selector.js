@@ -15,7 +15,9 @@ class ImageSelector extends Component
   nextImage = () =>
   {
     const { selectedImage } = this.state;
+
     const { product: { gallery } } = this.props;
+
     selectedImage < gallery.length - 1
       ? this.setState((prevState) => ({
         selectedImage: prevState.selectedImage + 1,
@@ -26,7 +28,9 @@ class ImageSelector extends Component
   previousImage = () =>
   {
     const { selectedImage } = this.state;
+
     const { product: { gallery } } = this.props;
+
     selectedImage === 0
       ? this.setState({ selectedImage: gallery.length - 1 })
       : this.setState((prevState) => ({

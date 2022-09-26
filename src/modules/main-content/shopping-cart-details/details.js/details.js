@@ -35,4 +35,5 @@ function Details({ shoppingCartItems, selectedCurrency })
     </div>
   );
 }
+
 export default Details;

@@ -11,6 +11,7 @@ class NavButtons extends Component
   render()
   {
     const { clearCart } = this.props;
+
     return (
       <div className="shoppingCart-overlay-navButtons-container">
         <Link

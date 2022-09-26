@@ -58,6 +58,7 @@ class App extends Component
   incrementQuantity = (passedItem) =>
   {
     const { cartId } = passedItem;
+
     this.setState((prevState) => ({
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems.map((item) => (
@@ -69,6 +70,7 @@ class App extends Component
   decrementQuantity = (passedItem) =>
   {
     const { cartId } = passedItem;
+
     this.setState((prevState) => ({
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems.map((item) => (
@@ -81,6 +83,7 @@ class App extends Component
   removeItem = (passedItem) =>
   {
     const { cartId } = passedItem;
+
     this.setState((prevState) => ({
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems
@@ -99,7 +102,9 @@ class App extends Component
   addToCartAttributeless = (product) =>
   {
     const { attributes, id } = product;
+
     const { shoppingCartItems } = this.state;
+
     if (
       shoppingCartItems.some((item) => item.cartId === id)
     )

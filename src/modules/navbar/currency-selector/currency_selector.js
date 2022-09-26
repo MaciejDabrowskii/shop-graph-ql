@@ -65,13 +65,16 @@ class CurrencySelector extends Component
         {({ data, loading, error }) =>
         {
           if (loading) return <Loading height="100%" />;
+
           if (error)
           {
             console.log(error); return <p>Error, check out the console</p>;
           }
+
           if (!loading)
           {
             const { currencies } = data;
+
             return (
               <div
                 className="currency-selector-container"
@@ -123,4 +126,5 @@ class CurrencySelector extends Component
     );
   }
 }
+
 export default CurrencySelector;

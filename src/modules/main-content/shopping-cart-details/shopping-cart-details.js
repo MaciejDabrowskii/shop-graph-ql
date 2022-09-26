@@ -28,6 +28,7 @@ class ShoppingCartDetails extends Component
       providedClass,
       clearCart,
     } = this.props;
+
     return (
       <div className="shoppingCartDetails-container">
         <h1 className="shoppingCartDetails-heading">CART</h1>
@@ -77,4 +78,5 @@ class ShoppingCartDetails extends Component
     );
   }
 }
+
 export default ShoppingCartDetails;

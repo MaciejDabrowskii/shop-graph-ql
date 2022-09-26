@@ -24,6 +24,40 @@
     "no-useless-constructor": [0],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "padding-line-between-statements": [
+      "error",
+      {
+          "blankLine": "always",
+          "prev": "*",
+          "next": [
+              "block",
+              "block-like",
+              "cjs-export",
+              "class",
+              "const",
+              "export",
+              "import",
+              "let",
+              "var"
+          ]
+      },
+      {
+          "blankLine": "always",
+          "prev": [
+              "block",
+              "block-like",
+              "cjs-export",
+              "class",
+              "const",
+              "export",
+              "import",
+              "let",
+              "var"
+          ],
+          "next": "*"
+      },
+      { "blankLine": "any", "prev": ["export", "import"], "next": ["export", "import"] }
+  ]
   }
 }

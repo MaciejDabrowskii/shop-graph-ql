@@ -69,6 +69,7 @@ class SelectedValues extends Component
               </div>
             );
           }
+
           return (
             <div
               className={

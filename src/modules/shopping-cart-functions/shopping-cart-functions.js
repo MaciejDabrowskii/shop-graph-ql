@@ -7,6 +7,7 @@ function calculateSum(shoppingCartItems, selectedCurrency)
       shoppingCartItems.reduce((sum, item) =>
       {
         let selectedPrice = 0;
+
         item.prices.map((price) =>
         {
           if (price.currency.label === selectedCurrency.label)
@@ -30,6 +31,7 @@ function calculateTax(sum, items, currency)
 {
   return Math.round(sum(items, currency) * 0.21 * 100) / 100;
 }
+
 export {
   calculateSum,
   calculateCartItemsQuantity,

@@ -28,10 +28,12 @@ class RenderProducts extends Component
   setInitialState = () =>
   {
     const { products } = this.props;
+
     const initialObject = {
       showButton: {},
       showDetails: {},
     };
+
     products.map((product) =>
     {
       initialObject.showButton[product.id] = false;
@@ -83,6 +85,7 @@ class RenderProducts extends Component
       incrementQuantity,
       addToCartAttributeless,
     } = this.props;
+
     return (
       <div className="category-products">
         <p className="category-heading">{categoryName.toUpperCase()}</p>
@@ -180,4 +183,5 @@ class RenderProducts extends Component
     );
   }
 }
+
 export default RenderProducts;

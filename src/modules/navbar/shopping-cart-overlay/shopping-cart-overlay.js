@@ -29,6 +29,7 @@ class ShoppingCartOverlay extends Component
       removeItem,
       clearCart,
     } = this.props;
+
     return (
       <div className="shoppingCart-overlay-container">
         <CartOverlayHeading
@@ -87,4 +88,5 @@ class ShoppingCartOverlay extends Component
     );
   }
 }
+
 export default ShoppingCartOverlay;
