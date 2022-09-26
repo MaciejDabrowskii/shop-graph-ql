@@ -11,16 +11,19 @@ function App()
       ? JSON.parse(localStorage.getItem("selectedCategory"))
       : ""),
   );
+
   const [selectedCurrency, setSelectedCurrency] = useState(
     () => (localStorage.getItem("selectedCurrency") !== null
       ? JSON.parse(localStorage.getItem("selectedCurrency"))
       : {}),
   );
+
   const [shoppingCartItems, setShoppingCartItems] = useState(
     () => (localStorage.getItem("shoppingCartItems") !== null
       ? JSON.parse(localStorage.getItem("shoppingCartItems"))
       : []),
   );
+
   const [overlayVisible, setOverlayVisible] = useState(false);
 
   function setLocalStorageData(category, items, currency)

@@ -55,6 +55,7 @@ function ProductDetails({
   }, [productId]);
 
   if (loading) return <Loading height="600px" />;
+
   if (error)
   {
     console.log(error); return <p>Error, check out the console</p>;
@@ -79,4 +80,5 @@ function ProductDetails({
     );
   }
 }
+
 export default ProductDetails;

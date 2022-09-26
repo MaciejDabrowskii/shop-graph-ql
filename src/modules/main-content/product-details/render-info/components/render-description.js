@@ -10,4 +10,5 @@ function RenderDescription({ description })
     </div>
   );
 }
+
 export default RenderDescription;

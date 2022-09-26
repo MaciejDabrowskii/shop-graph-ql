@@ -27,4 +27,5 @@ function RenderPrice(
     </div>
   );
 }
+
 export default RenderPrice;

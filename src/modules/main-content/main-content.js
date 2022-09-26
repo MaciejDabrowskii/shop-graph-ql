@@ -50,6 +50,7 @@ function MainContent({
 })
 {
   const [products, setProducts] = useState([]);
+
   const [getProducts, { loading, error, data }] = useLazyQuery(
     GET_CATEGORY_PRODUCTS,
   );
@@ -72,6 +73,7 @@ function MainContent({
   }, [data]);
 
   if (loading) return <Loading height="600px" />;
+
   if (error)
   {
     console.log(error); return <p>Error, check out the console</p>;
@@ -122,4 +124,5 @@ function MainContent({
     </div>
   );
 }
+
 export default MainContent;

@@ -21,6 +21,7 @@ function RenderProducts(
   const setInitialState = () =>
   {
     let obj = {};
+
     products.map((product) =>
     {
       obj = {
@@ -32,6 +33,7 @@ function RenderProducts(
   };
 
   const [isHovering, setIsHovering] = useState(setInitialState());
+
   const [showDetails, setSwoDetails] = useState(setInitialState());
 
   const handleMouseOver = (id) =>
@@ -179,4 +181,5 @@ function RenderProducts(
     </div>
   );
 }
+
 export default RenderProducts;

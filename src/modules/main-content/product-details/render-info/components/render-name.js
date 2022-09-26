@@ -14,4 +14,5 @@ function RenderName(
     </div>
   );
 }
+
 export default RenderName;

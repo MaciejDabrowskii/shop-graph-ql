@@ -32,6 +32,7 @@ function NavbarCategories({ setSelectedCategory, selectedCategory })
   }, [loading]);
 
   if (loading) return <Loading height="100%" />;
+
   if (error)
   {
     console.log(error); return <p>Error, check out the console</p>;
@@ -57,4 +58,5 @@ function NavbarCategories({ setSelectedCategory, selectedCategory })
     </div>
   );
 }
+
 export default NavbarCategories;

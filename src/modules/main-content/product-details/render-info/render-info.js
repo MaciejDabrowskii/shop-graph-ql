@@ -18,6 +18,7 @@ function RenderInfo({
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
     const obj = {};
+
     product.attributes.map((atribute) =>
     {
       obj[atribute.name] = "";
@@ -69,6 +70,7 @@ function RenderInfo({
     }
     else warning();
   }
+
   return (
     <div className={`${providedClass}-container`}>
       <RenderName
@@ -117,4 +119,5 @@ function RenderInfo({
     </div>
   );
 }
+
 export default RenderInfo;

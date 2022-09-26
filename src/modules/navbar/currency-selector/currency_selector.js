@@ -73,6 +73,7 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
   });
 
   if (loading) return <Loading height="100%" />;
+
   if (error)
   {
     console.log(error); return <p>Error, check out the console</p>;
@@ -123,4 +124,5 @@ function CurrencySelector({ selectedCurrency, setSelectedCurrency })
     </div>
   );
 }
+
 export default CurrencySelector;

@@ -10,6 +10,7 @@ function ImageSelector({ product })
       ? setSelectedImage(selectedImage + 1)
       : setSelectedImage(0);
   }
+
   function previousImage()
   {
     return selectedImage === 0
@@ -42,4 +43,5 @@ function ImageSelector({ product })
     </div>
   );
 }
+
 export default ImageSelector;

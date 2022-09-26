@@ -65,4 +65,5 @@ function ShoppingCartDetails(
     </div>
   );
 }
+
 export default ShoppingCartDetails;

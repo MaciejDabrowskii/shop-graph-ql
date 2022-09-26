@@ -16,7 +16,9 @@ function ShoppingCartIndicator({
 })
 {
   const cartCpntainerDiv = useRef();
+
   const cartIndicator = useRef();
+
   const [itemsQuantity, setItemsQuantity] = useState(0);
 
   const [cartOverlayVisible, setCartOverlayVisible] = useState(false);
@@ -73,4 +75,5 @@ function ShoppingCartIndicator({
     </div>
   );
 }
+
 export default ShoppingCartIndicator;

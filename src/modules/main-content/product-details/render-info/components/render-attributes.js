@@ -16,11 +16,13 @@ function RenderAttributes(
       [attribute.name]: e.target.value,
     });
   };
+
   return (
     <div className="product-details-info-attributes-container">
       {attributes.map((attribute) =>
       {
         const { name, items, id } = attribute;
+
         if (name === "Color")
         {
           return (
@@ -64,6 +66,7 @@ function RenderAttributes(
             </div>
           );
         }
+
         return (
           <div
             className={`${providedClass}-attribute-container`}
@@ -100,4 +103,5 @@ function RenderAttributes(
     </div>
   );
 }
+
 export default RenderAttributes;

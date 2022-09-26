@@ -14,4 +14,5 @@ function CartOverlayHeading({ providedClass, itemsQuantity })
     </div>
   );
 }
+
 export default CartOverlayHeading;

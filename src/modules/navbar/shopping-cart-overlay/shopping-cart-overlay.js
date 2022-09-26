@@ -72,4 +72,5 @@ function ShoppingCartOverlay({
     </div>
   );
 }
+
 export default ShoppingCartOverlay;

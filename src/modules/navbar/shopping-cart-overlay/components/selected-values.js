@@ -62,6 +62,7 @@ function SelectedValues(
             </div>
           );
         }
+
         return (
           <div
             className={

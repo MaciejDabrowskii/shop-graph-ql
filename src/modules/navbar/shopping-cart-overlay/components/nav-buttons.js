@@ -23,4 +23,5 @@ function NavButtons({ setShoppingCartItems })
     </div>
   );
 }
+
 export default NavButtons;

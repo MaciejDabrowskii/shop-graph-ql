@@ -12,4 +12,5 @@ function RenderImage({ product })
     </div>
   );
 }
+
 export default RenderImage;

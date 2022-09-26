@@ -14,4 +14,5 @@ function Loading({ height })
     </div>
   );
 }
+
 export default Loading;

@@ -45,4 +45,5 @@ function QuantityControls({
     </div>
   );
 }
+
 export default QuantityControls;
