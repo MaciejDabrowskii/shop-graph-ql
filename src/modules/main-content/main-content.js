@@ -99,13 +99,13 @@ class MainContent extends Component
                       />
                     )}
                   />
-                  {products.map((product) => (
+                  {products.map(({ id }) => (
                     <Route
-                      path={`/${product.id}`}
-                      key={product.id}
+                      path={`/${id}`}
+                      key={id}
                       element={(
                         <ProductDetails
-                          productId={product.id}
+                          productId={id}
                           selectedCurrency={selectedCurrency}
                           shoppingCartItems={shoppingCartItems}
                           addItem={addItem}
