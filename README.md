@@ -26,9 +26,11 @@ App created with [React](https://reactjs.org/) library.
 - [React Class Component - classComponent branch](https://github.com/MaciejDabrowskii/shop-graph-ql/tree/classComponent)
 - [React Function Component - main branch](https://github.com/MaciejDabrowskii/shop-graph-ql)
 
-<img alt="App preview" src="https://github.com/MaciejDabrowskii/PROJECT-PORTFOLIO/blob/main/src/assets/Projects/Shop/l/shop_1.jpeg?raw=true">
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%201.png?raw=true">
 <br/>
-<img alt="App preview" src="https://github.com/MaciejDabrowskii/PROJECT-PORTFOLIO/blob/main/src/assets/Projects/Shop/l/shop_3.jpeg?raw=true">
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%202.png?raw=true">
+<br/>
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%203.png?raw=true">
 <br/>
 
 ### Technologies
