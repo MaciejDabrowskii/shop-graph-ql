@@ -44,15 +44,11 @@ function NavbarCategories({ setSelectedCategory, selectedCategory })
         <Link
           to="/"
           key={name}
+          onClick={() => setSelectedCategory(name)}
+          className={`navbar-category${
+            selectedCategory === name ? " active" : ""}`}
         >
-          <button
-            type="button"
-            onClick={() => setSelectedCategory(name)}
-            className={`navbar-category${
-              selectedCategory === name ? " active" : ""}`}
-          >
-            {name.toUpperCase()}
-          </button>
+          {name.toUpperCase()}
         </Link>
       ))}
     </div>
