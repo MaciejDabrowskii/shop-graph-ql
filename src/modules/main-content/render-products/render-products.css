@@ -137,6 +137,7 @@
   cursor: pointer;
   font-size: 3rem;
   transition: all 0.3s ease-in-out;
+  background-color: inherit;
 }
 
 .category-product-attributes-wrapper > button:hover {
