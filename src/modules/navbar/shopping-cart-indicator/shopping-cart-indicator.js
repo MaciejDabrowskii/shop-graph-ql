@@ -17,12 +17,13 @@ class ShoppingCartIndicator extends Component
     const { shoppingCartItems } = this.props;
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.handleClickInside = this.handleClickInside.bind(this);
+    this.toggleCartVisibility = this.toggleCartVisibility.bind(this);
+    this.closeCartOverlay = this.closeCartOverlay.bind(this);
 
     this.state = JSON.parse(localStorage.getItem("CartOverlayData"))
     || {
       itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
-      cartOverlayVisible: false,
+      isCartOverlayVisible: false,
     };
     this.cartContainerDiv = createRef();
     this.cartIndicator = createRef();
@@ -57,27 +58,43 @@ class ShoppingCartIndicator extends Component
 
   handleClickOutside = (event) =>
   {
+    const { isOverlayVisible, toggleOverlay } = this.props;
+
     if (!this.cartContainerDiv.current.contains(event.target))
     {
       this.setState((prevState) => ({
         ...prevState,
-        cartOverlayVisible: false,
+        isCartOverlayVisible: false,
       }));
 
-      if (this.props.overlayVisible)
+      if (isOverlayVisible)
       {
-        this.props.setOverlayVisible();
+        toggleOverlay();
       }
     }
   };
 
-  handleClickInside = () =>
+  toggleCartVisibility = () =>
   {
+    const { toggleOverlay } = this.props;
+
     this.setState((prevState) => ({
       ...prevState,
-      cartOverlayVisible: !prevState.cartOverlayVisible,
+      isCartOverlayVisible: !prevState.isCartOverlayVisible,
     }));
-    this.props.setOverlayVisible();
+    toggleOverlay();
+  };
+
+  closeCartOverlay = () =>
+  {
+    const { closeOverlay } = this.props;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      isCartOverlayVisible: false,
+    }));
+    closeOverlay();
+    console.log("closeCartOverlay");
   };
 
   render()
@@ -93,7 +110,7 @@ class ShoppingCartIndicator extends Component
 
     const {
       itemsQuantity,
-      cartOverlayVisible,
+      isCartOverlayVisible,
     } = this.state;
 
     return (
@@ -104,14 +121,14 @@ class ShoppingCartIndicator extends Component
         <div
           className="shopping-cart-icon-container"
           ref={this.cartIndicator}
-          onClick={this.handleClickInside}
+          onClick={this.toggleCartVisibility}
         >
           <img src={cartIcon} alt="shopping cart icon" />
           {itemsQuantity > 0 && (
           <div className="shopping-cart-indicator">{itemsQuantity}</div>
           )}
         </div>
-        {cartOverlayVisible && (
+        {isCartOverlayVisible && (
         <ShoppingCartOverlay
           itemsQuantity={itemsQuantity}
           shoppingCartItems={shoppingCartItems}
@@ -120,6 +137,7 @@ class ShoppingCartIndicator extends Component
           decrementQuantity={decrementQuantity}
           removeItem={removeItem}
           clearCart={clearCart}
+          closeCartOverlay={this.closeCartOverlay}
         />
         )}
       </div>

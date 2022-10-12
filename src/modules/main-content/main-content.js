@@ -55,7 +55,7 @@ class MainContent extends Component
       selectedCurrency,
       selectedCategory,
       shoppingCartItems,
-      overlayVisible,
+      isOverlayVisible,
       addItem,
       incrementQuantity,
       decrementQuantity,
@@ -130,7 +130,7 @@ class MainContent extends Component
                     )}
                   />
                 </Routes>
-                {overlayVisible && <div className="category-overlay" />}
+                {isOverlayVisible && <div className="category-overlay" />}
               </div>
             );
           }

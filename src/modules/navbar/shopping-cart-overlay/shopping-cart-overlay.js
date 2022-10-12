@@ -28,6 +28,7 @@ class ShoppingCartOverlay extends Component
       decrementQuantity,
       removeItem,
       clearCart,
+      closeCartOverlay,
     } = this.props;
 
     return (
@@ -82,6 +83,7 @@ class ShoppingCartOverlay extends Component
           </p>
         </div>
         <NavButtons
+          closeCartOverlay={closeCartOverlay}
           clearCart={clearCart}
         />
       </div>

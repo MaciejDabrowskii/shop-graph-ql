@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart-white.svg";
 import RenderInfo from "../product-details/render-info/render-info";
+import { convertToTwoDecimals } from "../../shopping-cart-functions/shopping-cart-functions";
 
 class RenderProducts extends Component
 {
@@ -107,7 +108,7 @@ class RenderProducts extends Component
                           alt={`${product.name}`}
                         />
                         <div className="category-product-info-container">
-                          <p className="category-product-name">{product.name}</p>
+                          <p className="category-product-name">{`${product.brand} ${product.name}`}</p>
                           {product.prices.map((price) =>
                           {
                             if (price.currency.label === selectedCurrency.label)
@@ -117,7 +118,7 @@ class RenderProducts extends Component
                                   key={price.currency.label}
                                   className="category-product-price"
                                 >
-                                  {`${price.currency.symbol} ${price.amount}`}
+                                  {`${price.currency.symbol} ${convertToTwoDecimals(price.amount)}`}
                                 </p>
                               );
                             }

@@ -8,22 +8,36 @@ class NavButtons extends Component
     super(props);
   }
 
+  handleCheckOut = () =>
+  {
+    const {
+      clearCart,
+      closeCartOverlay,
+    } = this.props;
+
+    clearCart();
+    closeCartOverlay();
+  };
+
   render()
   {
-    const { clearCart } = this.props;
+    const {
+      closeCartOverlay,
+    } = this.props;
 
     return (
       <div className="shoppingCart-overlay-navButtons-container">
         <Link
           to="/your-bag"
           className="shoppingCart-overlay-navButtons-viewBag"
+          onClick={() => closeCartOverlay()}
         >
           VIEW BAG
         </Link>
         <button
           type="button"
           className="shoppingCart-overlay-navButtons-checkOut"
-          onClick={() => clearCart()}
+          onClick={this.handleCheckOut}
         >
           CHECK OUT
         </button>

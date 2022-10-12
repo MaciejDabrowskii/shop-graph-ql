@@ -18,16 +18,17 @@ class App extends Component
          label: "",
        },
        shoppingCartItems: [],
-       overlayVisible: false,
+       isOverlayVisible: false,
      };
     this.setSelectedCategory = this.setSelectedCategory.bind(this);
     this.setSelectedCurrency = this.setSelectedCurrency.bind(this);
-    this.setOverlayVisible = this.setOverlayVisible.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.clearCart = this.clearCart.bind(this);
     this.addToCartAttributeless = this.addToCartAttributeless.bind(this);
+    this.closeOverlay = this.closeOverlay.bind(this);
   }
 
   componentDidUpdate()
@@ -45,9 +46,14 @@ class App extends Component
     selectedCurrency: currency,
   }));
 
-  setOverlayVisible = () => this.setState((prevState) => ({
+  toggleOverlay = () => this.setState((prevState) => ({
     ...prevState,
-    overlayVisible: !prevState.overlayVisible,
+    isOverlayVisible: !prevState.isOverlayVisible,
+  }));
+
+  closeOverlay = () => this.setState((prevState) => ({
+    ...prevState,
+    isOverlayVisible: false,
   }));
 
   addItem = (item) => this.setState((prevState) => ({
@@ -133,7 +139,7 @@ class App extends Component
       selectedCategory,
       selectedCurrency,
       shoppingCartItems,
-      overlayVisible,
+      isOverlayVisible,
     } = this.state;
 
     return (
@@ -144,10 +150,11 @@ class App extends Component
             selectedCategory={selectedCategory}
             selectedCurrency={selectedCurrency}
             shoppingCartItems={shoppingCartItems}
-            overlayVisible={overlayVisible}
+            isOverlayVisible={isOverlayVisible}
             setSelectedCategory={this.setSelectedCategory}
             setSelectedCurrency={this.setSelectedCurrency}
-            setOverlayVisible={this.setOverlayVisible}
+            toggleOverlay={this.toggleOverlay}
+            closeOverlay={this.closeOverlay}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             removeItem={this.removeItem}
@@ -157,7 +164,7 @@ class App extends Component
             selectedCurrency={selectedCurrency}
             selectedCategory={selectedCategory}
             shoppingCartItems={shoppingCartItems}
-            overlayVisible={overlayVisible}
+            isOverlayVisible={isOverlayVisible}
             addItem={this.addItem}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}

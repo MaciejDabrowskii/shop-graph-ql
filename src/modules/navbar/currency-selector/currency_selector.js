@@ -107,7 +107,9 @@ class CurrencySelector extends Component
                   {currencies.map((currency) => (
                     <button
                       type="button"
-                      className="currency-selector-item"
+                      className={currency.symbol === selectedCurrency.symbol
+                        ? "currency-selector-item selected"
+                        : "currency-selector-item"}
                       onClick={() => setSelectedCurrency(currency)}
                       key={currency.label}
                     >

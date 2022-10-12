@@ -23,8 +23,9 @@ class Navbar extends Component
       setSelectedCurrency,
       shoppingCartItems,
       setShoppingCartItems,
-      setOverlayVisible,
-      overlayVisible,
+      isOverlayVisible,
+      toggleOverlay,
+      closeOverlay,
       incrementQuantity,
       decrementQuantity,
       removeItem,
@@ -48,9 +49,10 @@ class Navbar extends Component
           <ShoppingCartIndicator
             shoppingCartItems={shoppingCartItems}
             setShoppingCartItems={setShoppingCartItems}
-            setOverlayVisible={setOverlayVisible}
             selectedCurrency={selectedCurrency}
-            overlayVisible={overlayVisible}
+            isOverlayVisible={isOverlayVisible}
+            closeOverlay={closeOverlay}
+            toggleOverlay={toggleOverlay}
             incrementQuantity={incrementQuantity}
             decrementQuantity={decrementQuantity}
             removeItem={removeItem}

@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import React, { Component } from "react";
+import { convertToTwoDecimals } from "../../../../shopping-cart-functions/shopping-cart-functions";
 
 class RenderPrice extends Component
 {
@@ -25,7 +26,7 @@ class RenderPrice extends Component
           {
             return (
               <p key={amount} className={`${providedClass}-price`}>
-                {currency.symbol + amount}
+                {`${currency.symbol}${convertToTwoDecimals(amount)}`}
               </p>
             );
           }
