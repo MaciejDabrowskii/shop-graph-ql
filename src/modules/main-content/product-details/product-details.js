@@ -6,6 +6,9 @@ import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 import Loading from "../loading-component/loading-component";
 import "./product-details.css";
+import GlobalStateContext
+  from "../../global-state-context/global-state-context";
+import OutOfStockOverlay from "../outOfStock-overlay/outOfStock-overlay";
 
 const GET_PRODUCT = gql`
   query product($id: String!) {
@@ -45,14 +48,19 @@ class ProductDetails extends Component
     super(props);
   }
 
+  componentWillUnmount()
+  {
+    const {
+      closeOverlay,
+    } = this.context;
+
+    closeOverlay();
+  }
+
   render()
   {
     const {
       productId,
-      selectedCurrency,
-      shoppingCartItems,
-      addItem,
-      incrementQuantity,
     } = this.props;
 
     return (
@@ -75,17 +83,16 @@ class ProductDetails extends Component
 
             return (
               <div className="product-details-container">
+                {!product.inStock && (
+                <OutOfStockOverlay />
+                )}
                 <RenderImages
                   product={product}
                 />
                 <RenderInfo
                   product={product}
-                  selectedCurrency={selectedCurrency}
-                  shoppingCartItems={shoppingCartItems}
-                  addItem={addItem}
-                  incrementQuantity={incrementQuantity}
-                  showDetails
                   providedClass="product-details-info"
+                  showDetails
                 />
               </div>
             );
@@ -95,5 +102,7 @@ class ProductDetails extends Component
     );
   }
 }
+
+RenderInfo.contextType = GlobalStateContext;
 
 export default ProductDetails;
