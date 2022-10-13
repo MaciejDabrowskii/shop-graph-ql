@@ -12,25 +12,25 @@ class NavButtons extends Component
   {
     const {
       clearCart,
-      closeCartOverlay,
-    } = this.props;
+      closeOverlay,
+    } = this.context;
 
     clearCart();
-    closeCartOverlay();
+    closeOverlay();
   };
 
   render()
   {
     const {
-      closeCartOverlay,
-    } = this.props;
+      closeOverlay,
+    } = this.context;
 
     return (
       <div className="shoppingCart-overlay-navButtons-container">
         <Link
           to="/your-bag"
           className="shoppingCart-overlay-navButtons-viewBag"
-          onClick={() => closeCartOverlay()}
+          onClick={() => closeOverlay()}
         >
           VIEW BAG
         </Link>

@@ -10,11 +10,14 @@ class QuantityControls extends Component
   render()
   {
     const {
-      product,
-      providedClass,
       incrementQuantity,
       decrementQuantity,
       removeItem,
+    } = this.context;
+
+    const {
+      providedClass,
+      product,
     } = this.props;
 
     return (

@@ -6,6 +6,7 @@ import ShoppingCartIndicator
   from "./shopping-cart-indicator/shopping-cart-indicator";
 import brandIcon from "../../assets/BrandIcon.svg";
 import "./navbar.css";
+import GlobalStateContext from "../global-state-context/global-state-context";
 
 class Navbar extends Component
 {
@@ -17,51 +18,28 @@ class Navbar extends Component
   render()
   {
     const {
-      selectedCategory,
-      setSelectedCategory,
-      selectedCurrency,
-      setSelectedCurrency,
       shoppingCartItems,
-      setShoppingCartItems,
-      isOverlayVisible,
-      toggleOverlay,
-      closeOverlay,
-      incrementQuantity,
-      decrementQuantity,
-      removeItem,
-      clearCart,
-    } = this.props;
+    } = this.context;
 
     return (
       <div className="navbar">
-        <NavbarCategories
-          setSelectedCategory={setSelectedCategory}
-          selectedCategory={selectedCategory}
-        />
+        <NavbarCategories />
         <div className="navbar-brand-logo-container">
           <img src={brandIcon} alt="brand icon" className="brand-logo" />
         </div>
         <div className="navbar-controls-container">
-          <CurrencySelector
-            selectedCurrency={selectedCurrency}
-            setSelectedCurrency={setSelectedCurrency}
-          />
+          <CurrencySelector />
           <ShoppingCartIndicator
             shoppingCartItems={shoppingCartItems}
-            setShoppingCartItems={setShoppingCartItems}
-            selectedCurrency={selectedCurrency}
-            isOverlayVisible={isOverlayVisible}
-            closeOverlay={closeOverlay}
-            toggleOverlay={toggleOverlay}
-            incrementQuantity={incrementQuantity}
-            decrementQuantity={decrementQuantity}
-            removeItem={removeItem}
-            clearCart={clearCart}
           />
         </div>
       </div>
     );
   }
 }
+
+NavbarCategories.contextType = GlobalStateContext;
+CurrencySelector.contextType = GlobalStateContext;
+ShoppingCartIndicator.contextType = GlobalStateContext;
 
 export default Navbar;

@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import React, { Component } from "react";
-import { convertToTwoDecimals } from "../../../../shopping-cart-functions/shopping-cart-functions";
+import { convertToTwoDecimals }
+  from "../../../../shopping-cart-functions/shopping-cart-functions";
 
 class RenderPrice extends Component
 {
@@ -13,10 +14,13 @@ class RenderPrice extends Component
   render()
   {
     const {
-      prices,
-      selectedCurrency,
       providedClass,
+      prices,
     } = this.props;
+
+    const {
+      selectedCurrency,
+    } = this.context;
 
     return (
       <div className={`${providedClass}-price-container`}>

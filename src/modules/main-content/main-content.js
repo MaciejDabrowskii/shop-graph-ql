@@ -7,6 +7,8 @@ import Loading from "./loading-component/loading-component";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
+import GlobalStateContext
+  from "../global-state-context/global-state-context";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query category($name: String!) {
@@ -52,17 +54,9 @@ class MainContent extends Component
   render()
   {
     const {
-      selectedCurrency,
       selectedCategory,
-      shoppingCartItems,
       isOverlayVisible,
-      addItem,
-      incrementQuantity,
-      decrementQuantity,
-      removeItem,
-      clearCart,
-      addToCartAttributeless,
-    } = this.props;
+    } = this.context;
 
     return (
       <Query
@@ -90,12 +84,7 @@ class MainContent extends Component
                     element={(
                       <RenderProducts
                         products={products}
-                        selectedCurrency={selectedCurrency}
                         categoryName={name}
-                        shoppingCartItems={shoppingCartItems}
-                        addItem={addItem}
-                        incrementQuantity={incrementQuantity}
-                        addToCartAttributeless={addToCartAttributeless}
                       />
                     )}
                   />
@@ -106,11 +95,6 @@ class MainContent extends Component
                       element={(
                         <ProductDetails
                           productId={id}
-                          selectedCurrency={selectedCurrency}
-                          shoppingCartItems={shoppingCartItems}
-                          addItem={addItem}
-                          incrementQuantity={incrementQuantity}
-
                         />
                       )}
                     />
@@ -119,13 +103,7 @@ class MainContent extends Component
                     path="/your-bag"
                     element={(
                       <ShoppingCartDetails
-                        shoppingCartItems={shoppingCartItems}
-                        selectedCurrency={selectedCurrency}
-                        incrementQuantity={incrementQuantity}
-                        decrementQuantity={decrementQuantity}
-                        removeItem={removeItem}
                         providedClass="shoppingCartDetails"
-                        clearCart={clearCart}
                       />
                     )}
                   />
@@ -139,5 +117,9 @@ class MainContent extends Component
     );
   }
 }
+
+RenderProducts.contextType = GlobalStateContext;
+ProductDetails.contextType = GlobalStateContext;
+ShoppingCartDetails.contextType = GlobalStateContext;
 
 export default MainContent;

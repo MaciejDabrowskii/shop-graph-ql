@@ -7,6 +7,8 @@ import ShoppingCartOverlay
   from "../shopping-cart-overlay/shopping-cart-overlay";
 import { calculateCartItemsQuantity }
   from "../../shopping-cart-functions/shopping-cart-functions";
+import GlobalStateContext
+  from "../../global-state-context/global-state-context";
 
 class ShoppingCartIndicator extends Component
 {
@@ -17,16 +19,12 @@ class ShoppingCartIndicator extends Component
     const { shoppingCartItems } = this.props;
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.toggleCartVisibility = this.toggleCartVisibility.bind(this);
-    this.closeCartOverlay = this.closeCartOverlay.bind(this);
 
     this.state = JSON.parse(localStorage.getItem("CartOverlayData"))
     || {
       itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
-      isCartOverlayVisible: false,
     };
     this.cartContainerDiv = createRef();
-    this.cartIndicator = createRef();
   }
 
   componentDidMount()
@@ -36,7 +34,7 @@ class ShoppingCartIndicator extends Component
 
   componentDidUpdate()
   {
-    const { shoppingCartItems } = this.props;
+    const { shoppingCartItems } = this.context;
 
     const { itemsQuantity } = this.state;
 
@@ -58,60 +56,21 @@ class ShoppingCartIndicator extends Component
 
   handleClickOutside = (event) =>
   {
-    const { isOverlayVisible, toggleOverlay } = this.props;
+    const { closeOverlay } = this.context;
 
     if (!this.cartContainerDiv.current.contains(event.target))
     {
-      this.setState((prevState) => ({
-        ...prevState,
-        isCartOverlayVisible: false,
-      }));
-
-      if (isOverlayVisible)
-      {
-        toggleOverlay();
-      }
+      closeOverlay();
     }
-  };
-
-  toggleCartVisibility = () =>
-  {
-    const { toggleOverlay } = this.props;
-
-    this.setState((prevState) => ({
-      ...prevState,
-      isCartOverlayVisible: !prevState.isCartOverlayVisible,
-    }));
-    toggleOverlay();
-  };
-
-  closeCartOverlay = () =>
-  {
-    const { closeOverlay } = this.props;
-
-    this.setState((prevState) => ({
-      ...prevState,
-      isCartOverlayVisible: false,
-    }));
-    closeOverlay();
-    console.log("closeCartOverlay");
   };
 
   render()
   {
     const {
-      shoppingCartItems,
-      selectedCurrency,
-      incrementQuantity,
-      decrementQuantity,
-      removeItem,
-      clearCart,
-    } = this.props;
-
-    const {
       itemsQuantity,
-      isCartOverlayVisible,
     } = this.state;
+
+    const { isCartOverlayVisible, toggleOverlay } = this.context;
 
     return (
       <div
@@ -120,8 +79,7 @@ class ShoppingCartIndicator extends Component
       >
         <div
           className="shopping-cart-icon-container"
-          ref={this.cartIndicator}
-          onClick={this.toggleCartVisibility}
+          onClick={() => toggleOverlay()}
         >
           <img src={cartIcon} alt="shopping cart icon" />
           {itemsQuantity > 0 && (
@@ -131,18 +89,13 @@ class ShoppingCartIndicator extends Component
         {isCartOverlayVisible && (
         <ShoppingCartOverlay
           itemsQuantity={itemsQuantity}
-          shoppingCartItems={shoppingCartItems}
-          selectedCurrency={selectedCurrency}
-          incrementQuantity={incrementQuantity}
-          decrementQuantity={decrementQuantity}
-          removeItem={removeItem}
-          clearCart={clearCart}
-          closeCartOverlay={this.closeCartOverlay}
         />
         )}
       </div>
     );
   }
 }
+
+ShoppingCartOverlay.contextType = GlobalStateContext;
 
 export default ShoppingCartIndicator;

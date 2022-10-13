@@ -11,9 +11,9 @@ class SelectedValues extends Component
   render()
   {
     const {
+      providedClass,
       attributes,
       selectedAttributes,
-      providedClass,
     } = this.props;
 
     return (

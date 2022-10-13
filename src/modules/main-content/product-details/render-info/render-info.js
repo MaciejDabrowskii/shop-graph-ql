@@ -4,6 +4,8 @@ import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
 import RenderName from "./components/render-name";
+import GlobalStateContext
+  from "../../../global-state-context/global-state-context";
 
 class RenderInfo extends Component
 {
@@ -72,11 +74,14 @@ class RenderInfo extends Component
   addToCart = () =>
   {
     const {
+      product,
+    } = this.props;
+
+    const {
       shoppingCartItems,
       incrementQuantity,
       addItem,
-      product,
-    } = this.props;
+    } = this.context;
 
     const { selectedAttributes } = this.state;
 
@@ -128,7 +133,6 @@ class RenderInfo extends Component
         description,
       },
       product,
-      selectedCurrency,
       showDetails,
       providedClass,
     } = this.props;
@@ -153,7 +157,6 @@ class RenderInfo extends Component
         <h3 className={`${providedClass}-price-heading`}>PRICE:</h3>
         <RenderPrice
           prices={prices}
-          selectedCurrency={selectedCurrency}
           providedClass={providedClass}
         />
         {inStock ? (
@@ -187,5 +190,7 @@ class RenderInfo extends Component
     );
   }
 }
+
+RenderPrice.contextType = GlobalStateContext;
 
 export default RenderInfo;

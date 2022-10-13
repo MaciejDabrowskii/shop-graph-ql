@@ -53,7 +53,7 @@ class CurrencySelector extends Component
     const {
       selectedCurrency,
       setSelectedCurrency,
-    } = this.props;
+    } = this.context;
 
     const { dropdownVisible } = this.state;
 
