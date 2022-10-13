@@ -14,6 +14,7 @@ export class GlobalStateProvider extends Component
       ...JSON.parse(localStorage.getItem("ShopData")),
       isOverlayVisible: false,
       isCartOverlayVisible: false,
+      isCurrencyDropdownVisible: false,
     }
        || {
          selectedCategory: "",
@@ -24,6 +25,7 @@ export class GlobalStateProvider extends Component
          shoppingCartItems: [],
          isOverlayVisible: false,
          isCartOverlayVisible: false,
+         isCurrencyDropdownVisible: false,
        };
 
     this.setSelectedCategory = this.setSelectedCategory.bind(this);
@@ -35,6 +37,9 @@ export class GlobalStateProvider extends Component
     this.clearCart = this.clearCart.bind(this);
     this.addToCartAttributeless = this.addToCartAttributeless.bind(this);
     this.closeOverlay = this.closeOverlay.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.closeCurrencyDropdown = this.closeCurrencyDropdown.bind(this);
+    this.toggleCurrencyDropdown = this.toggleCurrencyDropdown.bind(this);
   }
 
   componentDidUpdate()
@@ -141,6 +146,16 @@ export class GlobalStateProvider extends Component
     }
   };
 
+  closeCurrencyDropdown = () => this.setState((prevState) => ({
+    ...prevState,
+    isCurrencyDropdownVisible: false,
+  }));
+
+  toggleCurrencyDropdown = () => this.setState((prevState) => ({
+    ...prevState,
+    isCurrencyDropdownVisible: !prevState.isCurrencyDropdownVisible,
+  }));
+
   render()
   {
     const {
@@ -149,6 +164,7 @@ export class GlobalStateProvider extends Component
       shoppingCartItems,
       isOverlayVisible,
       isCartOverlayVisible,
+      isCurrencyDropdownVisible,
     } = this.state;
 
     const {
@@ -162,6 +178,8 @@ export class GlobalStateProvider extends Component
       addToCartAttributeless,
       closeOverlay,
       addItem,
+      closeCurrencyDropdown,
+      toggleCurrencyDropdown,
     } = this;
 
     return (
@@ -172,6 +190,7 @@ export class GlobalStateProvider extends Component
           shoppingCartItems,
           isOverlayVisible,
           isCartOverlayVisible,
+          isCurrencyDropdownVisible,
           setSelectedCategory,
           setSelectedCurrency,
           toggleOverlay,
@@ -182,6 +201,8 @@ export class GlobalStateProvider extends Component
           addToCartAttributeless,
           closeOverlay,
           addItem,
+          toggleCurrencyDropdown,
+          closeCurrencyDropdown,
         }}
       >
         {this.props.children}

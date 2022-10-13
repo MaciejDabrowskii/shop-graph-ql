@@ -14,10 +14,8 @@ class CurrencySelector extends Component
   constructor(props)
   {
     super(props);
-    this.state = { dropdownVisible: false };
     this.dropdown = createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.handleDropdown = this.handleDropdown.bind(this);
   }
 
   componentDidMount()
@@ -32,24 +30,24 @@ class CurrencySelector extends Component
 
   handleClickOutside = (event) =>
   {
+    const {
+      closeCurrencyDropdown,
+    } = this.context;
+
     if (!this.dropdown.current.contains(event.target))
     {
-      this.setState({ dropdownVisible: false });
+      closeCurrencyDropdown();
     }
   };
-
-  handleDropdown = () => this.setState(
-    (prevState) => ({ dropdownVisible: !prevState.dropdownVisible }),
-  );
 
   render()
   {
     const {
       selectedCurrency,
       setSelectedCurrency,
+      toggleCurrencyDropdown,
+      isCurrencyDropdownVisible,
     } = this.context;
-
-    const { dropdownVisible } = this.state;
 
     return (
       <Query
@@ -73,7 +71,7 @@ class CurrencySelector extends Component
               <div
                 className="currency-selector-container"
                 ref={this.dropdown}
-                onClick={this.handleDropdown}
+                onClick={() => toggleCurrencyDropdown()}
               >
                 <div className="currency-selector-symbol">
                   {selectedCurrency.symbol}
@@ -86,8 +84,12 @@ class CurrencySelector extends Component
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   style={
-              { transform: dropdownVisible ? "NONE" : "rotate(180deg)" }
-            }
+                    {
+                      transform: isCurrencyDropdownVisible
+                        ? "none"
+                        : "rotate(180deg)",
+                    }
+                  }
                 >
                   <path
                     d="M1 3.5L4 0.5L7 3.5"
@@ -96,7 +98,7 @@ class CurrencySelector extends Component
                     strokeLinejoin="round"
                   />
                 </svg>
-                {dropdownVisible && (
+                {isCurrencyDropdownVisible && (
                 <div className="currency-selector-dropdown">
                   {currencies.map((currency) => (
                     <button
