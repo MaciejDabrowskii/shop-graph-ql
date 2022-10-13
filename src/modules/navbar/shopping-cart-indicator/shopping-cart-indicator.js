@@ -7,14 +7,16 @@ import ShoppingCartOverlay
   from "../shopping-cart-overlay/shopping-cart-overlay";
 import { calculateCartItemsQuantity }
   from "../../shopping-cart-functions/shopping-cart-functions";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-function ShoppingCartIndicator({
-  shoppingCartItems,
-  setOverlayVisible,
-  selectedCurrency,
-  setShoppingCartItems,
-})
+function ShoppingCartIndicator()
 {
+  const {
+    shoppingCartItems,
+    setOverlayVisible,
+  } = GlobalStatesMethods();
+
   const cartCpntainerDiv = useRef();
 
   const cartIndicator = useRef();
@@ -67,9 +69,6 @@ function ShoppingCartIndicator({
       {cartOverlayVisible && (
         <ShoppingCartOverlay
           itemsQuantity={itemsQuantity}
-          shoppingCartItems={shoppingCartItems}
-          selectedCurrency={selectedCurrency}
-          setShoppingCartItems={setShoppingCartItems}
         />
       )}
     </div>

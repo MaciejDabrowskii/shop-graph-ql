@@ -9,16 +9,16 @@ import QuantityControls
 import ImageSelector from "./image-selector/image-selector";
 import Details from "./details.js/details";
 import "./shopping-cart-details.css";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-function ShoppingCartDetails(
-  {
-    shoppingCartItems,
-    selectedCurrency,
-    setShoppingCartItems,
-    providedClass,
-  },
-)
+function ShoppingCartDetails({ providedClass })
 {
+  const {
+    shoppingCartItems,
+    setShoppingCartItems,
+  } = GlobalStatesMethods();
+
   return (
     <div className="shoppingCartDetails-container">
       <h1 className="shoppingCartDetails-heading">CART</h1>
@@ -31,7 +31,6 @@ function ShoppingCartDetails(
             />
             <RenderPrice
               prices={item.prices}
-              selectedCurrency={selectedCurrency}
               providedClass={providedClass}
             />
             <SelectedValues
@@ -43,18 +42,13 @@ function ShoppingCartDetails(
           <div className="shoppingCartDetails-item-image-wrapper">
             <QuantityControls
               product={item}
-              shoppingCartItems={shoppingCartItems}
-              setShoppingCartItems={setShoppingCartItems}
               providedClass={providedClass}
             />
             <ImageSelector product={item} />
           </div>
         </div>
       ))}
-      <Details
-        shoppingCartItems={shoppingCartItems}
-        selectedCurrency={selectedCurrency}
-      />
+      <Details />
       <button
         onClick={() => setShoppingCartItems([])}
         type="button"

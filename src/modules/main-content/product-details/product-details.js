@@ -1,47 +1,12 @@
-import { gql, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import React, { useEffect } from "react";
 import RenderImages from "./render-images/render-images";
 import RenderInfo from "./render-info/render-info";
 import "./product-details.css";
 import Loading from "../loading-component/loading-component";
+import { GET_PRODUCT } from "../../queries/queries";
 
-const GET_PRODUCT = gql`
-  query product($id: String!) {
-    product(id: $id) {
-      id
-      name
-      inStock
-      gallery
-      description
-      category
-      attributes {
-        id
-        name
-        type
-        items {
-          displayValue
-          value
-          id
-        }
-      }
-      prices {
-        currency {
-          label
-          symbol
-        }
-        amount
-      }
-      brand
-    }
-  }
-`;
-
-function ProductDetails({
-  productId,
-  selectedCurrency,
-  shoppingCartItems,
-  setShoppingCartItems,
-})
+function ProductDetails({ productId })
 {
   const [getProducts, { loading, error, data }] = useLazyQuery(GET_PRODUCT);
 
@@ -70,9 +35,6 @@ function ProductDetails({
         />
         <RenderInfo
           product={data.product}
-          selectedCurrency={selectedCurrency}
-          shoppingCartItems={shoppingCartItems}
-          setShoppingCartItems={setShoppingCartItems}
           providedClass="product-details-info"
           showDetails
         />

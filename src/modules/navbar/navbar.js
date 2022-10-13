@@ -6,36 +6,17 @@ import ShoppingCartIndicator
 import brandIcon from "../../assets/BrandIcon.svg";
 import "./navbar.css";
 
-function Navbar({
-  selectedCategory,
-  setSelectedCategory,
-  selectedCurrency,
-  setSelectedCurrency,
-  shoppingCartItems,
-  setShoppingCartItems,
-  setOverlayVisible,
-})
+function Navbar()
 {
   return (
     <div className="navbar">
-      <NavbarCategories
-        setSelectedCategory={setSelectedCategory}
-        selectedCategory={selectedCategory}
-      />
+      <NavbarCategories />
       <div className="navbar-brand-logo-container">
         <img src={brandIcon} alt="brand icon" className="brand-logo" />
       </div>
       <div className="navbar-controls-container">
-        <CurrencySelector
-          selectedCurrency={selectedCurrency}
-          setSelectedCurrency={setSelectedCurrency}
-        />
-        <ShoppingCartIndicator
-          shoppingCartItems={shoppingCartItems}
-          setShoppingCartItems={setShoppingCartItems}
-          setOverlayVisible={setOverlayVisible}
-          selectedCurrency={selectedCurrency}
-        />
+        <CurrencySelector />
+        <ShoppingCartIndicator />
       </div>
     </div>
   );

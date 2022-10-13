@@ -1,16 +1,18 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-
 import React from "react";
+import { GlobalStatesMethods }
+  from "../../../../global-state-context/global-state-context";
 
 function RenderPrice(
   {
     prices,
-    selectedCurrency,
     providedClass,
   },
 )
 {
+  const { selectedCurrency } = GlobalStatesMethods();
+
   return (
     <div className={`${providedClass}-price-container`}>
       {prices.map(({ currency, amount }) =>

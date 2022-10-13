@@ -4,9 +4,13 @@ import {
   calculateTax,
   calculateCartItemsQuantity,
 } from "../../../shopping-cart-functions/shopping-cart-functions";
+import { GlobalStatesMethods }
+  from "../../../global-state-context/global-state-context";
 
-function Details({ shoppingCartItems, selectedCurrency })
+function Details()
 {
+  const { shoppingCartItems, selectedCurrency } = GlobalStatesMethods();
+
   return (
     <div className="shoppingCartDetails-details-container">
       <p>

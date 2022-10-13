@@ -3,14 +3,19 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../../shopping-cart-functions/shopping-cart-functions";
+import { GlobalStatesMethods }
+  from "../../../global-state-context/global-state-context";
 
 function QuantityControls({
   product: { cartId, quantity },
-  shoppingCartItems,
-  setShoppingCartItems,
   providedClass,
 })
 {
+  const {
+    shoppingCartItems,
+    setShoppingCartItems,
+  } = GlobalStatesMethods();
+
   return (
     <div className={`${providedClass}-quantityControl-container`}>
       <button

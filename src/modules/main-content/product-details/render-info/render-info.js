@@ -5,16 +5,22 @@ import RenderAttributes from "./components/render-attributes";
 import RenderPrice from "./components/render-price";
 import RenderDescription from "./components/render-description";
 import RenderName from "./components/render-name";
+import { GlobalStatesMethods }
+  from "../../../global-state-context/global-state-context";
+import OutOfStockOverlay from "../../outOfStock-overlay/outOfStock-overlay";
 
 function RenderInfo({
   product,
-  selectedCurrency,
-  shoppingCartItems,
-  setShoppingCartItems,
-  providedClass,
   showDetails,
+  providedClass,
+
 })
 {
+  const {
+    shoppingCartItems,
+    setShoppingCartItems,
+  } = GlobalStatesMethods();
+
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
     const obj = {};
@@ -86,7 +92,6 @@ function RenderInfo({
       <h3 className="product-details-info-price-heading">PRICE:</h3>
       <RenderPrice
         prices={product.prices}
-        selectedCurrency={selectedCurrency}
         providedClass={providedClass}
       />
       {product.inStock ? (
@@ -109,9 +114,7 @@ function RenderInfo({
           )}
         </div>
       ) : (
-        <div className={`${providedClass}-outOfStock-container`}>
-          OUT OF STOCK
-        </div>
+        <OutOfStockOverlay />
       )}
       {showDetails && (
         <RenderDescription description={product.description} />

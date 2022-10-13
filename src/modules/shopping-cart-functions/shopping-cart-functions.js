@@ -13,21 +13,24 @@ function decreaseQuantity(product)
 function calculateSum(shoppingCartItems, selectedCurrency)
 {
   return (
-    Math.round(
-      shoppingCartItems.reduce((sum, item) =>
-      {
-        let selectedPrice = 0;
-
-        item.prices.map((price) =>
+    (parseFloat(
+      Math.round(
+        shoppingCartItems.reduce((sum, item) =>
         {
-          if (price.currency.label === selectedCurrency.label)
+          let selectedPrice = 0;
+
+          item.prices.map((price) =>
           {
-            selectedPrice = price.amount;
-          }
-        });
-        return item.quantity * selectedPrice + sum;
-      }, 0) * 100,
-    ) / 100
+            if (price.currency.label === selectedCurrency.label)
+            {
+              selectedPrice = price.amount;
+            }
+          });
+          return item.quantity * selectedPrice + sum;
+        }, 0) * 100,
+      ) / 100,
+    )
+      .toFixed(2))
   );
 }
 
@@ -39,7 +42,12 @@ function calculateCartItemsQuantity(shoppingCartItems)
 // Tax value can be stored in a variable and then passed here but for this assignment, I decided to hardcode it
 function calculateTax(sum, items, currency)
 {
-  return Math.round(sum(items, currency) * 0.21 * 100) / 100;
+  return (Math.round(sum(items, currency) * 0.21 * 100) / 100).toFixed(2);
+}
+
+function convertToTwoDecimals(amount)
+{
+  return (Math.round(amount * 100) / 100).toFixed(2);
 }
 
 export {
@@ -48,4 +56,5 @@ export {
   calculateSum,
   calculateCartItemsQuantity,
   calculateTax,
+  convertToTwoDecimals,
 };

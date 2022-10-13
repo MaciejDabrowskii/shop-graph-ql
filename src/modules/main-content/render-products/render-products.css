@@ -10,7 +10,7 @@
 .category-products-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 48.25rem);
-  grid-template-rows: repeat(auto-fill, minmax(55.5rem, 65rem));
+  grid-template-rows: repeat(auto-fill, minmax(55.5rem, 58rem));
   gap: 5rem;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@
   justify-content: center;
   position: relative;
   height: 100%;
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .category-product.active {
@@ -43,7 +43,7 @@
 }
 
 .category-product-image {
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 41.25rem;
   margin-bottom: 3rem;
@@ -77,30 +77,11 @@
   right: 3.8rem;
   bottom: 9rem;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform .2s ease-in-out; 
 }
 
 .category-product-add-button:hover {
-  transform: scale(140%);
-}
-
-.category-product-outOfStock-overlay-container {
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  opacity: 50%;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.category-product-outOfStock-overlay {
-  font-size: 3rem;
-  line-height: 4.75rem;
+    transform: scale(140%);
 }
 
 .category-product-details-wrapper {
@@ -115,7 +96,7 @@
   top: 2rem;
   border: none;
   cursor: pointer;
-  transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; 
 }
 
 .category-product-details-button:hover {
@@ -136,7 +117,7 @@
   border: none;
   cursor: pointer;
   font-size: 3rem;
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out; 
   background-color: inherit;
 }
 
@@ -192,7 +173,7 @@
   font-family: source-sans-pro, sans-serif;
   font-size: 2rem;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out; 
 }
 
 .category-product-attribute-value.active {
@@ -206,7 +187,7 @@
   justify-content: center;
   box-sizing: border-box;
   border: 2px solid rgba(255, 255, 255, 0);
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out; 
 }
 
 .category-product-attribute-wrapper.active {
@@ -244,7 +225,7 @@
   background-color: var(--green);
   margin: 3rem 0 0.25rem 0;
   border: 2px solid;
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out; 
 }
 
 .category-product-button:hover {

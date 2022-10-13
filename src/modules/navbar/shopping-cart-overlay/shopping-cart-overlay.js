@@ -10,14 +10,16 @@ import { calculateSum }
   from "../../shopping-cart-functions/shopping-cart-functions";
 import SelectedValues from "./components/selected-values";
 import NavButtons from "./components/nav-buttons";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-function ShoppingCartOverlay({
-  shoppingCartItems,
-  itemsQuantity,
-  selectedCurrency,
-  setShoppingCartItems,
-})
+function ShoppingCartOverlay({ itemsQuantity })
 {
+  const {
+    shoppingCartItems,
+    selectedCurrency,
+  } = GlobalStatesMethods();
+
   return (
     <div className="shoppingCart-overlay-container">
       <CartOverlayHeading
@@ -38,7 +40,6 @@ function ShoppingCartOverlay({
               />
               <RenderPrice
                 prices={item.prices}
-                selectedCurrency={selectedCurrency}
                 providedClass="shoppingCart-overlay"
               />
 
@@ -52,8 +53,6 @@ function ShoppingCartOverlay({
             <div className="shoppingCart-overlay-item-image-wrapper">
               <QuantityControls
                 product={item}
-                shoppingCartItems={shoppingCartItems}
-                setShoppingCartItems={setShoppingCartItems}
                 providedClass="shoppingCart-overlay"
               />
               <RenderImage product={item} />
@@ -68,7 +67,7 @@ function ShoppingCartOverlay({
            ${calculateSum(shoppingCartItems, selectedCurrency)}`}
         </p>
       </div>
-      <NavButtons setShoppingCartItems={setShoppingCartItems} />
+      <NavButtons />
     </div>
   );
 }

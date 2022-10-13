@@ -7,17 +7,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart-white.svg";
 import RenderInfo from "../product-details/render-info/render-info";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-function RenderProducts(
-  {
-    products,
+function RenderProducts({ products })
+{
+  const {
     selectedCurrency,
-    categoryName,
     shoppingCartItems,
     setShoppingCartItems,
-  },
-)
-{
+    selectedCategory,
+  } = GlobalStatesMethods();
+
   const setInitialState = () =>
   {
     let obj = {};
@@ -82,7 +83,7 @@ function RenderProducts(
 
   return (
     <div className="category-products">
-      <p className="category-heading">{categoryName.toUpperCase()}</p>
+      <p className="category-heading">{selectedCategory.toUpperCase()}</p>
       <div className="category-products-container">
         {products.map((product) => (
           <div
@@ -148,9 +149,6 @@ function RenderProducts(
                         <RenderInfo
                           showDetails={false}
                           product={product}
-                          selectedCurrency={selectedCurrency}
-                          shoppingCartItems={shoppingCartItems}
-                          setShoppingCartItems={setShoppingCartItems}
                           providedClass="category-product"
                         />
                       </div>

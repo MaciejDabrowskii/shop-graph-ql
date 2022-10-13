@@ -3,20 +3,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useEffect, useState, useRef } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Loading from "../../main-content/loading-component/loading-component";
+import { GET_CURRENCY } from "../../queries/queries";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-const GET_CURRENCY = gql`
-  {
-    currencies {
-      label
-      symbol
-    }
-  }
-`;
-
-function CurrencySelector({ selectedCurrency, setSelectedCurrency })
+function CurrencySelector()
 {
+  const { selectedCurrency, setSelectedCurrency } = GlobalStatesMethods();
+
   const dropdown = useRef();
 
   const [currencies, setCurrencies] = useState([]);

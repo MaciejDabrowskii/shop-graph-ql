@@ -1,20 +1,17 @@
 /* eslint-disable array-callback-return */
 
 import React, { useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import Loading from "../../main-content/loading-component/loading-component";
+import { GET_CATEGORIES } from "../../queries/queries";
+import { GlobalStatesMethods }
+  from "../../global-state-context/global-state-context";
 
-const GET_CATEGORIES = gql`
-  {
-    categories {
-      name
-    }
-  }
-`;
-
-function NavbarCategories({ setSelectedCategory, selectedCategory })
+function NavbarCategories()
 {
+  const { setSelectedCategory, selectedCategory } = GlobalStatesMethods();
+
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
   useEffect(() =>

@@ -1,54 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { gql, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { Routes, Route } from "react-router-dom";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
 import Loading from "./loading-component/loading-component";
+import { GET_CATEGORY_PRODUCTS } from "../queries/queries";
+import { GlobalStatesMethods }
+  from "../global-state-context/global-state-context";
 
-const GET_CATEGORY_PRODUCTS = gql`
-  query category($name: String!) {
-    category(input: { title: $name }) {
-      name
-      products {
-        id
-        name
-        inStock
-        gallery
-        description
-        category
-        attributes {
-          id
-          name
-          type
-          items {
-            displayValue
-            value
-            id
-          }
-        }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        brand
-      }
-    }
-  }
-`;
-
-function MainContent({
-  categoryName,
-  selectedCurrency,
-  selectedCategory,
-  shoppingCartItems,
-  setShoppingCartItems,
-  overlayVisible,
-})
+function MainContent()
 {
+  const {
+    selectedCategory,
+    overlayVisible,
+  } = GlobalStatesMethods();
+
   const [products, setProducts] = useState([]);
 
   const [getProducts, { loading, error, data }] = useLazyQuery(
@@ -59,7 +26,7 @@ function MainContent({
   {
     getProducts({
       variables: {
-        name: categoryName,
+        name: selectedCategory,
       },
     });
   }, [selectedCategory]);
@@ -87,10 +54,6 @@ function MainContent({
           element={(
             <RenderProducts
               products={products}
-              selectedCurrency={selectedCurrency}
-              categoryName={categoryName}
-              shoppingCartItems={shoppingCartItems}
-              setShoppingCartItems={setShoppingCartItems}
             />
           )}
         />
@@ -101,9 +64,7 @@ function MainContent({
             element={(
               <ProductDetails
                 productId={product.id}
-                selectedCurrency={selectedCurrency}
-                shoppingCartItems={shoppingCartItems}
-                setShoppingCartItems={setShoppingCartItems}
+
               />
             )}
           />
@@ -111,12 +72,7 @@ function MainContent({
         <Route
           path="/your-bag"
           element={(
-            <ShoppingCartDetails
-              shoppingCartItems={shoppingCartItems}
-              selectedCurrency={selectedCurrency}
-              setShoppingCartItems={setShoppingCartItems}
-              providedClass="shoppingCartDetails"
-            />
+            <ShoppingCartDetails providedClass="shoppingCartDetails" />
           )}
         />
       </Routes>
