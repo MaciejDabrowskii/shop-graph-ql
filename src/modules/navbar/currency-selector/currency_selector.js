@@ -104,7 +104,9 @@ function CurrencySelector()
           {currencies.map((currency) => (
             <button
               type="button"
-              className="currency-selector-item"
+              className={currency.symbol === selectedCurrency.symbol
+                ? "currency-selector-item selected"
+                : "currency-selector-item"}
               onClick={() => setSelectedCurrency({
                 symbol: currency.symbol,
                 label: currency.label,
