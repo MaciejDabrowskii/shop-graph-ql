@@ -14,6 +14,8 @@
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  max-height: 69rem;
+  flex-wrap: wrap;
 }
 
 .product-details-images-sidebar-image {
@@ -207,6 +209,14 @@
     height: 30rem;
   }
 
+  .product-details-images-container{
+    flex-direction: row;
+  }
+
+  .product-details-images-sidebar-image{
+    width: 4rem;
+    height: 4rem;
+  }
 
   .product-details-images-sidebar {
     gap: 1rem;
