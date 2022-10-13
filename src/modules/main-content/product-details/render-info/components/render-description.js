@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { Component } from "react";
+import DOMPurify from "dompurify";
 
 class RenderDescription extends Component
 {
@@ -16,7 +17,9 @@ class RenderDescription extends Component
 
     return (
       <div className="product-details-info-description-container">
-        <div dangerouslySetInnerHTML={{ __html: description }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+        />
       </div>
     );
   }
