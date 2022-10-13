@@ -6,14 +6,9 @@ import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import Loading from "../../main-content/loading-component/loading-component";
+import { CATEGORIES_QUERY } from "../../queries/queries";
 
-const GET_CATEGORIES = gql`
-  {
-    categories {
-      name
-    }
-  }
-`;
+const GET_CATEGORIES = gql`${CATEGORIES_QUERY}`;
 
 class NavbarCategories extends Component
 {

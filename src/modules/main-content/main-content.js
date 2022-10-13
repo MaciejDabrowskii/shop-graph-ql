@@ -9,40 +9,9 @@ import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
 import GlobalStateContext
   from "../global-state-context/global-state-context";
+import { SELECTED_CATEGORY_PRODUCTS_QUERY } from "../queries/queries";
 
-const GET_CATEGORY_PRODUCTS = gql`
-  query category($name: String!) {
-    category(input: { title: $name }) {
-      name
-      products {
-        id
-        name
-        inStock
-        gallery
-        description
-        category
-        attributes {
-          id
-          name
-          type
-          items {
-            displayValue
-            value
-            id
-          }
-        }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        brand
-      }
-    }
-  }
-`;
+const GET_CATEGORY_PRODUCTS = gql`${SELECTED_CATEGORY_PRODUCTS_QUERY}`;
 
 class MainContent extends Component
 {

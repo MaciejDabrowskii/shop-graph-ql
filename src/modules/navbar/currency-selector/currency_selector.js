@@ -5,15 +5,9 @@ import React, { Component, createRef } from "react";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import Loading from "../../main-content/loading-component/loading-component";
+import { CURRENCY_QUERY } from "../../queries/queries";
 
-const GET_CURRENCY = gql`
-  {
-    currencies {
-      label
-      symbol
-    }
-  }
-`;
+const GET_CURRENCY = gql`${CURRENCY_QUERY}`;
 
 class CurrencySelector extends Component
 {

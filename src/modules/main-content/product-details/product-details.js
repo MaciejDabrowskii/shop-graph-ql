@@ -9,37 +9,9 @@ import "./product-details.css";
 import GlobalStateContext
   from "../../global-state-context/global-state-context";
 import OutOfStockOverlay from "../outOfStock-overlay/outOfStock-overlay";
+import { PRODUCT_QUERY } from "../../queries/queries";
 
-const GET_PRODUCT = gql`
-  query product($id: String!) {
-    product(id: $id) {
-      id
-      name
-      inStock
-      gallery
-      description
-      category
-      attributes {
-        id
-        name
-        type
-        items {
-          displayValue
-          value
-          id
-        }
-      }
-      prices {
-        currency {
-          label
-          symbol
-        }
-        amount
-      }
-      brand
-    }
-  }
-`;
+const GET_PRODUCT = gql`${PRODUCT_QUERY}`;
 
 class ProductDetails extends Component
 {
