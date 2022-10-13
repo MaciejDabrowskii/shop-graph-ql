@@ -2,6 +2,7 @@
   display: flex;
   gap: 12.5rem;
   font-family: "Raleway", sans-serif;
+  position: relative;
 }
 
 .product-details-images-container {
@@ -19,7 +20,7 @@
   box-sizing: border-box;
   width: 10rem;
   height: 10rem;
-  object-fit: cover;
+  object-fit: contain;
   cursor: pointer;
 }
 
@@ -30,7 +31,7 @@
 .product-details-images-selected-image {
   width: 76.25rem;
   height: 64rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product-details-info-name-container {
@@ -206,9 +207,6 @@
     height: 30rem;
   }
 
-  .main-content-container {
-    padding: 10rem 0;
-  }
 
   .product-details-images-sidebar {
     gap: 1rem;
