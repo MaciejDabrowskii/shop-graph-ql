@@ -391,3 +391,22 @@
   background-color: white;
   color: var(--green);
 }
+
+@media only screen and (max-width: 490px) {
+
+  .navbar {
+    margin: 0 1.5rem;
+  }
+
+  .shopping-cart-icon-container {
+    right: 1rem;
+  }
+
+  .shoppingCart-overlay-container {
+    right: 0;
+  }
+
+  .currency-selector-dropdown {
+    left: -10rem;
+  }
+}   
