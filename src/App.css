@@ -9,7 +9,6 @@
   --transparentBlack: rgba(0, 0, 0, 0.73);
   --dark: rgba(29, 31, 34, 1);
   font-size: 8px;
-  /* max-width: 1440px; */
   margin: auto;
 }
 
@@ -47,9 +46,8 @@
 }
 
 .main-content-container {
-  position: relative;
   padding: 10rem 12.5rem 23rem 12.5rem;
-  /* max-width: 1440px; */
+  position: relative;
 }
 
 input[type="radio"] {
