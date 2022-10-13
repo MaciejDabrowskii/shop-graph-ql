@@ -23,16 +23,15 @@ function ProductDetails({ productId })
 
   if (error)
   {
-    console.log(error); return <p>Error, check out the console</p>;
+    console.log(error);
+    return <p>Error, check out the console</p>;
   }
 
   if (data)
   {
     return (
       <div className="product-details-container">
-        <RenderImages
-          product={data.product}
-        />
+        <RenderImages product={data.product} />
         <RenderInfo
           product={data.product}
           providedClass="product-details-info"

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GlobalStatesMethods }
-  from "../../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../../global-state-context/global-state-context";
 
 function NavButtons()
 {
@@ -9,10 +8,7 @@ function NavButtons()
 
   return (
     <div className="shoppingCart-overlay-navButtons-container">
-      <Link
-        to="/your-bag"
-        className="shoppingCart-overlay-navButtons-viewBag"
-      >
+      <Link to="/your-bag" className="shoppingCart-overlay-navButtons-viewBag">
         VIEW BAG
       </Link>
       <button

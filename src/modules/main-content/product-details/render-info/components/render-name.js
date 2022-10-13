@@ -1,11 +1,6 @@
 import React from "react";
 
-function RenderName(
-  {
-    product: { brand, name },
-    providedClass,
-  },
-)
+function RenderName({ product: { brand, name }, providedClass })
 {
   return (
     <div className={`${providedClass}-name-container`}>

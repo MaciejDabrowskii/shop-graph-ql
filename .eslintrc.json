@@ -17,7 +17,7 @@
     "lines-between-class-members": ["error", "always"],
     "no-console": "off",
     "quotes": ["error", "double"],
-    "max-len": ["error", { "ignoreComments": true, "ignoreUrls": true }],
+    // "max-len": ["error", { "ignoreComments": true, "ignoreUrls": true }],
     "brace-style": ["error", "allman"],
     "react/jsx-filename-extension": [0],
     "react/prefer-stateless-function": [0],
@@ -28,36 +28,40 @@
     "padding-line-between-statements": [
       "error",
       {
-          "blankLine": "always",
-          "prev": "*",
-          "next": [
-              "block",
-              "block-like",
-              "cjs-export",
-              "class",
-              "const",
-              "export",
-              "import",
-              "let",
-              "var"
-          ]
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "block",
+          "block-like",
+          "cjs-export",
+          "class",
+          "const",
+          "export",
+          "import",
+          "let",
+          "var"
+        ]
       },
       {
-          "blankLine": "always",
-          "prev": [
-              "block",
-              "block-like",
-              "cjs-export",
-              "class",
-              "const",
-              "export",
-              "import",
-              "let",
-              "var"
-          ],
-          "next": "*"
+        "blankLine": "always",
+        "prev": [
+          "block",
+          "block-like",
+          "cjs-export",
+          "class",
+          "const",
+          "export",
+          "import",
+          "let",
+          "var"
+        ],
+        "next": "*"
       },
-      { "blankLine": "any", "prev": ["export", "import"], "next": ["export", "import"] }
-  ]
+      {
+        "blankLine": "any",
+        "prev": ["export", "import"],
+        "next": ["export", "import"]
+      }
+    ]
   }
 }

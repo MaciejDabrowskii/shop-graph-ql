@@ -24,9 +24,7 @@ function RenderImages({ product })
               alt={`${name} small`}
               onClick={() => setSelectedImage(image)}
             />
-            {!inStock && (
-            <OutOfStockOverlay />
-            )}
+            {!inStock && <OutOfStockOverlay />}
           </div>
         ))}
       </div>
@@ -36,9 +34,7 @@ function RenderImages({ product })
           src={selectedImage}
           alt={`${name} big`}
         />
-        {!inStock && (
-        <OutOfStockOverlay />
-        )}
+        {!inStock && <OutOfStockOverlay />}
       </div>
     </div>
   );

@@ -3,18 +3,11 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../../shopping-cart-functions/shopping-cart-functions";
-import { GlobalStatesMethods }
-  from "../../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../../global-state-context/global-state-context";
 
-function QuantityControls({
-  product: { cartId, quantity },
-  providedClass,
-})
+function QuantityControls({ product: { cartId, quantity }, providedClass })
 {
-  const {
-    shoppingCartItems,
-    setShoppingCartItems,
-  } = GlobalStatesMethods();
+  const { shoppingCartItems, setShoppingCartItems } = GlobalStatesMethods();
 
   return (
     <div className={`${providedClass}-quantityControl-container`}>
@@ -22,8 +15,7 @@ function QuantityControls({
         type="button"
         onClick={() => setShoppingCartItems(
           () => shoppingCartItems.map(
-            (item) => (item.cartId === cartId
-              ? increaseQuantity(item) : item),
+            (item) => (item.cartId === cartId ? increaseQuantity(item) : item),
           ),
         )}
       >
@@ -34,19 +26,17 @@ function QuantityControls({
         type="button"
         onClick={
           quantity > 1
-            ? () => setShoppingCartItems(() => shoppingCartItems.map(
-              (item) => (item.cartId === cartId
-                ? decreaseQuantity(item)
-                : item),
-            ))
-            : () => setShoppingCartItems(() => shoppingCartItems.filter(
-              (item) => item.cartId !== cartId,
-            ))
+            ? () => setShoppingCartItems(
+              () => shoppingCartItems.map((item) => (
+                item.cartId === cartId ? decreaseQuantity(item) : item)),
+            )
+            : () => setShoppingCartItems(
+              () => shoppingCartItems.filter((item) => item.cartId !== cartId),
+            )
         }
       >
         {"\u2212"}
       </button>
-
     </div>
   );
 }

@@ -102,7 +102,7 @@
   height: 5.75rem;
   font-size: 4rem;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border: 1px solid var(--dark);
   background-color: inherit;
 }

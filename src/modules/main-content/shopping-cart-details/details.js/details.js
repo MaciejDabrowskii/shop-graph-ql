@@ -4,8 +4,7 @@ import {
   calculateTax,
   calculateCartItemsQuantity,
 } from "../../../shopping-cart-functions/shopping-cart-functions";
-import { GlobalStatesMethods }
-  from "../../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../../global-state-context/global-state-context";
 
 function Details()
 {

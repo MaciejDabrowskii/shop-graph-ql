@@ -1,13 +1,11 @@
 import React from "react";
 
-function RenderAttributes(
-  {
-    attributes,
-    selectedAttributes,
-    setSelectedAttributes,
-    providedClass,
-  },
-)
+function RenderAttributes({
+  attributes,
+  selectedAttributes,
+  setSelectedAttributes,
+  providedClass,
+})
 {
   const updateAttributes = (e, attribute) =>
   {
@@ -26,30 +24,29 @@ function RenderAttributes(
         if (name === "Color")
         {
           return (
-            <div
-              className={`${providedClass}-attribute-container`}
-              key={name}
-            >
+            <div className={`${providedClass}-attribute-container`} key={name}>
               <p className={`${providedClass}-attribute-name`}>
                 {`${name.toUpperCase()}:`}
               </p>
               <div className={`${providedClass}-attribute-values-container`}>
                 {items.map((item) => (
                   <div
-                    className={selectedAttributes[name] === item.id
-                      ? `${providedClass}-attribute-wrapper active`
-                      : `${providedClass}-attribute-wrapper`}
+                    className={
+                      selectedAttributes[name] === item.id
+                        ? `${providedClass}-attribute-wrapper active`
+                        : `${providedClass}-attribute-wrapper`
+                    }
                     key={item.value}
                   >
                     <label
                       className={`${providedClass}-attribute-color`}
-                      style={
-                    {
-                      backgroundColor: item.value,
-                      border: item.id === "White"
-                        ? "1px solid rgba(0, 0, 0, 0.400)" : "",
-                    }
-                  }
+                      style={{
+                        backgroundColor: item.value,
+                        border:
+                          item.id === "White"
+                            ? "1px solid rgba(0, 0, 0, 0.400)"
+                            : "",
+                      }}
                       htmlFor={item.id}
                     >
                       <input
@@ -68,21 +65,18 @@ function RenderAttributes(
         }
 
         return (
-          <div
-            className={`${providedClass}-attribute-container`}
-            key={name}
-          >
+          <div className={`${providedClass}-attribute-container`} key={name}>
             <p className={`${providedClass}-attribute-name`}>
               {`${name.toUpperCase()}:`}
             </p>
-            <div
-              className={`${providedClass}-attribute-values-container`}
-            >
+            <div className={`${providedClass}-attribute-values-container`}>
               {items.map((item) => (
                 <label
-                  className={selectedAttributes[name] === item.id
-                    ? `${providedClass}-attribute-value active`
-                    : `${providedClass}-attribute-value`}
+                  className={
+                    selectedAttributes[name] === item.id
+                      ? `${providedClass}-attribute-value active`
+                      : `${providedClass}-attribute-value`
+                  }
                   htmlFor={item.name}
                   key={item.id + item.name}
                 >

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
@@ -7,8 +8,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart-white.svg";
 import RenderInfo from "../product-details/render-info/render-info";
-import { GlobalStatesMethods }
-  from "../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../global-state-context/global-state-context";
+import OutOfStockOverlay from "../outOfStock-overlay/outOfStock-overlay";
+import { convertToTwoDecimals } from "../../shopping-cart-functions/shopping-cart-functions";
 
 function RenderProducts({ products })
 {
@@ -89,89 +91,72 @@ function RenderProducts({ products })
           <div
             onMouseOver={() => handleMouseOver(product.id)}
             onMouseOut={() => handleMouseOut(product.id)}
-            className={`category-product${showDetails[product.id]
-              ? " active" : ""}`}
+            className={`category-product${
+              showDetails[product.id] ? " active" : ""
+            }`}
             key={product.id}
           >
-            {
-                  !showDetails[product.id]
-                    ? (
-                      <Link to={`/${product.id}`} key={product.id}>
-                        <img
-                          src={product.gallery[0]}
-                          className="category-product-image"
-                          alt={`${product.name}`}
-                        />
-                        <div className="category-product-info-container">
-                          <p className="category-product-name">
-                            {product.name}
-                          </p>
-                          {product.prices.map((price) =>
-                          {
-                            if (price.currency.label === selectedCurrency.label)
-                            {
-                              return (
-                                <p
-                                  key={price.currency.label}
-                                  className="category-product-price"
-                                >
-                                  {`${price.currency.symbol} ${price.amount}`}
-                                </p>
-                              );
-                            }
-                          })}
-                        </div>
-                        {!product.inStock && (
-                        <div
-                          className="
-                          category-product-outOfStock-overlay-container"
+            {!showDetails[product.id] ? (
+              <Link to={`/${product.id}`} key={product.id}>
+                <img
+                  src={product.gallery[0]}
+                  className="category-product-image"
+                  alt={`${product.name}`}
+                />
+                <div className="category-product-info-container">
+                  <p className="category-product-name">{product.name}</p>
+                  {product.prices.map((price) =>
+                  {
+                    if (price.currency.label === selectedCurrency.label)
+                    {
+                      return (
+                        <p
+                          key={price.currency.label}
+                          className="category-product-price"
                         >
-                          <p
-                            className="category-product-outOfStock-overlay"
-                          >
-                            OUT OF STOCK
-
-                          </p>
-                        </div>
-                        )}
-                      </Link>
-                    )
-                    : (
-                      <div
-                        className="category-product-attributes-wrapper"
-                      >
-                        <button
-                          type="button"
-                          onClick={() => hideAttributes(product.id)}
-                        >
-                          ✖
-                        </button>
-                        <RenderInfo
-                          showDetails={false}
-                          product={product}
-                          providedClass="category-product"
-                        />
-                      </div>
-                    )
-                }
-            {(isHovering[product.id] && !showDetails[product.id]
-             && product.inStock) && (
-             <button
-               type="button"
-               className="category-product-add-button"
-               onClick={
-                product.attributes.length > 0
-                  ? () => showAttributes(product.id)
-                  : () => addToCartAttributeless(product)
-               }
-             >
-               <img
-                 src={emptyCart}
-                 alt="shopping cart"
-                 className="category-product-add-icon"
-               />
-             </button>
-
+                          {`${price.currency.symbol} ${convertToTwoDecimals(
+                            price.amount,
+                          )}`}
+                        </p>
+                      );
+                    }
+                  })}
+                </div>
+                {!product.inStock && <OutOfStockOverlay />}
+              </Link>
+            ) : (
+              <div className="category-product-attributes-wrapper">
+                <button
+                  type="button"
+                  onClick={() => hideAttributes(product.id)}
+                >
+                  ✖
+                </button>
+                <RenderInfo
+                  showDetails={false}
+                  product={product}
+                  providedClass="category-product"
+                />
+              </div>
+            )}
+            {isHovering[product.id]
+              && !showDetails[product.id]
+              && product.inStock && (
+                <button
+                  type="button"
+                  className="category-product-add-button"
+                  onClick={
+                    product.attributes.length > 0
+                      ? () => showAttributes(product.id)
+                      : () => addToCartAttributeless(product)
+                  }
+                >
+                  <img
+                    src={emptyCart}
+                    alt="shopping cart"
+                    className="category-product-add-icon"
+                  />
+                </button>
             )}
           </div>
         ))}

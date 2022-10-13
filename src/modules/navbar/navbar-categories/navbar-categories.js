@@ -5,8 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import Loading from "../../main-content/loading-component/loading-component";
 import { GET_CATEGORIES } from "../../queries/queries";
-import { GlobalStatesMethods }
-  from "../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../global-state-context/global-state-context";
 
 function NavbarCategories()
 {
@@ -28,11 +27,19 @@ function NavbarCategories()
     }
   }, [loading]);
 
-  if (loading) return <Loading height="100%" />;
+  if (loading)
+  {
+    return (
+      <div className="navbar-spinner-container">
+        <Loading height="100%" />
+      </div>
+    );
+  }
 
   if (error)
   {
-    console.log(error); return <p>Error, check out the console</p>;
+    console.log(error);
+    return <p>Error, check out the console</p>;
   }
 
   return (
@@ -43,7 +50,8 @@ function NavbarCategories()
           key={name}
           onClick={() => setSelectedCategory(name)}
           className={`navbar-category${
-            selectedCategory === name ? " active" : ""}`}
+            selectedCategory === name ? " active" : ""
+          }`}
         >
           {name.toUpperCase()}
         </Link>

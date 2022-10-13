@@ -11,10 +11,7 @@ import { GlobalStatesMethods }
 
 function MainContent()
 {
-  const {
-    selectedCategory,
-    overlayVisible,
-  } = GlobalStatesMethods();
+  const { selectedCategory, overlayVisible } = GlobalStatesMethods();
 
   const [products, setProducts] = useState([]);
 
@@ -43,37 +40,24 @@ function MainContent()
 
   if (error)
   {
-    console.log(error); return <p>Error, check out the console</p>;
+    console.log(error);
+    return <p>Error, check out the console</p>;
   }
 
   return (
     <div className="main-content-container">
       <Routes>
-        <Route
-          path="/"
-          element={(
-            <RenderProducts
-              products={products}
-            />
-          )}
-        />
+        <Route path="/" element={<RenderProducts products={products} />} />
         {products.map((product) => (
           <Route
             path={`/${product.id}`}
             key={product.id}
-            element={(
-              <ProductDetails
-                productId={product.id}
-
-              />
-            )}
+            element={<ProductDetails productId={product.id} />}
           />
         ))}
         <Route
           path="/your-bag"
-          element={(
-            <ShoppingCartDetails providedClass="shoppingCartDetails" />
-          )}
+          element={<ShoppingCartDetails providedClass="shoppingCartDetails" />}
         />
       </Routes>
       {overlayVisible && <div className="category-overlay" />}

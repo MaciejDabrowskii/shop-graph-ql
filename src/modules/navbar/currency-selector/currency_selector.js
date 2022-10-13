@@ -6,8 +6,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import Loading from "../../main-content/loading-component/loading-component";
 import { GET_CURRENCY } from "../../queries/queries";
-import { GlobalStatesMethods }
-  from "../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../global-state-context/global-state-context";
 
 function CurrencySelector()
 {
@@ -49,9 +48,10 @@ function CurrencySelector()
       {
         if (currency.label === "USD")
         {
-          setSelectedCurrency(
-            { symbol: currency.symbol, label: currency.label },
-          );
+          setSelectedCurrency({
+            symbol: currency.symbol,
+            label: currency.label,
+          });
         }
       });
     }
@@ -72,7 +72,8 @@ function CurrencySelector()
 
   if (error)
   {
-    console.log(error); return <p>Error, check out the console</p>;
+    console.log(error);
+    return <p>Error, check out the console</p>;
   }
 
   return (
@@ -100,21 +101,20 @@ function CurrencySelector()
       </svg>
       {dropdownVisible && (
         <div className="currency-selector-dropdown">
-
-            {currencies.map((currency) => (
-              <button
-                type="button"
-                className="currency-selector-item"
-                onClick={() => setSelectedCurrency({
-                  symbol: currency.symbol,
-                  label: currency.label,
-                })}
-                key={currency.label}
-              >
-                <p>{currency.symbol}</p>
-                <p>{currency.label}</p>
-              </button>
-            ))}
+          {currencies.map((currency) => (
+            <button
+              type="button"
+              className="currency-selector-item"
+              onClick={() => setSelectedCurrency({
+                symbol: currency.symbol,
+                label: currency.label,
+              })}
+              key={currency.label}
+            >
+              <p>{currency.symbol}</p>
+              <p>{currency.label}</p>
+            </button>
+          ))}
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable array-callback-return */
 
 function increaseQuantity(product)
@@ -12,26 +13,24 @@ function decreaseQuantity(product)
 
 function calculateSum(shoppingCartItems, selectedCurrency)
 {
-  return (
-    (parseFloat(
-      Math.round(
-        shoppingCartItems.reduce((sum, item) =>
-        {
-          let selectedPrice = 0;
+  return parseFloat(
+    Math.round(
+      shoppingCartItems.reduce((sum, item) =>
+      {
+        let selectedPrice = 0;
 
-          item.prices.map((price) =>
+        item.prices.map((price) =>
+        {
+          if (price.currency.label === selectedCurrency.label)
           {
-            if (price.currency.label === selectedCurrency.label)
-            {
-              selectedPrice = price.amount;
-            }
-          });
-          return item.quantity * selectedPrice + sum;
-        }, 0) * 100,
-      ) / 100,
-    )
-      .toFixed(2))
-  );
+            selectedPrice = price.amount;
+          }
+        });
+        return item.quantity * selectedPrice + sum;
+      }, 0) * 100,
+    ) / 100,
+  )
+    .toFixed(2);
 }
 
 function calculateCartItemsQuantity(shoppingCartItems)

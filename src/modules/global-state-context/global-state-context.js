@@ -12,23 +12,17 @@ export function GlobalStatesMethods()
 
 export function GlobalStatesProvider({ children })
 {
-  const [selectedCategory, setSelectedCategory] = useState(
-    () => (localStorage.getItem("selectedCategory") !== null
-      ? JSON.parse(localStorage.getItem("selectedCategory"))
-      : ""),
-  );
+  const [selectedCategory, setSelectedCategory] = useState(() => (localStorage.getItem("selectedCategory") !== null
+    ? JSON.parse(localStorage.getItem("selectedCategory"))
+    : ""));
 
-  const [selectedCurrency, setSelectedCurrency] = useState(
-    () => (localStorage.getItem("selectedCurrency") !== null
-      ? JSON.parse(localStorage.getItem("selectedCurrency"))
-      : {}),
-  );
+  const [selectedCurrency, setSelectedCurrency] = useState(() => (localStorage.getItem("selectedCurrency") !== null
+    ? JSON.parse(localStorage.getItem("selectedCurrency"))
+    : {}));
 
-  const [shoppingCartItems, setShoppingCartItems] = useState(
-    () => (localStorage.getItem("shoppingCartItems") !== null
-      ? JSON.parse(localStorage.getItem("shoppingCartItems"))
-      : []),
-  );
+  const [shoppingCartItems, setShoppingCartItems] = useState(() => (localStorage.getItem("shoppingCartItems") !== null
+    ? JSON.parse(localStorage.getItem("shoppingCartItems"))
+    : []));
 
   const [overlayVisible, setOverlayVisible] = useState(false);
 

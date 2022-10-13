@@ -7,19 +7,10 @@ import RenderDescription from "./components/render-description";
 import RenderName from "./components/render-name";
 import { GlobalStatesMethods }
   from "../../../global-state-context/global-state-context";
-import OutOfStockOverlay from "../../outOfStock-overlay/outOfStock-overlay";
 
-function RenderInfo({
-  product,
-  showDetails,
-  providedClass,
-
-})
+function RenderInfo({ product, showDetails, providedClass })
 {
-  const {
-    shoppingCartItems,
-    setShoppingCartItems,
-  } = GlobalStatesMethods();
+  const { shoppingCartItems, setShoppingCartItems } = GlobalStatesMethods();
 
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
   {
@@ -79,10 +70,7 @@ function RenderInfo({
 
   return (
     <div className={`${providedClass}-container`}>
-      <RenderName
-        product={product}
-        providedClass={providedClass}
-      />
+      <RenderName product={product} providedClass={providedClass} />
       <RenderAttributes
         attributes={product.attributes}
         selectedAttributes={selectedAttributes}
@@ -90,10 +78,7 @@ function RenderInfo({
         setSelectedAttributes={setSelectedAttributes}
       />
       <h3 className="product-details-info-price-heading">PRICE:</h3>
-      <RenderPrice
-        prices={product.prices}
-        providedClass={providedClass}
-      />
+      <RenderPrice prices={product.prices} providedClass={providedClass} />
       {product.inStock ? (
         <div className={`${providedClass}-button-container`}>
           <button
@@ -107,18 +92,20 @@ function RenderInfo({
             <span className={`${providedClass}-warning`}>
               {`*Please select: ${Object.keys(selectedAttributes)
                 .map(
-                  (attribute) => (selectedAttributes[attribute] === ""
-                    ? ` ${attribute}` : ""),
+                  (attribute) => (
+                    selectedAttributes[attribute] === ""
+                      ? ` ${attribute}`
+                      : ""),
                 )}`}
             </span>
           )}
         </div>
       ) : (
-        <OutOfStockOverlay />
+        <div className={`${providedClass}-outOfStock-container`}>
+          OUT OF STOCK
+        </div>
       )}
-      {showDetails && (
-        <RenderDescription description={product.description} />
-      )}
+      {showDetails && <RenderDescription description={product.description} />}
     </div>
   );
 }

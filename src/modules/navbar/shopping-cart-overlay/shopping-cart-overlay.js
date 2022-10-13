@@ -1,24 +1,17 @@
 import React from "react";
 import CartOverlayHeading from "./components/cart-overlay-heading";
-import RenderName
-  from "../../main-content/product-details/render-info/components/render-name";
-import RenderPrice
-  from "../../main-content/product-details/render-info/components/render-price";
+import RenderName from "../../main-content/product-details/render-info/components/render-name";
+import RenderPrice from "../../main-content/product-details/render-info/components/render-price";
 import QuantityControls from "./components/quantity-controls";
 import RenderImage from "./components/cart-overlay-image";
-import { calculateSum }
-  from "../../shopping-cart-functions/shopping-cart-functions";
+import { calculateSum } from "../../shopping-cart-functions/shopping-cart-functions";
 import SelectedValues from "./components/selected-values";
 import NavButtons from "./components/nav-buttons";
-import { GlobalStatesMethods }
-  from "../../global-state-context/global-state-context";
+import { GlobalStatesMethods } from "../../global-state-context/global-state-context";
 
 function ShoppingCartOverlay({ itemsQuantity })
 {
-  const {
-    shoppingCartItems,
-    selectedCurrency,
-  } = GlobalStatesMethods();
+  const { shoppingCartItems, selectedCurrency } = GlobalStatesMethods();
 
   return (
     <div className="shoppingCart-overlay-container">
@@ -33,11 +26,7 @@ function ShoppingCartOverlay({ itemsQuantity })
             className="shoppingCart-overlay-item-container"
           >
             <div className="shoppingCart-overlay-item-data-wrapper">
-
-              <RenderName
-                providedClass="shoppingCart-overlay"
-                product={item}
-              />
+              <RenderName providedClass="shoppingCart-overlay" product={item} />
               <RenderPrice
                 prices={item.prices}
                 providedClass="shoppingCart-overlay"
@@ -48,7 +37,6 @@ function ShoppingCartOverlay({ itemsQuantity })
                 selectedAttributes={item.selectedAttributes}
                 providedClass="shoppingCart-overlay"
               />
-
             </div>
             <div className="shoppingCart-overlay-item-image-wrapper">
               <QuantityControls

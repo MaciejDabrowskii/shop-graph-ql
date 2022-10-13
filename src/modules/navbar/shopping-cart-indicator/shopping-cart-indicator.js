@@ -3,19 +3,13 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import cartIcon from "../../../assets/EmptyCart.svg";
-import ShoppingCartOverlay
-  from "../shopping-cart-overlay/shopping-cart-overlay";
-import { calculateCartItemsQuantity }
-  from "../../shopping-cart-functions/shopping-cart-functions";
-import { GlobalStatesMethods }
-  from "../../global-state-context/global-state-context";
+import ShoppingCartOverlay from "../shopping-cart-overlay/shopping-cart-overlay";
+import { calculateCartItemsQuantity } from "../../shopping-cart-functions/shopping-cart-functions";
+import { GlobalStatesMethods } from "../../global-state-context/global-state-context";
 
 function ShoppingCartIndicator()
 {
-  const {
-    shoppingCartItems,
-    setOverlayVisible,
-  } = GlobalStatesMethods();
+  const { shoppingCartItems, setOverlayVisible } = GlobalStatesMethods();
 
   const cartCpntainerDiv = useRef();
 
@@ -67,9 +61,7 @@ function ShoppingCartIndicator()
         )}
       </div>
       {cartOverlayVisible && (
-        <ShoppingCartOverlay
-          itemsQuantity={itemsQuantity}
-        />
+        <ShoppingCartOverlay itemsQuantity={itemsQuantity} />
       )}
     </div>
   );

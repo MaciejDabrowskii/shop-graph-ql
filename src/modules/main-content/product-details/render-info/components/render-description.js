@@ -7,9 +7,8 @@ function RenderDescription({ description })
 {
   return (
     <div className="product-details-info-description-container">
-      <div dangerouslySetInnerHTML={
-        { __html: DOMPurify.sanitize(description) }
-        }
+      <div
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
       />
     </div>
   );

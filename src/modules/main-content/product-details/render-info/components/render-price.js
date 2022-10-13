@@ -3,13 +3,10 @@
 import React from "react";
 import { GlobalStatesMethods }
   from "../../../../global-state-context/global-state-context";
+import { convertToTwoDecimals }
+  from "../../../../shopping-cart-functions/shopping-cart-functions";
 
-function RenderPrice(
-  {
-    prices,
-    providedClass,
-  },
-)
+function RenderPrice({ prices, providedClass })
 {
   const { selectedCurrency } = GlobalStatesMethods();
 
@@ -21,7 +18,7 @@ function RenderPrice(
         {
           return (
             <p key={amount} className={`${providedClass}-price`}>
-              {currency.symbol + amount}
+              {`${currency.symbol} ${convertToTwoDecimals(amount)}`}
             </p>
           );
         }
