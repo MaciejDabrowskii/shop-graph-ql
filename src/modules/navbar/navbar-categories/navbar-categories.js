@@ -20,14 +20,26 @@ class NavbarCategories extends Component
   constructor(props)
   {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick = (name) =>
+  {
+    const {
+      setSelectedCategory,
+      closeOverlay,
+    } = this.context;
+
+    setSelectedCategory(name);
+    closeOverlay();
+  };
 
   render()
   {
     const {
       selectedCategory,
       setSelectedCategory,
-    } = this.props;
+    } = this.context;
 
     return (
       <Query
@@ -42,7 +54,14 @@ class NavbarCategories extends Component
       >
         {({ data, loading, error }) =>
         {
-          if (loading) return <Loading height="100%" />;
+          if (loading)
+          {
+            return (
+              <div className="navbar-spinner-container">
+                <Loading height="100%" />
+              </div>
+            );
+          }
 
           if (error)
           {
@@ -59,7 +78,7 @@ class NavbarCategories extends Component
                   <Link
                     to="/"
                     key={name}
-                    onClick={() => setSelectedCategory(name)}
+                    onClick={() => this.handleClick(name)}
                     className={`navbar-category${
                       selectedCategory === name ? " active" : ""}`}
                   >
