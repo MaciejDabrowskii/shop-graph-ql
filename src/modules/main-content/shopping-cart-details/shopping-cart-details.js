@@ -9,6 +9,8 @@ import QuantityControls
 import ImageSelector from "./image-selector/image-selector";
 import Details from "./details.js/details";
 import "./shopping-cart-details.css";
+import GlobalStateContext
+  from "../../global-state-context/global-state-context";
 
 class ShoppingCartDetails extends Component
 {
@@ -17,17 +19,25 @@ class ShoppingCartDetails extends Component
     super(props);
   }
 
+  componentWillUnmount()
+  {
+    const {
+      closeOverlay,
+    } = this.context;
+
+    closeOverlay();
+  }
+
   render()
   {
     const {
-      shoppingCartItems,
-      selectedCurrency,
-      incrementQuantity,
-      decrementQuantity,
-      removeItem,
       providedClass,
-      clearCart,
     } = this.props;
+
+    const {
+      clearCart,
+      shoppingCartItems,
+    } = this.context;
 
     return (
       <div className="shoppingCartDetails-container">
@@ -41,7 +51,6 @@ class ShoppingCartDetails extends Component
               />
               <RenderPrice
                 prices={item.prices}
-                selectedCurrency={selectedCurrency}
                 providedClass={providedClass}
               />
               <SelectedValues
@@ -54,19 +63,12 @@ class ShoppingCartDetails extends Component
               <QuantityControls
                 product={item}
                 providedClass={providedClass}
-                incrementQuantity={incrementQuantity}
-                decrementQuantity={decrementQuantity}
-                removeItem={removeItem}
-
               />
               <ImageSelector product={item} />
             </div>
           </div>
         ))}
-        <Details
-          shoppingCartItems={shoppingCartItems}
-          selectedCurrency={selectedCurrency}
-        />
+        <Details />
         <button
           onClick={() => clearCart()}
           type="button"
@@ -78,5 +80,9 @@ class ShoppingCartDetails extends Component
     );
   }
 }
+
+RenderPrice.contextType = GlobalStateContext;
+QuantityControls.contextType = GlobalStateContext;
+Details.contextType = GlobalStateContext;
 
 export default ShoppingCartDetails;
