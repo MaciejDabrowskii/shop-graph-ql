@@ -2,12 +2,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component, createRef } from "react";
-import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import Loading from "../../main-content/loading-component/loading-component";
-import { CURRENCY_QUERY } from "../../queries/queries";
-
-const GET_CURRENCY = gql`${CURRENCY_QUERY}`;
+import { GET_CURRENCY } from "../../queries/queries";
 
 class CurrencySelector extends Component
 {

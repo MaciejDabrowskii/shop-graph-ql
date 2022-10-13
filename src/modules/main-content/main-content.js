@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
-import { gql } from "@apollo/client";
 import { Routes, Route } from "react-router-dom";
 import Loading from "./loading-component/loading-component";
 import RenderProducts from "./render-products/render-products";
@@ -9,9 +8,9 @@ import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
 import GlobalStateContext
   from "../global-state-context/global-state-context";
-import { SELECTED_CATEGORY_PRODUCTS_QUERY } from "../queries/queries";
+import { GET_CATEGORY_PRODUCTS } from "../queries/queries";
 
-const GET_CATEGORY_PRODUCTS = gql`${SELECTED_CATEGORY_PRODUCTS_QUERY}`;
+// const GET_CATEGORY_PRODUCTS = gql`${SELECTED_CATEGORY_PRODUCTS_QUERY}`;
 
 class MainContent extends Component
 {

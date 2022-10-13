@@ -1,4 +1,6 @@
-export const CATEGORIES_QUERY = `
+import { gql } from "@apollo/client";
+
+export const GET_CATEGORIES = gql`
   {
     categories {
       name
@@ -6,7 +8,7 @@ export const CATEGORIES_QUERY = `
   }
 `;
 
-export const CURRENCY_QUERY = `
+export const GET_CURRENCY = gql`
   {
     currencies {
       label
@@ -15,7 +17,7 @@ export const CURRENCY_QUERY = `
   }
 `;
 
-export const SELECTED_CATEGORY_PRODUCTS_QUERY = `
+export const GET_CATEGORY_PRODUCTS = gql`
   query category($name: String!) {
     category(input: { title: $name }) {
       name
@@ -49,7 +51,7 @@ export const SELECTED_CATEGORY_PRODUCTS_QUERY = `
   }
 `;
 
-export const PRODUCT_QUERY = `
+export const GET_PRODUCT = gql`
 query product($id: String!) {
   product(id: $id) {
     id

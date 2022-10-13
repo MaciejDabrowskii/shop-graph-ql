@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import React, { Component } from "react";
 import RenderImages from "./render-images/render-images";
@@ -8,9 +7,7 @@ import Loading from "../loading-component/loading-component";
 import "./product-details.css";
 import GlobalStateContext
   from "../../global-state-context/global-state-context";
-import { PRODUCT_QUERY } from "../../queries/queries";
-
-const GET_PRODUCT = gql`${PRODUCT_QUERY}`;
+import { GET_PRODUCT } from "../../queries/queries";
 
 class ProductDetails extends Component
 {
