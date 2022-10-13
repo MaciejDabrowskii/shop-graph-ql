@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import emptyCart from "../../../assets/EmptyCart-white.svg";
 import RenderInfo from "../product-details/render-info/render-info";
 import { convertToTwoDecimals } from "../../shopping-cart-functions/shopping-cart-functions";
+import GlobalStateContext from "../../global-state-context/global-state-context";
+import OutOfStockOverlay from "../outOfStock-overlay/outOfStock-overlay";
 
 class RenderProducts extends Component
 {
@@ -24,6 +26,15 @@ class RenderProducts extends Component
     this.handleMouseOut = this.handleMouseOut.bind(this);
     this.showAttributes = this.showAttributes.bind(this);
     this.hideAttributes = this.hideAttributes.bind(this);
+  }
+
+  componentWillUnmount()
+  {
+    const {
+      closeOverlay,
+    } = this.context;
+
+    closeOverlay();
   }
 
   setInitialState = () =>
@@ -79,13 +90,13 @@ class RenderProducts extends Component
   {
     const {
       products,
-      selectedCurrency,
       categoryName,
-      shoppingCartItems,
-      addItem,
-      incrementQuantity,
-      addToCartAttributeless,
     } = this.props;
+
+    const {
+      addToCartAttributeless,
+      selectedCurrency,
+    } = this.context;
 
     return (
       <div className="category-products">
@@ -125,14 +136,7 @@ class RenderProducts extends Component
                           })}
                         </div>
                         {!product.inStock && (
-                        <div className="category-product-outOfStock-overlay-container">
-                          <p
-                            className="category-product-outOfStock-overlay"
-                          >
-                            OUT OF STOCK
-
-                          </p>
-                        </div>
+                        <OutOfStockOverlay />
                         )}
                       </Link>
                     )
@@ -149,10 +153,6 @@ class RenderProducts extends Component
                         </button>
                         <RenderInfo
                           product={product}
-                          selectedCurrency={selectedCurrency}
-                          shoppingCartItems={shoppingCartItems}
-                          addItem={addItem}
-                          incrementQuantity={incrementQuantity}
                           showDetails={false}
                           providedClass="category-product"
                         />
@@ -184,5 +184,7 @@ class RenderProducts extends Component
     );
   }
 }
+
+RenderInfo.contextType = GlobalStateContext;
 
 export default RenderProducts;
