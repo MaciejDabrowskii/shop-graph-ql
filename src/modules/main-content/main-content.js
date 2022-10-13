@@ -10,8 +10,6 @@ import GlobalStateContext
   from "../global-state-context/global-state-context";
 import { GET_CATEGORY_PRODUCTS } from "../queries/queries";
 
-// const GET_CATEGORY_PRODUCTS = gql`${SELECTED_CATEGORY_PRODUCTS_QUERY}`;
-
 class MainContent extends Component
 {
   constructor(props)
