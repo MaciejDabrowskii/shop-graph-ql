@@ -23,10 +23,12 @@ class NavbarCategories extends Component
     const {
       setSelectedCategory,
       closeOverlay,
+      closeCurrencyDropdown,
     } = this.context;
 
     setSelectedCategory(name);
     closeOverlay();
+    closeCurrencyDropdown();
   };
 
   render()

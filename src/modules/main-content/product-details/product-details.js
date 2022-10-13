@@ -8,7 +8,6 @@ import Loading from "../loading-component/loading-component";
 import "./product-details.css";
 import GlobalStateContext
   from "../../global-state-context/global-state-context";
-import OutOfStockOverlay from "../outOfStock-overlay/outOfStock-overlay";
 import { PRODUCT_QUERY } from "../../queries/queries";
 
 const GET_PRODUCT = gql`${PRODUCT_QUERY}`;
@@ -24,9 +23,11 @@ class ProductDetails extends Component
   {
     const {
       closeOverlay,
+      closeCurrencyDropdown,
     } = this.context;
 
     closeOverlay();
+    closeCurrencyDropdown();
   }
 
   render()
@@ -55,9 +56,6 @@ class ProductDetails extends Component
 
             return (
               <div className="product-details-container">
-                {!product.inStock && (
-                <OutOfStockOverlay />
-                )}
                 <RenderImages
                   product={product}
                 />

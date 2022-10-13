@@ -32,9 +32,11 @@ class RenderProducts extends Component
   {
     const {
       closeOverlay,
+      closeCurrencyDropdown,
     } = this.context;
 
     closeOverlay();
+    closeCurrencyDropdown();
   }
 
   setInitialState = () =>

@@ -23,9 +23,11 @@ class ShoppingCartDetails extends Component
   {
     const {
       closeOverlay,
+      closeCurrencyDropdown,
     } = this.context;
 
     closeOverlay();
+    closeCurrencyDropdown();
   }
 
   render()
