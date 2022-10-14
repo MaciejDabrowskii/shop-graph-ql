@@ -13,14 +13,9 @@ class RenderPrice extends Component
 
   render()
   {
-    const {
-      providedClass,
-      prices,
-    } = this.props;
+    const { providedClass, prices } = this.props;
 
-    const {
-      selectedCurrency,
-    } = this.context;
+    const { selectedCurrency } = this.context;
 
     return (
       <div className={`${providedClass}-price-container`}>

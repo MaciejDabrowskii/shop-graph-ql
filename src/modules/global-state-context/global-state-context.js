@@ -15,18 +15,17 @@ export class GlobalStateProvider extends Component
       isOverlayVisible: false,
       isCartOverlayVisible: false,
       isCurrencyDropdownVisible: false,
-    }
-       || {
-         selectedCategory: "",
-         selectedCurrency: {
-           symbol: "",
-           label: "",
-         },
-         shoppingCartItems: [],
-         isOverlayVisible: false,
-         isCartOverlayVisible: false,
-         isCurrencyDropdownVisible: false,
-       };
+    } || {
+      selectedCategory: "",
+      selectedCurrency: {
+        symbol: "",
+        label: "",
+      },
+      shoppingCartItems: [],
+      isOverlayVisible: false,
+      isCartOverlayVisible: false,
+      isCurrencyDropdownVisible: false,
+    };
 
     this.setSelectedCategory = this.setSelectedCategory.bind(this);
     this.setSelectedCurrency = this.setSelectedCurrency.bind(this);
@@ -82,7 +81,8 @@ export class GlobalStateProvider extends Component
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems.map((item) => (
         item.cartId === cartId
-          ? { ...item, quantity: item.quantity + 1 } : item)),
+          ? { ...item, quantity: item.quantity + 1 }
+          : item)),
     }));
   };
 
@@ -94,8 +94,8 @@ export class GlobalStateProvider extends Component
       ...prevState,
       shoppingCartItems: prevState.shoppingCartItems.map((item) => (
         item.cartId === cartId
-          ? { ...item, quantity: item.quantity - 1 } : item
-      )),
+          ? { ...item, quantity: item.quantity - 1 }
+          : item)),
     }));
   };
 
@@ -105,8 +105,9 @@ export class GlobalStateProvider extends Component
 
     this.setState((prevState) => ({
       ...prevState,
-      shoppingCartItems: prevState.shoppingCartItems
-        .filter((item) => item.cartId !== cartId),
+      shoppingCartItems: prevState.shoppingCartItems.filter(
+        (item) => item.cartId !== cartId,
+      ),
     }));
   };
 
@@ -124,15 +125,11 @@ export class GlobalStateProvider extends Component
 
     const { shoppingCartItems } = this.state;
 
-    if (
-      shoppingCartItems.some((item) => item.cartId === id)
-    )
+    if (shoppingCartItems.some((item) => item.cartId === id))
     {
       shoppingCartItems.map((item) =>
       {
-        if (
-          item.cartId === id
-        ) this.incrementQuantity(item);
+        if (item.cartId === id) this.incrementQuantity(item);
       });
     }
     else

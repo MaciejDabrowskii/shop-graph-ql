@@ -9,32 +9,22 @@ class QuantityControls extends Component
 
   render()
   {
-    const {
-      incrementQuantity,
-      decrementQuantity,
-      removeItem,
-    } = this.context;
+    const { incrementQuantity, decrementQuantity, removeItem } = this.context;
 
-    const {
-      providedClass,
-      product,
-    } = this.props;
+    const { providedClass, product } = this.props;
 
     return (
       <div className={`${providedClass}-quantityControl-container`}>
-        <button
-          type="button"
-          onClick={() => incrementQuantity(product)}
-        >
+        <button type="button" onClick={() => incrementQuantity(product)}>
           {"\u002B"}
         </button>
         <p>{product.quantity}</p>
         <button
           type="button"
           onClick={
-          product.quantity > 1
-            ? () => decrementQuantity(product)
-            : () => removeItem(product)
+            product.quantity > 1
+              ? () => decrementQuantity(product)
+              : () => removeItem(product)
           }
         >
           {"\u2212"}

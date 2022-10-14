@@ -13,11 +13,7 @@ class OutOfStockOverlay extends Component
   {
     return (
       <div className="outOfStock-overlay-container">
-        <p
-          className="outOfStock-overlay"
-        >
-          OUT OF STOCK
-        </p>
+        <p className="outOfStock-overlay">OUT OF STOCK</p>
       </div>
     );
   }

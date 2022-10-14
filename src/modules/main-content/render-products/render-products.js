@@ -30,10 +30,7 @@ class RenderProducts extends Component
 
   componentWillUnmount()
   {
-    const {
-      closeOverlay,
-      closeCurrencyDropdown,
-    } = this.context;
+    const { closeOverlay, closeCurrencyDropdown } = this.context;
 
     closeOverlay();
     closeCurrencyDropdown();
@@ -90,15 +87,9 @@ class RenderProducts extends Component
 
   render()
   {
-    const {
-      products,
-      categoryName,
-    } = this.props;
+    const { products, categoryName } = this.props;
 
-    const {
-      addToCartAttributeless,
-      selectedCurrency,
-    } = this.context;
+    const { addToCartAttributeless, selectedCurrency } = this.context;
 
     return (
       <div className="category-products">
@@ -108,76 +99,75 @@ class RenderProducts extends Component
             <div
               onMouseOver={() => this.handleMouseOver(product.id)}
               onMouseOut={() => this.handleMouseOut(product.id)}
-              className={`category-product${this.state.showDetails[product.id] ? " active" : ""}`}
+              className={`category-product${
+                this.state.showDetails[product.id] ? " active" : ""
+              }`}
               key={product.id}
             >
-              {
-                  !this.state.showDetails[product.id]
-                    ? (
-                      <Link to={`/${product.id}`} key={product.id}>
-                        <img
-                          src={product.gallery[0]}
-                          className="category-product-image"
-                          alt={`${product.name}`}
-                        />
-                        <div className="category-product-info-container">
-                          <p className="category-product-name">{`${product.brand} ${product.name}`}</p>
-                          {product.prices.map((price) =>
-                          {
-                            if (price.currency.label === selectedCurrency.label)
-                            {
-                              return (
-                                <p
-                                  key={price.currency.label}
-                                  className="category-product-price"
-                                >
-                                  {`${price.currency.symbol} ${convertToTwoDecimals(price.amount)}`}
-                                </p>
-                              );
-                            }
-                          })}
-                        </div>
-                        {!product.inStock && (
-                        <OutOfStockOverlay />
-                        )}
-                      </Link>
-                    )
-                    : (
-                      <div
-                        key={product.id}
-                        className="category-product-attributes-wrapper"
-                      >
-                        <button
-                          type="button"
-                          onClick={() => this.hideAttributes(product.id)}
-                        >
-                          ✖
-                        </button>
-                        <RenderInfo
-                          product={product}
-                          showDetails={false}
-                          providedClass="category-product"
-                        />
-                      </div>
-                    )
-                }
-              { (this.state.showButton[product.id] && !this.state.showDetails[product.id] && product.inStock) && (
-              <button
-                type="button"
-                className="category-product-add-button"
-                onClick={
-                  product.attributes.length > 0
-                    ? () => this.showAttributes(product.id)
-                    : () => addToCartAttributeless(product)
-                }
-              >
-                <img
-                  src={emptyCart}
-                  alt="shopping cart"
-                  className="category-product-add-icon"
-                />
-              </button>
-
+              {!this.state.showDetails[product.id] ? (
+                <Link to={`/${product.id}`} key={product.id}>
+                  <img
+                    src={product.gallery[0]}
+                    className="category-product-image"
+                    alt={`${product.name}`}
+                  />
+                  <div className="category-product-info-container">
+                    <p className="category-product-name">{`${product.brand} ${product.name}`}</p>
+                    {product.prices.map((price) =>
+                    {
+                      if (price.currency.label === selectedCurrency.label)
+                      {
+                        return (
+                          <p
+                            key={price.currency.label}
+                            className="category-product-price"
+                          >
+                            {`${price.currency.symbol} ${convertToTwoDecimals(
+                              price.amount,
+                            )}`}
+                          </p>
+                        );
+                      }
+                    })}
+                  </div>
+                  {!product.inStock && <OutOfStockOverlay />}
+                </Link>
+              ) : (
+                <div
+                  key={product.id}
+                  className="category-product-attributes-wrapper"
+                >
+                  <button
+                    type="button"
+                    onClick={() => this.hideAttributes(product.id)}
+                  >
+                    ✖
+                  </button>
+                  <RenderInfo
+                    product={product}
+                    showDetails={false}
+                    providedClass="category-product"
+                  />
+                </div>
+              )}
+              {this.state.showButton[product.id]
+                && !this.state.showDetails[product.id]
+                && product.inStock && (
+                  <button
+                    type="button"
+                    className="category-product-add-button"
+                    onClick={
+                      product.attributes.length > 0
+                        ? () => this.showAttributes(product.id)
+                        : () => addToCartAttributeless(product)
+                    }
+                  >
+                    <img
+                      src={emptyCart}
+                      alt="shopping cart"
+                      className="category-product-add-icon"
+                    />
+                  </button>
               )}
             </div>
           ))}

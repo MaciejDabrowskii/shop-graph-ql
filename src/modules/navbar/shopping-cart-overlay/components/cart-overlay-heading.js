@@ -9,10 +9,7 @@ class CartOverlayHeading extends Component
 
   render()
   {
-    const {
-      providedClass,
-      itemsQuantity,
-    } = this.props;
+    const { providedClass, itemsQuantity } = this.props;
 
     return (
       <div className={`${providedClass}-heading`}>

@@ -21,10 +21,7 @@ class ShoppingCartDetails extends Component
 
   componentWillUnmount()
   {
-    const {
-      closeOverlay,
-      closeCurrencyDropdown,
-    } = this.context;
+    const { closeOverlay, closeCurrencyDropdown } = this.context;
 
     closeOverlay();
     closeCurrencyDropdown();
@@ -32,14 +29,9 @@ class ShoppingCartDetails extends Component
 
   render()
   {
-    const {
-      providedClass,
-    } = this.props;
+    const { providedClass } = this.props;
 
-    const {
-      clearCart,
-      shoppingCartItems,
-    } = this.context;
+    const { clearCart, shoppingCartItems } = this.context;
 
     return (
       <div className="shoppingCartDetails-container">
@@ -47,14 +39,8 @@ class ShoppingCartDetails extends Component
         {shoppingCartItems.map((item) => (
           <div key={item.cartId} className="shoppingCartDetails-item-container">
             <div className="shoppingCartDetails-item-data-wrapper">
-              <RenderName
-                product={item}
-                providedClass={providedClass}
-              />
-              <RenderPrice
-                prices={item.prices}
-                providedClass={providedClass}
-              />
+              <RenderName product={item} providedClass={providedClass} />
+              <RenderPrice prices={item.prices} providedClass={providedClass} />
               <SelectedValues
                 attributes={item.attributes}
                 selectedAttributes={item.selectedAttributes}
@@ -62,10 +48,7 @@ class ShoppingCartDetails extends Component
               />
             </div>
             <div className="shoppingCartDetails-item-image-wrapper">
-              <QuantityControls
-                product={item}
-                providedClass={providedClass}
-              />
+              <QuantityControls product={item} providedClass={providedClass} />
               <ImageSelector product={item} />
             </div>
           </div>

@@ -22,14 +22,9 @@ class ShoppingCartOverlay extends Component
 
   render()
   {
-    const {
-      itemsQuantity,
-    } = this.props;
+    const { itemsQuantity } = this.props;
 
-    const {
-      selectedCurrency,
-      shoppingCartItems,
-    } = this.context;
+    const { selectedCurrency, shoppingCartItems } = this.context;
 
     return (
       <div className="shoppingCart-overlay-container">
@@ -44,7 +39,6 @@ class ShoppingCartOverlay extends Component
               className="shoppingCart-overlay-item-container"
             >
               <div className="shoppingCart-overlay-item-data-wrapper">
-
                 <RenderName
                   product={item}
                   providedClass="shoppingCart-overlay"
@@ -59,7 +53,6 @@ class ShoppingCartOverlay extends Component
                   selectedAttributes={item.selectedAttributes}
                   providedClass="shoppingCart-overlay"
                 />
-
               </div>
               <div className="shoppingCart-overlay-item-image-wrapper">
                 <QuantityControls

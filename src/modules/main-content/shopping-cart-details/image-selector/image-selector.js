@@ -16,7 +16,9 @@ class ImageSelector extends Component
   {
     const { selectedImage } = this.state;
 
-    const { product: { gallery } } = this.props;
+    const {
+      product: { gallery },
+    } = this.props;
 
     selectedImage < gallery.length - 1
       ? this.setState((prevState) => ({
@@ -29,7 +31,9 @@ class ImageSelector extends Component
   {
     const { selectedImage } = this.state;
 
-    const { product: { gallery } } = this.props;
+    const {
+      product: { gallery },
+    } = this.props;
 
     selectedImage === 0
       ? this.setState({ selectedImage: gallery.length - 1 })
@@ -50,24 +54,23 @@ class ImageSelector extends Component
       <div className="shoppingCartDetails-item-image-container">
         <img src={gallery[selectedImage]} alt={name} />
         {gallery.length > 1 && (
-        <div className="shoppingCartDetails-item-image-controls-container">
-          <button
-            className="shoppingCartDetails-item-image-control-btn"
-            onClick={this.previousImage}
-            type="button"
-          >
-            {"<"}
-          </button>
-          <button
-            className="shoppingCartDetails-item-image-control-btn"
-            onClick={this.nextImage}
-            type="button"
-          >
-            {">"}
-          </button>
-        </div>
+          <div className="shoppingCartDetails-item-image-controls-container">
+            <button
+              className="shoppingCartDetails-item-image-control-btn"
+              onClick={this.previousImage}
+              type="button"
+            >
+              {"<"}
+            </button>
+            <button
+              className="shoppingCartDetails-item-image-control-btn"
+              onClick={this.nextImage}
+              type="button"
+            >
+              {">"}
+            </button>
+          </div>
         )}
-
       </div>
     );
   }

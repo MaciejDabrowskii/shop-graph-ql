@@ -28,7 +28,9 @@ class RenderInfo extends Component
 
   setInitialAttributes = () =>
   {
-    const { product: { attributes } } = this.props;
+    const {
+      product: { attributes },
+    } = this.props;
 
     const initialObject = {};
 
@@ -41,7 +43,9 @@ class RenderInfo extends Component
 
   generateCartiD = () =>
   {
-    const { product: { id } } = this.props;
+    const {
+      product: { id },
+    } = this.props;
 
     const { selectedAttributes } = this.state;
 
@@ -57,10 +61,13 @@ class RenderInfo extends Component
       showWarning: true,
     }));
 
-    setTimeout(() => this.setState((prevState) => ({
-      ...prevState,
-      showWarning: false,
-    })), 3000);
+    setTimeout(
+      () => this.setState((prevState) => ({
+        ...prevState,
+        showWarning: false,
+      })),
+      3000,
+    );
   };
 
   checkAttributes = () =>
@@ -68,20 +75,16 @@ class RenderInfo extends Component
     const { selectedAttributes } = this.state;
 
     return Object.values(selectedAttributes)
-      .every((attribute) => attribute !== "");
+      .every(
+        (attribute) => attribute !== "",
+      );
   };
 
   addToCart = () =>
   {
-    const {
-      product,
-    } = this.props;
+    const { product } = this.props;
 
-    const {
-      shoppingCartItems,
-      incrementQuantity,
-      addItem,
-    } = this.context;
+    const { shoppingCartItems, incrementQuantity, addItem } = this.context;
 
     const { selectedAttributes } = this.state;
 
@@ -93,9 +96,7 @@ class RenderInfo extends Component
       {
         shoppingCartItems.map((item) =>
         {
-          if (
-            item.cartId === this.generateCartiD()
-          ) incrementQuantity(item);
+          if (item.cartId === this.generateCartiD()) incrementQuantity(item);
         });
       }
       else
@@ -118,7 +119,8 @@ class RenderInfo extends Component
     this.setState((prevState) => ({
       ...prevState,
       selectedAttributes: {
-        ...selectedAttributes, [attributeName]: e.target.value,
+        ...selectedAttributes,
+        [attributeName]: e.target.value,
       },
     }));
   };
@@ -127,27 +129,18 @@ class RenderInfo extends Component
   {
     const {
       product: {
-        attributes,
-        prices,
-        inStock,
-        description,
+        attributes, prices, inStock, description,
       },
       product,
       showDetails,
       providedClass,
     } = this.props;
 
-    const {
-      selectedAttributes,
-      showWarning,
-    } = this.state;
+    const { selectedAttributes, showWarning } = this.state;
 
     return (
       <div className={`${providedClass}-container`}>
-        <RenderName
-          product={product}
-          providedClass={providedClass}
-        />
+        <RenderName product={product} providedClass={providedClass} />
         <RenderAttributes
           attributes={attributes}
           selectedAttributes={selectedAttributes}
@@ -155,10 +148,7 @@ class RenderInfo extends Component
           providedClass={providedClass}
         />
         <h3 className={`${providedClass}-price-heading`}>PRICE:</h3>
-        <RenderPrice
-          prices={prices}
-          providedClass={providedClass}
-        />
+        <RenderPrice prices={prices} providedClass={providedClass} />
         {inStock ? (
           <div className={`${providedClass}-button-container`}>
             <button
@@ -169,13 +159,14 @@ class RenderInfo extends Component
               ADD TO CART
             </button>
             {showWarning && (
-            <span className={`${providedClass}-warning`}>
-              {`*Please select: ${Object.keys(selectedAttributes)
-                .map(
-                  (attribute) => (selectedAttributes[attribute] === ""
-                    ? ` ${attribute}` : ""),
-                )}`}
-            </span>
+              <span className={`${providedClass}-warning`}>
+                {`*Please select: ${Object.keys(selectedAttributes)
+                  .map(
+                    (attribute) => (
+                      selectedAttributes[attribute] === ""
+                        ? ` ${attribute}` : ""),
+                  )}`}
+              </span>
             )}
           </div>
         ) : (
@@ -183,9 +174,7 @@ class RenderInfo extends Component
             OUT OF STOCK
           </div>
         )}
-        {showDetails && (
-        <RenderDescription description={description} />
-        )}
+        {showDetails && <RenderDescription description={description} />}
       </div>
     );
   }

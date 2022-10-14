@@ -18,10 +18,7 @@ class ProductDetails extends Component
 
   componentWillUnmount()
   {
-    const {
-      closeOverlay,
-      closeCurrencyDropdown,
-    } = this.context;
+    const { closeOverlay, closeCurrencyDropdown } = this.context;
 
     closeOverlay();
     closeCurrencyDropdown();
@@ -29,22 +26,18 @@ class ProductDetails extends Component
 
   render()
   {
-    const {
-      productId,
-    } = this.props;
+    const { productId } = this.props;
 
     return (
-      <Query
-        query={GET_PRODUCT}
-        variables={{ id: productId }}
-      >
+      <Query query={GET_PRODUCT} variables={{ id: productId }}>
         {({ data, loading, error }) =>
         {
           if (loading) return <Loading height="600px" />;
 
           if (error)
           {
-            console.log(error); return <p>Error, check out the console</p>;
+            console.log(error);
+            return <p>Error, check out the console</p>;
           }
 
           if (!loading)
@@ -53,9 +46,7 @@ class ProductDetails extends Component
 
             return (
               <div className="product-details-container">
-                <RenderImages
-                  product={product}
-                />
+                <RenderImages product={product} />
                 <RenderInfo
                   product={product}
                   providedClass="product-details-info"

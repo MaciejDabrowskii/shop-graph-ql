@@ -11,9 +11,7 @@ class RenderDescription extends Component
 
   render()
   {
-    const {
-      description,
-    } = this.props;
+    const { description } = this.props;
 
     return (
       <div className="product-details-info-description-container">

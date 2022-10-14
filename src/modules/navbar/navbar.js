@@ -17,9 +17,7 @@ class Navbar extends Component
 
   render()
   {
-    const {
-      shoppingCartItems,
-    } = this.context;
+    const { shoppingCartItems } = this.context;
 
     return (
       <div className="navbar">
@@ -29,9 +27,7 @@ class Navbar extends Component
         </div>
         <div className="navbar-controls-container">
           <CurrencySelector />
-          <ShoppingCartIndicator
-            shoppingCartItems={shoppingCartItems}
-          />
+          <ShoppingCartIndicator shoppingCartItems={shoppingCartItems} />
         </div>
       </div>
     );

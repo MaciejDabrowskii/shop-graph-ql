@@ -9,7 +9,9 @@ class RenderImages extends Component
   {
     super(props);
 
-    const { product: { gallery } } = this.props;
+    const {
+      product: { gallery },
+    } = this.props;
 
     this.state = { selectedImg: gallery[0] };
     this.setSelectedImage = this.setSelectedImage.bind(this);
@@ -42,9 +44,7 @@ class RenderImages extends Component
                 alt={`${name} small`}
                 onClick={() => this.setSelectedImage(image)}
               />
-              {!inStock && (
-              <OutOfStockOverlay />
-              )}
+              {!inStock && <OutOfStockOverlay />}
             </div>
           ))}
         </div>
@@ -54,11 +54,8 @@ class RenderImages extends Component
             src={selectedImg}
             alt={`${name} big`}
           />
-          {!inStock && (
-          <OutOfStockOverlay />
-          )}
+          {!inStock && <OutOfStockOverlay />}
         </div>
-
       </div>
     );
   }

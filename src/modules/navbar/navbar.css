@@ -8,7 +8,7 @@
 }
 
 /* NavbarCategories */
-.navbar-spinner-container{
+.navbar-spinner-container {
   width: 10rem;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
   cursor: pointer;
   box-sizing: border-box;
   border-bottom: 3px solid rgba(255, 255, 255, 0);
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
   text-decoration: none;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .currency-selector-item > * {
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .currency-selector-item:hover > * {
@@ -306,8 +306,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all .3s ease-in-out;
-  background-color: inherit; 
+  transition: all 0.3s ease-in-out;
+  background-color: inherit;
 }
 
 .shoppingCart-overlay-quantityControl-container > button:hover {
@@ -324,7 +324,7 @@
   font-size: 2rem;
 }
 
-.shoppingCart-overlay-image-container{
+.shoppingCart-overlay-image-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,7 +369,7 @@
   font-weight: 600;
   cursor: pointer;
   width: 17.5rem;
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 .shoppingCart-overlay-navButtons-viewBag:hover {
   background-color: var(--dark);
@@ -384,7 +384,7 @@
   width: 17.5rem;
   background-color: var(--green);
   color: white;
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .shoppingCart-overlay-navButtons-checkOut:hover {
@@ -393,7 +393,6 @@
 }
 
 @media only screen and (max-width: 490px) {
-
   .navbar {
     margin: 0 1.5rem;
   }
@@ -409,4 +408,4 @@
   .currency-selector-dropdown {
     left: -10rem;
   }
-}   
+}

@@ -20,8 +20,7 @@ class ShoppingCartIndicator extends Component
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
 
-    this.state = JSON.parse(localStorage.getItem("CartOverlayData"))
-    || {
+    this.state = JSON.parse(localStorage.getItem("CartOverlayData")) || {
       itemsQuantity: calculateCartItemsQuantity(shoppingCartItems),
     };
     this.cartContainerDiv = createRef();
@@ -66,9 +65,7 @@ class ShoppingCartIndicator extends Component
 
   render()
   {
-    const {
-      itemsQuantity,
-    } = this.state;
+    const { itemsQuantity } = this.state;
 
     const { isCartOverlayVisible, toggleOverlay } = this.context;
 
@@ -83,13 +80,11 @@ class ShoppingCartIndicator extends Component
         >
           <img src={cartIcon} alt="shopping cart icon" />
           {itemsQuantity > 0 && (
-          <div className="shopping-cart-indicator">{itemsQuantity}</div>
+            <div className="shopping-cart-indicator">{itemsQuantity}</div>
           )}
         </div>
         {isCartOverlayVisible && (
-        <ShoppingCartOverlay
-          itemsQuantity={itemsQuantity}
-        />
+          <ShoppingCartOverlay itemsQuantity={itemsQuantity} />
         )}
       </div>
     );

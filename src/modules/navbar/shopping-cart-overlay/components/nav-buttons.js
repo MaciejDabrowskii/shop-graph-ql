@@ -10,10 +10,7 @@ class NavButtons extends Component
 
   handleCheckOut = () =>
   {
-    const {
-      clearCart,
-      closeOverlay,
-    } = this.context;
+    const { clearCart, closeOverlay } = this.context;
 
     clearCart();
     closeOverlay();
@@ -21,9 +18,7 @@ class NavButtons extends Component
 
   render()
   {
-    const {
-      closeOverlay,
-    } = this.context;
+    const { closeOverlay } = this.context;
 
     return (
       <div className="shoppingCart-overlay-navButtons-container">

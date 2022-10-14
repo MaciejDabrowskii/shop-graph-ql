@@ -27,9 +27,7 @@ class CurrencySelector extends Component
 
   handleClickOutside = (event) =>
   {
-    const {
-      closeCurrencyDropdown,
-    } = this.context;
+    const { closeCurrencyDropdown } = this.context;
 
     if (!this.dropdown.current.contains(event.target))
     {
@@ -57,7 +55,8 @@ class CurrencySelector extends Component
 
           if (error)
           {
-            console.log(error); return <p>Error, check out the console</p>;
+            console.log(error);
+            return <p>Error, check out the console</p>;
           }
 
           if (!loading)
@@ -80,13 +79,11 @@ class CurrencySelector extends Component
                   viewBox="0 0 8 4"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  style={
-                    {
-                      transform: isCurrencyDropdownVisible
-                        ? "none"
-                        : "rotate(180deg)",
-                    }
-                  }
+                  style={{
+                    transform: isCurrencyDropdownVisible
+                      ? "none"
+                      : "rotate(180deg)",
+                  }}
                 >
                   <path
                     d="M1 3.5L4 0.5L7 3.5"
@@ -96,23 +93,24 @@ class CurrencySelector extends Component
                   />
                 </svg>
                 {isCurrencyDropdownVisible && (
-                <div className="currency-selector-dropdown">
-                  {currencies.map((currency) => (
-                    <button
-                      type="button"
-                      className={currency.symbol === selectedCurrency.symbol
-                        ? "currency-selector-item selected"
-                        : "currency-selector-item"}
-                      onClick={() => setSelectedCurrency(currency)}
-                      key={currency.label}
-                    >
-                      <p>{currency.symbol}</p>
-                      <p>{currency.label}</p>
-                    </button>
-                  ))}
-                </div>
+                  <div className="currency-selector-dropdown">
+                    {currencies.map((currency) => (
+                      <button
+                        type="button"
+                        className={
+                          currency.symbol === selectedCurrency.symbol
+                            ? "currency-selector-item selected"
+                            : "currency-selector-item"
+                        }
+                        onClick={() => setSelectedCurrency(currency)}
+                        key={currency.label}
+                      >
+                        <p>{currency.symbol}</p>
+                        <p>{currency.label}</p>
+                      </button>
+                    ))}
+                  </div>
                 )}
-
               </div>
             );
           }

@@ -14,10 +14,7 @@ class Details extends Component
 
   render()
   {
-    const {
-      shoppingCartItems,
-      selectedCurrency,
-    } = this.context;
+    const { shoppingCartItems, selectedCurrency } = this.context;
 
     return (
       <div className="shoppingCartDetails-details-container">

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
@@ -6,8 +7,7 @@ import Loading from "./loading-component/loading-component";
 import RenderProducts from "./render-products/render-products";
 import ProductDetails from "./product-details/product-details";
 import ShoppingCartDetails from "./shopping-cart-details/shopping-cart-details";
-import GlobalStateContext
-  from "../global-state-context/global-state-context";
+import GlobalStateContext from "../global-state-context/global-state-context";
 import { GET_CATEGORY_PRODUCTS } from "../queries/queries";
 
 class MainContent extends Component
@@ -19,10 +19,7 @@ class MainContent extends Component
 
   render()
   {
-    const {
-      selectedCategory,
-      isOverlayVisible,
-    } = this.context;
+    const { selectedCategory, isOverlayVisible } = this.context;
 
     return (
       <Query
@@ -35,43 +32,35 @@ class MainContent extends Component
 
           if (error)
           {
-            console.log(error); return <p>Error, check out the console</p>;
+            console.log(error);
+            return <p>Error, check out the console</p>;
           }
 
           if (!loading)
           {
-            const { category: { products, name } } = data;
+            const {
+              category: { products, name },
+            } = data;
 
             return (
               <div className="main-content-container">
                 <Routes>
                   <Route
                     path="/"
-                    element={(
-                      <RenderProducts
-                        products={products}
-                        categoryName={name}
-                      />
-                    )}
+                    element={
+                      <RenderProducts products={products} categoryName={name} />
+                    }
                   />
                   {products.map(({ id }) => (
                     <Route
                       path={`/${id}`}
                       key={id}
-                      element={(
-                        <ProductDetails
-                          productId={id}
-                        />
-                      )}
+                      element={<ProductDetails productId={id} />}
                     />
                   ))}
                   <Route
                     path="/your-bag"
-                    element={(
-                      <ShoppingCartDetails
-                        providedClass="shoppingCartDetails"
-                      />
-                    )}
+                    element={<ShoppingCartDetails providedClass="shoppingCartDetails" />}
                   />
                 </Routes>
                 {isOverlayVisible && <div className="category-overlay" />}

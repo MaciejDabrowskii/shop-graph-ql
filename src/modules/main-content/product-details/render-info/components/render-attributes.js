@@ -10,10 +10,7 @@ class RenderAttributes extends Component
   render()
   {
     const {
-      attributes,
-      selectedAttributes,
-      updateAttributes,
-      providedClass,
+      attributes, selectedAttributes, updateAttributes, providedClass,
     } = this.props;
 
     return (
@@ -33,20 +30,22 @@ class RenderAttributes extends Component
                 <div className={`${providedClass}-attribute-values-container`}>
                   {items.map((item) => (
                     <div
-                      className={selectedAttributes[name] === item.id
-                        ? `${providedClass}-attribute-wrapper active`
-                        : `${providedClass}-attribute-wrapper`}
+                      className={
+                        selectedAttributes[name] === item.id
+                          ? `${providedClass}-attribute-wrapper active`
+                          : `${providedClass}-attribute-wrapper`
+                      }
                       key={item.value}
                     >
                       <label
                         className={`${providedClass}-attribute-color`}
-                        style={
-                        {
+                        style={{
                           backgroundColor: item.value,
-                          border: item.id === "White"
-                            ? "1px solid rgba(0, 0, 0, 0.400)" : "",
-                        }
-                      }
+                          border:
+                            item.id === "White"
+                              ? "1px solid rgba(0, 0, 0, 0.400)"
+                              : "",
+                        }}
                         htmlFor={item.id}
                       >
                         <input
@@ -65,21 +64,18 @@ class RenderAttributes extends Component
           }
 
           return (
-            <div
-              className={`${providedClass}-attribute-container`}
-              key={name}
-            >
+            <div className={`${providedClass}-attribute-container`} key={name}>
               <p className={`${providedClass}-attribute-name`}>
                 {`${name.toUpperCase()}:`}
               </p>
-              <div
-                className={`${providedClass}-attribute-values-container`}
-              >
+              <div className={`${providedClass}-attribute-values-container`}>
                 {items.map((item) => (
                   <label
-                    className={selectedAttributes[name] === item.id
-                      ? `${providedClass}-attribute-value active`
-                      : `${providedClass}-attribute-value`}
+                    className={
+                      selectedAttributes[name] === item.id
+                        ? `${providedClass}-attribute-value active`
+                        : `${providedClass}-attribute-value`
+                    }
                     htmlFor={item.name}
                     key={item.id + item.name}
                   >

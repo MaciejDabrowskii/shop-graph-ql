@@ -23,7 +23,7 @@
   justify-content: center;
   position: relative;
   height: 100%;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .category-product.active {
@@ -77,11 +77,11 @@
   right: 3.8rem;
   bottom: 9rem;
   cursor: pointer;
-  transition: transform .2s ease-in-out; 
+  transition: transform 0.2s ease-in-out;
 }
 
 .category-product-add-button:hover {
-    transform: scale(140%);
+  transform: scale(140%);
 }
 
 .category-product-details-wrapper {
@@ -96,7 +96,7 @@
   top: 2rem;
   border: none;
   cursor: pointer;
-  transition: all 1s ease-in-out; 
+  transition: all 1s ease-in-out;
 }
 
 .category-product-details-button:hover {
@@ -117,7 +117,7 @@
   border: none;
   cursor: pointer;
   font-size: 3rem;
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
   background-color: inherit;
 }
 
@@ -173,7 +173,7 @@
   font-family: source-sans-pro, sans-serif;
   font-size: 2rem;
   cursor: pointer;
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .category-product-attribute-value.active {
@@ -187,7 +187,7 @@
   justify-content: center;
   box-sizing: border-box;
   border: 2px solid rgba(255, 255, 255, 0);
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .category-product-attribute-wrapper.active {
@@ -225,7 +225,7 @@
   background-color: var(--green);
   margin: 3rem 0 0.25rem 0;
   border: 2px solid;
-  transition: all .3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .category-product-button:hover {

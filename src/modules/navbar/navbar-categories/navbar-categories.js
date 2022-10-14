@@ -30,10 +30,7 @@ class NavbarCategories extends Component
 
   render()
   {
-    const {
-      selectedCategory,
-      setSelectedCategory,
-    } = this.context;
+    const { selectedCategory, setSelectedCategory } = this.context;
 
     return (
       <Query
@@ -59,7 +56,8 @@ class NavbarCategories extends Component
 
           if (error)
           {
-            console.log(error); return <p>Error, check out the console</p>;
+            console.log(error);
+            return <p>Error, check out the console</p>;
           }
 
           if (!loading)
@@ -74,7 +72,8 @@ class NavbarCategories extends Component
                     key={name}
                     onClick={() => this.handleClick(name)}
                     className={`navbar-category${
-                      selectedCategory === name ? " active" : ""}`}
+                      selectedCategory === name ? " active" : ""
+                    }`}
                   >
                     {name.toUpperCase()}
                   </Link>

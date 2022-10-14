@@ -21,7 +21,6 @@ class Loading extends Component
           style={{ height: `${height}` }}
         />
       </div>
-
     );
   }
 }
