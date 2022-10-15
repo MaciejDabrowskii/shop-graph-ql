@@ -84,7 +84,7 @@ input[type="radio"] {
   line-height: 4.75rem;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 860px) {
   .main-content-container {
     padding: 4rem 3.5rem 4rem 3.5rem;
   }

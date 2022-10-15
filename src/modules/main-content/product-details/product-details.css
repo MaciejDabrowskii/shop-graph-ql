@@ -222,11 +222,15 @@
   }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 860px) {
   .product-details-images-selected-image {
     width: 100%;
     object-fit: scale-down;
     height: 30rem;
+  }
+
+  .product-details-container {
+    gap: 4.5rem;
   }
 
   .product-details-images-container {
