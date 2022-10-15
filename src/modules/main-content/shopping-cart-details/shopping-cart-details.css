@@ -163,3 +163,30 @@
 .shoppingCartDetails-details-container .total {
   font-weight: 500;
 }
+
+
+/* @media only screen and (max-width: 700px) {
+  .main-content-container {
+    padding: 4rem 3.5rem 4rem 3.5rem;
+  }
+} */
+
+@media only screen and (max-width: 490px) {
+  /* .main-content-container {
+    padding: 4rem .75rem 4rem .75rem;
+  } */
+
+  .shoppingCartDetails-item-image-wrapper {
+    gap: 1rem;
+    margin-left: 1rem;
+  }
+
+  .shoppingCartDetails-quantityControl-container > button{
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+
+  .shoppingCartDetails-item-image-container > img {
+    width: 16rem;
+  }
+}

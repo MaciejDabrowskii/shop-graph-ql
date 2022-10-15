@@ -239,3 +239,9 @@
   font-weight: 800;
   color: var(--green);
 }
+
+@media only screen and (max-width: 490px) {
+  .category-products-container {
+    grid-template-columns: repeat(auto-fill, 43.25rem);
+  }
+}

@@ -193,6 +193,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   line-height: 3.25rem;
+  margin: 3rem;
 }
 
 .shoppingCartDetails-order-btn {
@@ -249,5 +250,15 @@
 
   .product-details-images-sidebar-image-wrapper .outOfStock-overlay {
     font-size: 0.6rem;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .shoppingCartDetails-order-btn,
+  .product-details-info-outOfStock-container {
+    width: 100%
+  }
+  .product-details-info-description-container {
+    margin: 3rem;
   }
 }

@@ -50,14 +50,6 @@
   justify-content: center;
   height: 100%;
 }
-@media only screen and (max-width: 800px) {
-  .navbar-brand-logo-container {
-    position: relative;
-    top: inherit;
-    left: inherit;
-    transform: inherit;
-  }
-}
 
 /* controls */
 .navbar-controls-container {
@@ -390,6 +382,15 @@
 .shoppingCart-overlay-navButtons-checkOut:hover {
   background-color: white;
   color: var(--green);
+}
+
+@media only screen and (max-width: 800px) {
+  .navbar-brand-logo-container {
+    position: relative;
+    top: inherit;
+    left: inherit;
+    transform: inherit;
+  }
 }
 
 @media only screen and (max-width: 490px) {
