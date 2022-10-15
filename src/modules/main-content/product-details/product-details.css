@@ -55,9 +55,12 @@
 }
 
 .product-details-info-name-container {
+  display:flex;
+  flex-direction: column;
   font-size: 3.75rem;
   line-height: 3.25rem;
   margin-bottom: 5rem;
+  gap: 1rem;
 }
 
 .product-details-info-name-brand {
