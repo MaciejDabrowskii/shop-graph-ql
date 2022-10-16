@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { Component } from "react";
-import DOMPurify from "dompurify";
 import { Markup } from "interweave";
+// import DOMPurify from "dompurify";
 
 class RenderDescription extends Component
 {
