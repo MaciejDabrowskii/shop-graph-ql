@@ -5,7 +5,7 @@
 <div align="center">
 
   <h1>
-    E-commerce shop
+    E-commerce Storefront
   </h1><br/>
 
 <img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/Preview.gif?raw=true">
@@ -14,23 +14,32 @@
 
 ## About the Project
 
-E-commerce shop. The goal was to recreate a [design](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=0%3A1>) from [Figma](https://www.figma.com/) with the given [GraphQL](https://graphql.org/) [endpoint](https://github.com/scandiweb/junior-react-endpoint).<br/>
+E-commerce Storefront. The goal was to create storefront according to the provided [design](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=0%3A1>) from [Figma](https://www.figma.com/) with the given [GraphQL](https://graphql.org/) [endpoint](https://github.com/scandiweb/junior-react-endpoint).<br/>
 App created with [React](https://reactjs.org/) library.
 
 - [Design](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=0%3A1>)
 - [Endpoint](https://github.com/scandiweb/junior-react-endpoint)
   <br/>
 
+## How to run the project:
+
+1. Download [endpoint](https://github.com/scandiweb/junior-react-endpoint) and install dependencies.
+2. Build the endpoint - `yarn build // npm run build`
+3. Start endpoint - `yarn start // npm start`
+4. Download the project and install dependencies
+5. Build the project - `yarn build // npm run build`
+6. Start the project - `npm run start`
+
 ## The Project has 2 versions based on:
 
 - [React Class Component - classComponent branch](https://github.com/MaciejDabrowskii/shop-graph-ql/tree/classComponent)
 - [React Function Component - main branch](https://github.com/MaciejDabrowskii/shop-graph-ql)
 
-<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%201.png?raw=true">
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%201.jpeg?raw=true">
 <br/>
-<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%202.png?raw=true">
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%202.jpeg?raw=true">
 <br/>
-<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%203.png?raw=true">
+<img alt="App preview" src="https://github.com/MaciejDabrowskii/shop-graph-ql/blob/classComponent/src/assets/App%20preview/preview%20img%203.jpeg?raw=true">
 <br/>
 
 ### Technologies
